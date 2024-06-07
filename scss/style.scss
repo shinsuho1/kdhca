@@ -1,0 +1,321 @@
+@import "./function";
+@import "./swiper";
+
+$innerWidth: 1320px;
+@import "./gnb";
+
+main {
+    &#mainPage {
+        section {
+            width: 100%;
+            position: relative;
+            &:not(.s01){
+                article{
+                    @include inner-center($innerWidth);
+                    .title{
+                        span{
+                            font-size: 28px;
+                            font-weight: 400;
+                            margin-bottom: 10px;
+                            display: inline-block;
+                        }
+                        h2{
+                            font-size: 60px;
+                            font-weight: 700;
+                            margin-bottom: 20px;
+                            line-height: 1;
+                        }
+                        p{
+                            font-size: 18px;
+                            font-weight: 500;
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+            &.s01{
+                width: 100%;
+                height: 100vh;
+                article {
+                    @include fullsize;
+                    .wrap {
+                        @include fullsize;
+                        .swiper {
+                            @include fullsize;
+                            position: relative;
+                            z-index: 2;
+    
+                            .swiper-wrapper {
+                                @include fullsize;
+                                
+                                .swiper-slide {
+                                    @include fullsize;
+                                    position: relative;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: flex-end;
+                                    .bg {
+                                        width: 100%;
+                                        height: 100%;
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        z-index: 1;
+    
+                                        >img,
+                                        >video,
+                                        >iframe {
+                                            width: 100%;
+                                            height: 100%;
+                                            object-fit: cover;
+                                        }
+                                    }
+    
+                                    .title {
+                                        max-width: $innerWidth;
+                                        width: 100%;
+                                        position: relative;
+                                        z-index: 2;
+                                        color: #fff;
+                                        line-height: 1.3;
+                                        text-align: right;
+                                        margin-bottom: calc(20vh + 20px);
+                                        h2{
+                                            font-size: 60px;
+                                            font-weight: 600;
+                                            margin-bottom: 30px;
+                                        }
+                                        p{
+                                            font-size: 18px;
+                                            font-weight: 500;
+                                            margin-bottom: 20px;
+                                        }
+                                    }
+                                }
+                            }
+                            .swiper-pagination{
+                                position: absolute;
+                                color: #Fff;
+                                max-width: $innerWidth;
+                                width: 100%;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                bottom: 20vh;
+                                text-align: right;
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                font-weight: 500;
+                                font-size: 14px;
+                                &::before{
+                                    content: "";
+                                    width: 8px;
+                                    aspect-ratio: 8/6;
+                                    @include bg-cover("../images/common/left-arrow.svg");
+                                    font-size: inherit;
+                                    color: inherit;
+                                    font-weight: inherit;
+                                    margin-right: 5px;
+                                }
+                                &::after{
+                                    content: "";
+                                    width: 8px;
+                                    aspect-ratio: 8/6;
+                                    @include bg-cover("../images/common/right-arrow.svg");
+                                    font-size: inherit;
+                                    color: inherit;
+                                    font-weight: inherit;
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.s02{
+                .bg{
+                    @include fullsize;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    transition: .5s;
+                    img{
+                        @include fullsize;
+                        object-fit: cover;
+                    }
+                }
+                article{
+                    position: relative;
+                    z-index: 2;
+                    height: 100%;
+                    .wrap{
+                        @include fullsize;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 70px;
+                        .title{
+                            color: #fff;
+                            padding-top: 160px;
+                        }
+                        .content{
+                            @include fullsize;
+                            ul{
+                                @include fullsize;
+                                @include flex-center;
+                                li{
+                                    width: calc(100%/3);
+                                    height: 100%;
+                                    border-right: 0.6px solid #fff;
+                                    padding-left: 45px;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: flex-start;
+                                    color: #c3c3c3;
+                                    padding-bottom: 200px;
+                                    @include transition(.5s);
+                                    &:first-child{
+                                        border-left: .6px solid #fff;
+                                    }
+                                    .icon-svg{
+                                        width: 60px;
+                                        margin-bottom: 20px;
+                                        svg{
+                                            width: 100%;
+                                            object-fit: contain;
+                                            path{
+                                                @include transition(.5s);
+                                                stroke: #c3c3c3;
+                                            }
+                                        }
+                                    }
+                                    p{
+                                        font-weight: 700;
+                                        font-size: 24px;
+                                        margin-bottom: 10px;
+                                        @include transition(.5s);
+                                    }
+                                    a{
+                                        font-weight: 500;
+                                        font-size: 12px;
+                                        @include transition(.5s);
+                                    }
+                                    &.active{
+                                        -webkit-backdrop-filter: blur(10px);
+                                        backdrop-filter: blur(10px);
+                                        background-color: rgba(255, 255, 255, 0.25);
+                                        border-top: none;
+                                        border-bottom: none;
+                                        color: #fff;
+                                        .icon-svg{
+                                            svg{
+                                                path{
+                                                    stroke: #fff;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.s03{
+                .fp-tableCell{
+                    @include flex_center;
+                }
+                .bg{
+                    width: 975px;
+                    position: absolute;
+                    bottom: 0;
+                    left: -130px;
+                    img{
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+                article{
+                    .wrap{
+                        display: flex;
+                        gap: 200px;
+                        width: 100%;
+                        .table{
+                            width: 100%;
+                            .more-btn{
+                                width: 100%;
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                padding-bottom: 10px;
+                                border-bottom: .6px solid #dadada;
+                            }
+                            ul{
+                                width: 100%;
+                                li{
+                                    width: 100%;
+                                    padding: 50px 40px;
+                                    border-bottom: .6px solid #dadada;
+                                    .tit{
+                                        font-size: 20px;
+                                        font-weight: 600;
+                                        margin-bottom: 15px;
+                                        width: 100%;
+                                        a{
+                                            width: 100%;
+                                            @include ellipsis(1);
+                                        }
+                                    }
+                                    .date{
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        margin-bottom: 30px
+                                    }
+                                    p{
+                                        font-size: 15px;
+                                        font-weight: 500;
+                                        color: #717171;
+                                        width: 100%;
+                                        @include ellipsis(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.s04{
+                height: auto !important;
+                .swiper{
+                    .swiper-wrapper{
+                        transition-timing-function: linear;
+                    }
+                }
+            }
+        }
+    }
+
+
+    &#sub_page {
+        &.about{
+            section {
+                article {
+                    @include inner-center($innerWidth);
+                    .wrap {
+                        .title {
+                            h2 {}
+                            p {}
+                        }
+                        .content{
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@import "./media";

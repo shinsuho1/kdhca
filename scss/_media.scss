@@ -1,0 +1,45 @@
+@media (max-width:1300px) {
+    main {
+        &#main_page{
+            section{
+                &:not(.s01){
+                    article{
+                        margin: 0;
+                        padding: 0 5%;
+                    }
+            
+                }
+                &.s01{
+                    article{
+                        .wrap{
+                            .swiper{
+                                .swiper-wrapper{
+                                    .swiper-slide{
+                                        .title{
+                                            margin: 0;
+                                            padding: 0 5%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &#sub_page{
+            section{
+                article{
+                    margin: 0;
+                    padding: 0 5%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1024px) {}
+
+@media (max-width:767px) {}
+
+@media (max-width:450px) {}

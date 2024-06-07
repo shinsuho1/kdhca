@@ -1,0 +1,476 @@
+/* ================================ function  ================================ */
+@mixin flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+@mixin flex-space {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin flex-space-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-space-start {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+@mixin flex-space-end {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-column-center {
+    @include flex-center;
+    flex-direction: column;
+}
+
+@mixin inner-center($max-width) {
+    max-width: $max-width;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@mixin bg-cover($url) {
+    background-image: url($url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@mixin bg-contain($url) {
+    background-image: url($url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@mixin el-calc($count, $gap) {
+    width: calc(100% / $count - ($gap * ($count - 1) / $count));
+}
+
+@mixin flex-el-list($count, $column-gap, $row-gap) {
+    @include flex-list;
+    row-gap: $row-gap;
+    column-gap: $column-gap;
+    >* {
+        width: calc(100% / $count - ($column-gap * ($count - 1) / $count));
+    }
+}
+
+@mixin img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@mixin fullsize {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin maxSize($width, $height) {
+    max-width: $width;
+    max-height: $height;
+}
+
+@mixin minSize($width, $height) {
+    min-width: $width;
+    min-height: $height;
+}
+
+@mixin fixedSize($width, $height) {
+    width: 100%;
+    height: 100%;
+    max-width: $width;
+    max-height: $width;
+    min-width: $height;
+    min-height: $height;
+}
+
+@mixin transition($s) {
+    transition: $s;
+    -webkit-transition: $s;
+    -moz-transition: $s;
+    -ms-transition: $s;
+    -o-transition: $s;
+}
+
+
+@mixin clipText($num) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+
+@mixin ellipsis($line: 1) {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+}
+
+@mixin el-hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@mixin el-fade {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@mixin drag-on {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    pointer-events: visible;
+}
+
+@mixin drag-off {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none
+}
+
+@mixin appearance-none {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+@mixin pos-x-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin pos-y-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin pos-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin pos-unset {
+    position: unset;
+    left: unset;
+    right: unset;
+    top: unset;
+    bottom: unset;
+    transform: unset;
+}
+
+@mixin before-bg($color,$opacity: 1){
+    @include fullsize;
+    &:before{
+        content: "";
+        @include fullsize;
+        position: absolute;
+        @include pos-center;
+        background-color: $color;
+        opacity: $opacity;
+    }
+}
+
+@mixin after-bg($color,$opacity: 1){
+    @include fullsize;
+    &:after{
+        content: "";
+        @include fullsize;
+        position: absolute;
+        @include pos-center;
+        background-color: $color;
+        opacity: $opacity;
+    }
+}
+
+@mixin floot-clear {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+
+/* ================================ FONT ================================ */
+@mixin fs-20{
+    font-size: 20px;
+}
+
+
+/* ================================ keyframe ================================ */
+
+@keyframes zoom-out{
+    0%{
+        transform: scale(1.3);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-up{
+    0%{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-down{
+    0%{
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-left{
+    0%{
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes fade-right{
+    0%{
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+/* ================================ common ================================ */
+*,
+*:before,
+*:after {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    word-break: keep-all;
+    margin: 0;
+    padding: 0;
+    font-family: "SCoreDream";
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+html {
+    // &::-webkit-scrollbar {
+    //     width: 4px;
+    //     height: 10px;
+    // }
+
+    // &::-webkit-scrollbar-thumb {
+    //     background-color: #aaa;
+    // }
+
+    // &::-webkit-scrollbar-track {
+    //     background-color: transparent;
+    // }
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input,
+textarea,
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    outline: none;
+    background: none;
+}
+
+input,
+input::placeholder,
+option,
+textarea,
+textarea::placeholder,
+select {
+    font-family: inherit;
+}
+
+input[type="checkbox"] {
+    @include appearance_none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #aaa;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: .3s;
+
+    &:checked {
+        border-color: transparent;
+        background-image: url("../images/input_check.png");
+    }
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+a,
+address {
+    text-decoration: none;
+    font-style: normal;
+    color: inherit;
+}
+
+
+body {
+    line-height: 1.3;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.header_blur {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.45, 0.5, 1);
+    pointer-events: none;
+    transition: .3s;
+
+    &.on {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(216, 216, 216, 0.1);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+        opacity: 1;
+    }
+}
+
+.aos_span{
+    display: inline-block;
+}
+
+.only {
+    display: block !important;
+}
+
+.pc_only {
+    display: block;
+}
+
+.ta_only {
+    display: none;
+}
+
+.mo_only {
+    display: none;
+}
+
+
+@media (max-width:1024px) {
+    .pc-only {
+        display: none;
+    }
+
+    .ta-only {
+        display: block;
+    }
+}
+
+@media (max-width:767px) {
+    .ta-only {
+        display: none;
+    }
+
+    .mo-only {
+        display: block;
+    }
+}
+
+// .swiper-wrapper{
+//     transition-timing-function:linear;
+// }
