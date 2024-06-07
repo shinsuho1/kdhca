@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 
     var main_s04_banner = new Swiper("#mainPage .s04 .swiper",{
-        slidesPerView: 8,
+        slidesPerView: 9,
         loop: true,
         touchRatio: 0,
         watchSlidesProgress: true,

@@ -286,10 +286,17 @@ main {
                 }
             }
             &.s04{
-                height: auto !important;
+                padding: 50px 0;
                 .swiper{
                     .swiper-wrapper{
                         transition-timing-function: linear;
+                        .swiper-slide{
+                            width: 100%;
+                            img{
+                                height: 60px;
+                                object-fit: contain;
+                            }
+                        }
                     }
                 }
             }
