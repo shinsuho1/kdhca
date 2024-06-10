@@ -1,15 +1,15 @@
-$headerHeight: 95px;
-$headerBgHeight : 300px;
+
 header{
+    $headerHeight: 95px;
+    $headerBgHeight : 300px;
     width: 100%;
     position: fixed;
     z-index: 100;
     height: $headerHeight;
     border-bottom: .5px solid transparent;
     .header-wrap{
-        width: $innerWidth;
+        @include inner-center($innerWidth);
         height: 100%;
-        margin: 0 auto;
         @include flex-space-center;
         position: relative;
         z-index: 2;
@@ -18,7 +18,6 @@ header{
             aspect-ratio: 203/26;
             @include flex-center;
             @include bg-cover("../images/common/logo_white.svg");
-            
         }
         #gnb{
             &.pc{
@@ -30,8 +29,8 @@ header{
                 line-height: 1;
                 >li{
                     position: relative;
+                    white-space: nowrap;
                     >a{
-                        // padding: 0 20px;
                         font-size: 18px;
                         font-weight: 500;
                         transition: .15s;
@@ -46,18 +45,21 @@ header{
                         padding-top: 10px;
                         text-align: left;
                         top: 70px;
-                        white-space: nowrap;
+                        font-size: 14px;
                         li{
                             width: 100%;
                             margin-bottom: 15px;
                             a{
                                 display: block;
                                 width: 100%;
-                                font-size: 14px;
                                 font-weight: 400;
                                 transition: .15s;
+                                line-height: 1.3;
                                 &:hover{
                                     color: #0e6cae;
+                                }
+                                .h_br{
+                                    display: none;
                                 }
                             }
                             &:last-child{
@@ -73,67 +75,76 @@ header{
                 }
             }
             &.mo{
-                position: absolute;
-                // top: $headerHeight;
-                right: 0;
+                position: fixed;
+                width: 100%;
+                height: calc(100% - $headerHeight);
+                right: -100%;
+                background-color: rgba($color: #fff, $alpha: .8);
+                transition: .5s;
                 >li{
                     a{}
                     .sub-menu{
                         display: none;
                     }   
                 }
+                &.active{
+                    right: 0%
+                }
             }
         }
         .right{
+            @include flex_center;
+            gap: 20px;
             .user{
                 padding: 10px 24px;
                 border: 1px solid #fff;
                 @include flex_center;
                 color: #fff;
                 transition: .15s;
+                font-size: 15px;
                 a{
                     transition: .15s;
                 }
             }
-        }
-        .menuicon{
-            width: 28px;
-            height: 14px;
-            position: relative;
-            cursor: pointer;
-            display: none;
-            span{
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                background-color: #000;
-                transition: .3s;
-                left: 50%;
-                transform-origin: center;
-                transform: translateX(-50%);
-                &:nth-child(1){
-                    top: 0px;
-                }
-                &:nth-child(2){
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                }
-                &:nth-child(3){
-                    top: 100%;
-                }
-            }
-            &.active{
+            .menuicon{
+                width: 28px;
+                height: 17px;
+                position: relative;
+                cursor: pointer;
+                display: none;
                 span{
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #fff;
+                    transition: .3s;
+                    left: 50%;
+                    transform-origin: center;
+                    transform: translateX(-50%);
                     &:nth-child(1){
-                        top: 50%;
-                        transform: translate(-50%,-50%) rotate(45deg);
+                        top: 0px;
                     }
                     &:nth-child(2){
-                        opacity: 0;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
                     }
                     &:nth-child(3){
-                        top: 50%;
-                        transform: translate(-50%,-50%) rotate(-45deg);
+                        top: 100%;
+                    }
+                }
+                &.active{
+                    span{
+                        &:nth-child(1){
+                            top: 50%;
+                            transform: translate(-50%,-50%) rotate(45deg);
+                        }
+                        &:nth-child(2){
+                            opacity: 0;
+                        }
+                        &:nth-child(3){
+                            top: 50%;
+                            transform: translate(-50%,-50%) rotate(-45deg);
+                        }
                     }
                 }
             }
@@ -159,7 +170,7 @@ header{
             }
             #gnb{
                 &.pc{
-                    gap: 100px;
+                    gap: 110px;
                     color: #000;
                     >li{
                         .sub-menu{
@@ -174,6 +185,11 @@ header{
                     border-color: #000;
                     color: #000;
                 }
+                .menuicon{
+                    span{
+                        background-color: #000;
+                    }
+                }
             }
         }
         .header-bg{
@@ -181,8 +197,60 @@ header{
             opacity: .8;
         }
     }
+    &.bg{
+        .header-wrap{
+            .logo{
+                background-image: url(../images/common/logo_black.svg);
+            }
+            #gnb{
+                &.pc{
+                    color: #000;
+                }
+            }
+            .right{
+                .user{
+                    border-color: #000;
+                    color: #000;
+                }
+                .menuicon{
+                    span{
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+        .header-bg{
+            opacity: .8;
+        }
+    }
 }
 
 footer{
-    
+    width: 100%;
+    padding: 30px 0;
+    background-color: #000;
+    .footer-wrap{
+        @include inner-center($innerWidth);
+        @include flex-space-center;
+        gap: 450px;
+        color: #a8a8a8;
+        .logo{
+            width: 300px;
+            img{
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+        .address{
+            @include flex-list;
+            gap: 10px 30px;
+            font-size: 15px;
+            font-weight: 400;
+            li{
+                &:first-child{
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

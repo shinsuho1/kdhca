@@ -1,0 +1,160 @@
+<div id="tab-menu">
+    <div class="inner">
+        <a href="../main/index.html" class="home">
+            <img src="../images/common/hom_btn.svg" alt="홈버튼">
+        </a>
+        <div class="menu">
+            <span>
+                <?php if ($PAGE_CODE_1 == " 01") {
+                    echo "협회소개";
+                } ?>
+                <?php if ($PAGE_CODE_1 == " 02") {
+                    echo "회원사 정보";
+                } ?>
+                <?php if ($PAGE_CODE_1 == " 03") {
+                    echo "집단에너지란?";
+                } ?>
+                <?php if ($PAGE_CODE_1 == " 04") {
+                    echo "통계/현황";
+                } ?>
+                <?php if ($PAGE_CODE_1 == " 05") {
+                    echo "정보센터";
+                } ?>
+                <img src="../images/common/tab-menu-arrow.svg" alt="화살표">
+            </span>
+            <ul>
+                <?php
+                if ($PAGE_CODE_1 == "01") {
+                ?>
+                    <li><a href="../information/member.html">회원사 정보</a></li>
+                    <li><a href="../energy/heating.html">집단에너지란?</a></li>
+                    <li><a href="javascript:alert('준비중')">통계/현황</a></li>
+                    <li><a href="javascript:alert('준비중')">정보센터</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "02") {
+                ?>
+                    <li><a href="../about/ceo.html">협회소개</a></li>
+                    <li><a href="../energy/heating.html">집단에너지란?</a></li>
+                    <li><a href="javascript:alert('준비중')">통계/현황</a></li>
+                    <li><a href="javascript:alert('준비중')">정보센터</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "03") {
+                ?>
+                    <li><a href="../about/ceo.html">협회소개</a></li>
+                    <li><a href="../information/member.html">회원사 정보</a></li>
+                    <li><a href="javascript:alert('준비중')">통계/현황</a></li>
+                    <li><a href="javascript:alert('준비중')">정보센터</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "04") {
+                ?>
+                    <li><a href="../about/ceo.html">협회소개</a></li>
+                    <li><a href="../information/member.html">회원사 정보</a></li>
+                    <li><a href="../energy/heating.html">집단에너지란?</a></li>
+                    <li><a href="javascript:alert('준비중')">정보센터</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "05") {
+                ?>
+                    <li><a href="../about/ceo.html">협회소개</a></li>
+                    <li><a href="../information/member.html">회원사 정보</a></li>
+                    <li><a href="../energy/heating.html">집단에너지란?</a></li>
+                    <li><a href="javascript:alert('준비중')">통계/현황</a></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <div class="menu">
+            <span>
+                <?php if ($PAGE_CODE_2 == "0101") {
+                    echo "인사말";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0102") {
+                    echo "협회연혁";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0103") {
+                    echo "오시는 길";
+                } ?>
+
+                <?php if ($PAGE_CODE_2 == "0201") {
+                    echo "회원사 소개";
+                } ?>
+
+                <?php if ($PAGE_CODE_2 == "0301") {
+                    echo "지역난방";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0302") {
+                    echo "지역냉방";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0303") {
+                    echo "아파트에 지역냉방을 도입하면";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0304") {
+                    echo "구역형 집단에너지 사업";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0305") {
+                    echo "시설소개";
+                } ?>
+
+                <?php if ($PAGE_CODE_2 == "0401") {
+                    echo "연도별 추이";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0402") {
+                    echo "공급현황";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0403") {
+                    echo "설비현황";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0404") {
+                    echo "운영실적";
+                } ?>
+
+                <?php if ($PAGE_CODE_2 == "0501") {
+                    echo "공지사항";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0502") {
+                    echo "산업동향";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0503") {
+                    echo "회원사 동정";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0504") {
+                    echo "자료실";
+                } ?>
+                <img src="../images/common/tab-menu-arrow.svg" alt="화살표">
+            </span>
+            <ul>
+                <?php
+                if ($PAGE_CODE_1 == "01") {
+                ?>
+                    <li><a href="../about/ceo.html">인사말</a></li>
+                    <li><a href="../about/history.html">협회연혁</a></li>
+                    <li><a href="../about/location.html">오시는 길</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "02") {
+                ?>
+                    <li><a href="../information/member.html">회원사 소개</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "03") {
+                ?>
+                    <li><a href="../energy/heating.html">지역난방</a></li>
+                    <li><a href="../energy/cooling.html">지역냉방</a></li>
+                    <li><a href="../energy/apartment.html">아파트에 지역냉방을 도입하면</a></li>
+                    <li><a href="../energy/area.html">구역형 집단에너지 사업</a></li>
+                    <li><a href="../energy/facility.html">시설소개</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "04") {
+                ?>
+                    <li><a href="#none">연도별 추이</a></li>
+                    <li><a href="#none">공급현황</a></li>
+                    <li><a href="#none">설비현황</a></li>
+                    <li><a href="#none">운영실적</a></li>
+                <?php
+                } else if ($PAGE_CODE_1 == "05") {
+                ?>
+                    <li><a href="#none">공지사항</a></li>
+                    <li><a href="#none">산업동향</a></li>
+                    <li><a href="#none">회원사 동정</a></li>
+                    <li><a href="#none">자료실</a></li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+</div>

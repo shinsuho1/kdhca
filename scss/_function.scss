@@ -4,6 +4,7 @@
     flex-wrap: wrap;
 }
 
+
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -448,6 +449,13 @@ body {
 
 .mo_only {
     display: none;
+}
+
+@media (max-width:1340px){
+    .pc-only {
+        display: none;
+    }
+
 }
 
 
