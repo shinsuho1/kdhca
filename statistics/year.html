@@ -1,0 +1,178 @@
+<?php
+include_once "../include/header.html";
+$PAGE_CODE_1 = "04";
+$PAGE_CODE_2 = "0401";
+?>
+<main id="subPage" class="statistics year">
+    <section class="sub_banner">
+        <div class="bg">
+            <img src="../images/statistics/statistics_banner.png" alt="통계/현황 베너">
+        </div>
+        <?php include_once "../include/tabmenu.html" ?>
+    </section>
+    <section class="s01">
+        <article>
+            <div class="wrap">
+                <div class="title">연도별 추이</div>
+            </div>
+        </article>
+    </section>
+    <section class="s02">
+        <article>
+            <div class="wrap">
+                <ul>
+                    <li>
+                        <canvas id="myChart"></canvas>
+                        <table>
+                            <colgroup>
+                                <col width="15%">
+                                <col width="45%">
+                                <col width="45%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>연도</th>
+                                    <th>사업장 수</th>
+                                    <th>사업자 수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2018</td>
+                                    <td>108</td>
+                                    <td>77</td>
+                                </tr>
+                                <tr>
+                                    <td>2017</td>
+                                    <td>106</td>
+                                    <td>75</td>
+                                </tr>
+                                <tr>
+                                    <td>2016</td>
+                                    <td>103</td>
+                                    <td>73</td>
+                                </tr>
+                                <tr>
+                                    <td>2015</td>
+                                    <td>95</td>
+                                    <td>66</td>
+                                </tr>
+                                <tr>
+                                    <td>2014</td>
+                                    <td>91</td>
+                                    <td>64</td>
+                                </tr>
+                                <tr>
+                                    <td>2013</td>
+                                    <td>89</td>
+                                    <td>63</td>
+                                </tr>
+                                <tr>
+                                    <td>2012</td>
+                                    <td>85</td>
+                                    <td>58</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section>
+</main>
+<?php
+include_once "../include/footer.html"
+?>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    // document.getElementById('myChart').style.height = "200px";
+    // ctx.canvas.height = 135;
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+            datasets: [{
+                    label: '사업장수',
+                    data: [80, 85, 91, 93, 94, 97, 100],
+                    borderColor: '#dd2025',
+                    borderWidth: 1.5,
+                    backgroundColor: function(context) {
+                        gradient = ctx.createLinearGradient(0, 150, 300, 150);
+                        gradient.addColorStop(1, 'rgba(234, 73, 77, 0.6)');
+                        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                        return gradient;
+                    },
+                    fill: true,
+                    pointBackgroundColor: '#ffdfe0',
+                    pointBorderColor: '#dd2025',
+                    pointRadius: 5
+                },
+                {
+                    label: '사업지수',
+                    data: [60, 65, 73, 70, 75, 78, 80],
+                    borderColor: '#0e6cae',
+                    borderWidth: 1.5,
+                    backgroundColor: function(context) {
+                        gradient = ctx.createLinearGradient(0, 25, 0, 100);
+                        gradient.addColorStop(0, 'rgba(54, 162, 235, 0.2)');
+                        gradient.addColorStop(1, 'rgba(54, 162, 235, 0)');
+                        return gradient;
+                    },
+                    fill: true,
+                    pointBackgroundColor: '#d7efff',
+                    pointBorderColor: '#0e6cae',
+                    pointRadius: 5
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 50,
+                    max: 120,
+                },
+                x: {
+                    grid: {
+                        color: 'transparent',
+                    },
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            console.log(tooltipItem);
+                            return tooltipItem.label + tooltipItem.dataset.label + tooltipItem.raw;
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "연도별 사업자수 및 사업장수",
+                    align: "start",
+                    color: "#0e6cae",
+                    font: {
+                        size: 24,
+                        family: "ScoreDream",
+                        weight: 600,
+                    },
+                },
+                legend: { // 범례 스타일링
+                    display: true,
+                    align: "end",
+                    labels: {
+                        usePointStyle: false,
+                        padding: 10,
+                        color: "#00000",
+                        font: {
+                            family: "ScoreDream",
+                            size: 14,
+                            weight: 400,
+                        },
+                    }
+                },
+            }
+        }
+    });
+</script>

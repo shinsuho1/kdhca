@@ -19,13 +19,6 @@ $("#tab-menu .menu>span").on("click", function (e) {
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-    header_gnb.addEventListener("mouseenter", () => {
-        header.classList.add("hover");
-    });
-    header.addEventListener("mouseleave", function () {
-        header.classList.remove("hover");
-    });
-
 
     if (window.innerWidth <= 1024) {
         if (header_gnb.classList.contains("pc")) {
@@ -37,6 +30,12 @@ window.addEventListener("DOMContentLoaded", function () {
             header_gnb.classList.remove("mo");
         }
         header_gnb.classList.add("pc");
+        header_gnb.addEventListener("mouseenter", () => {
+            header.classList.add("hover");
+        });
+        header.addEventListener("mouseleave", function () {
+            header.classList.remove("hover");
+        });
     }
 
     window.addEventListener("resize", () => {
@@ -132,9 +131,9 @@ window.addEventListener("DOMContentLoaded", function () {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
             let scrollTop = window.scrollY;
-            if (scrollTop > lastScroll) {
+            if(scrollTop > 0){
                 header.classList.add("bg");
-            } else {
+            }else{
                 header.classList.remove("bg");
             }
             lastScroll = scrollTop;
