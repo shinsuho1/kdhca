@@ -23,6 +23,7 @@ $PAGE_CODE_2 = "0401";
                 <ul>
                     <li>
                         <canvas id="myChart"></canvas>
+                        <canvas id="myChart1"></canvas>
                         <table>
                             <colgroup>
                                 <col width="15%">
@@ -86,6 +87,8 @@ include_once "../include/footer.html"
 
 <script>
     const ctx = document.getElementById('myChart').getContext('2d');
+    const ctx1 = document.getElementById('myChart1').getContext('2d');
+
     // document.getElementById('myChart').style.height = "200px";
     // ctx.canvas.height = 135;
     const myChart = new Chart(ctx, {
@@ -174,5 +177,67 @@ include_once "../include/footer.html"
                 },
             }
         }
+    });
+    const myChart1 = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: ['2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+            datasets: [{
+                    label: '사업장수',
+                    data: [80, 85, 91, 93, 94, 97, 100],
+                    borderWidth: 1.5,
+                    fill: true,
+                    pointRadius: 5
+                },
+            ]
+        },
+        // options: {
+        //     scales: {
+        //         y: {
+        //             min: 50,
+        //             max: 120,
+        //         },
+        //         x: {
+        //             grid: {
+        //                 color: 'transparent',
+        //             },
+        //         }
+        //     },
+        //     plugins: {
+        //         tooltip: {
+        //             callbacks: {
+        //                 label: function(tooltipItem) {
+        //                     console.log(tooltipItem);
+        //                     return tooltipItem.label + tooltipItem.dataset.label + tooltipItem.raw;
+        //                 }
+        //             }
+        //         },
+        //         title: {
+        //             display: true,
+        //             text: "연도별 사업자수 및 사업장수",
+        //             align: "start",
+        //             color: "#0e6cae",
+        //             font: {
+        //                 size: 24,
+        //                 family: "ScoreDream",
+        //                 weight: 600,
+        //             },
+        //         },
+        //         legend: { // 범례 스타일링
+        //             display: true,
+        //             align: "end",
+        //             labels: {
+        //                 usePointStyle: false,
+        //                 padding: 10,
+        //                 color: "#00000",
+        //                 font: {
+        //                     family: "ScoreDream",
+        //                     size: 14,
+        //                     weight: 400,
+        //                 },
+        //             }
+        //         },
+        //     }
+        // }
     });
 </script>

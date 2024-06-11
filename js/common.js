@@ -25,6 +25,10 @@ window.addEventListener("DOMContentLoaded", function () {
             header_gnb.classList.remove("pc");
         }
         header_gnb.classList.add("mo");
+        $("#gnb.mo>li>a").on("click",function(e){
+            e.preventDefault();
+            $(this).siblings().stop().slideToggle();
+        });
     } else {
         if (header_gnb.classList.contains("mo")) {
             header_gnb.classList.remove("mo");
@@ -73,7 +77,7 @@ window.addEventListener("DOMContentLoaded", function () {
             effect: "fade",
             loop: true,
             autoplay: {
-                delay: 8000,
+                delay: 5000,
             },
             speed: 1000,
             pagination: {
@@ -130,6 +134,7 @@ window.addEventListener("DOMContentLoaded", function () {
     if (url != "main") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
+            if (windwo.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
             let scrollTop = window.scrollY;
             if(scrollTop > 0){
                 header.classList.add("bg");

@@ -17,7 +17,7 @@ header{
             width: 203px;
             aspect-ratio: 203/26;
             @include flex-center;
-            @include bg-cover("../images/common/logo_white.svg");
+            @include bg-contain("../images/common/logo_white.svg");
         }
         #gnb{
             &.pc{
@@ -81,11 +81,25 @@ header{
                 right: -100%;
                 background-color: rgba($color: #fff, $alpha: .8);
                 transition: .5s;
+                padding: 0 5%;
                 >li{
-                    a{}
+                    color: #000;
+                    padding: 25px 0;
+                    border-bottom: 1px solid #bcbcbc;
+                    >a{
+                        font-size: 20px;
+                        width: 100%;
+                        @include flex-space-center;
+                        margin-bottom: 20px;
+                    }
                     .sub-menu{
                         display: none;
                     }   
+                    &:first-child{
+                    }
+                    &:last-child{
+                        border-bottom: none;
+                    }
                 }
                 &.active{
                     right: 0%

@@ -536,7 +536,7 @@
                 }
             }
             &.cs_center{
-                .search-wrap{
+                .search-form{
                     gap: 15px;
                     height: 50px;
                     margin-bottom: 60px;
@@ -584,9 +584,9 @@
 }
 
 @media (max-width:1024px) {
-    $headerHeight: 80px;
-
     header {
+        $headerHeight: 80px;
+        height: $headerHeight;
         .header-wrap {
             padding: 0 5%;
 
@@ -597,7 +597,7 @@
             #gnb {
                 &.mo {
                     height: calc(100% - $headerHeight);
-                    top: $headerHeight;
+                    top: calc($headerHeight + 5px);
                 }
             }
 
@@ -1031,7 +1031,7 @@
             }
 
             &.cs_center{
-                .search-wrap{
+                .search-form{
                     gap: 10px;
                     height: 45px;
                     margin-bottom: 40px;
@@ -1531,7 +1531,7 @@
             }
 
             &.cs_center{
-                .search-wrap{
+                .search-form{
                     height: 40px;
                     margin-bottom: 30px;
                     font-size: 14px;
@@ -1992,7 +1992,7 @@
             }
 
             &.cs_center{
-                .search-wrap{
+                .search-form{
                     height: initial;
                     flex-direction: column;
                     select{
