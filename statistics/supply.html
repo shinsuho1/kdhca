@@ -1,0 +1,199 @@
+<?php
+include_once "../include/header.html";
+$PAGE_CODE_1 = "04";
+$PAGE_CODE_2 = "0401";
+?>
+<main id="subPage" class="statistics year">
+    <section class="sub_banner">
+        <div class="bg">
+            <img src="../images/statistics/statistics_banner.png" alt="통계/현황 베너">
+        </div>
+        <?php include_once "../include/tabmenu.html" ?>
+    </section>
+    <section class="s01">
+        <article>
+            <div class="wrap">
+                <div class="title">연도별 추이</div>
+            </div>
+        </article>
+    </section>
+    <section class="s02">
+        <article>
+            <div class="wrap">
+                <div class="tabs">
+                    <a href="#none" class="active">총괄</a>
+                    <a href="#none">지역난방</a>
+                    <a href="#none">산업단지</a>
+                    <a href="#none">병행사업자</a>
+                    <a href="#none">지역냉방</a>
+                </div>
+                <ul>
+                    <li>
+                        <div class="canvas-box">
+                            <canvas id="supply_chart"></canvas>
+                            <canvas></canvas>
+                            <canvas></canvas>
+                        </div>
+                        <table class="supply_table01">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>사업자 수</th>
+                                    <th>사업장 수</th>
+                                    <th>허가 세대수</th>
+                                    <th>허가 업체수</th>
+                                    <th>공급 세대수</th>
+                                    <th>공급 업체수</th>
+                                    <th>공급 빌딩수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>지역냉난방</td>
+                                    <td>32</td>
+                                    <td>61</td>
+                                    <td>3,822,397</td>
+                                    <td>0</td>
+                                    <td>3,017,347</td>
+                                    <td>0</td>
+                                    <td>4,708</td>
+                                </tr>
+                                <tr>
+                                    <td>산업단지</td>
+                                    <td>39</td>
+                                    <td>41</td>
+                                    <td>0</td>
+                                    <td>885</td>
+                                    <td>0</td>
+                                    <td>862</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>병행</td>
+                                    <td>6</td>
+                                    <td>6 </td>
+                                    <td>149,585</td>
+                                    <td>77</td>
+                                    <td>88,637</td>
+                                    <td>72 </td>
+                                    <td>73</td>
+                                </tr>
+                                <tr class="bold">
+                                    <td>합계</td>
+                                    <td>77</td>
+                                    <td>3,971,982</td>
+                                    <td>962</td>
+                                    <td>3,105,984</td>
+                                    <td>934</td>
+                                    <td>72</td>
+                                    <td>4,781</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="supply_table02">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>사업자 수</th>
+                                    <th>사업장 수</th>
+                                    <th>허가 세대수</th>
+                                    <th>허가 업체수</th>
+                                    <th>공급 세대수</th>
+                                    <th>공급 업체수</th>
+                                    <th>공급 빌딩수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>지역냉난방</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>126,361</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>산업단지</td>
+                                    <td>4</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>61</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>병행</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>8</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr class="bold">
+                                    <td>합계</td>
+                                    <td>7</td>
+                                    <td>7</td>
+                                    <td>126,361</td>
+                                    <td>8</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section>
+</main>
+<?php
+include_once "../include/footer.html"
+?>
+<!-- <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> -->
+
+<script>
+    let ctx = document.getElementById('supply_chart').getContext('2d'),
+        data_element = document.querySelectorAll(".supply_table01 tbody tr"),
+        data_labels = [],
+        data_1 = [],
+        data_2 = [];
+    data_element.forEach((el, index) => {
+        data_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
+        // data_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
+        // data_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
+    });
+    const year_chart1 = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                label: '지역냉난방',
+                data: [32, 39, 6],
+                borderColor: 'transparent',
+                fill: true,
+                backgroundColor: ['#3389EF', '#D6F2FE', '#EFFAFF'],
+                borderWidth: 1,
+                borderColor: '#fff',
+            }]
+        },
+        options: {
+            plugins: {
+                labels: {
+                    render: 'value',
+                    fontColor: 'black',
+                    fontSize: 15,
+                    precision: 2
+                }
+
+            }
+        }
+    });
+</script>

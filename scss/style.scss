@@ -1222,54 +1222,99 @@ main {
         }
 
         &.statistics {
-            &.year {
-                section {
-                    &.s02 {
-                        article {
-                            .wrap {
-                                ul {
+            section {
+                &.s02 {
+                    article {
+                        .wrap {
+                            .tabs{
+                                width: 100%;
+                                height: 80px;
+                                @include flex-center;
+                                margin-bottom: 65px;
+                                a{
+                                    @include fullsize;
+                                    @include flex-center;
+                                    border-bottom: 1px solid #0E6CAE;
+                                    border-right: 1px solid #fff;
+                                    background-color: #F8F8F8;
+                                    font-size: 20px;
+                                    font-weight: 600;
+                                    color: #B2B2B2;
+                                    &.active{
+                                        border: 1px solid #0E6CAE;
+                                        border-bottom: none;
+                                        background-color: #fff;
+                                        color: #0E6CAE;
+                                    }
+                                }
+                            }
+                            ul {
+                                width: 100%;
+
+                                li {
                                     width: 100%;
-
-                                    li {
+                                    @include flex-column-center;
+                                    gap: 60px;
+                                    margin-bottom: 120px;
+                                    .canvas-box{
                                         width: 100%;
-                                        @include flex-column-center;
-                                        gap: 60px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        gap: 140px;
+                                        canvas{
+                                            width: calc(100%/3) !important;
+                                            height: initial !important;
+                                        }
+                                    }
+                                    table {
+                                        width: 100%;
+                                        text-align: center;
+                                        border: 1px solid #e0e0e0;
+                                        border-bottom: none;
 
-                                        table {
+                                        thead,
+                                        tbody {
                                             width: 100%;
-                                            text-align: center;
-                                            border: 1px solid #e0e0e0;
-                                            border-bottom: none;
 
-                                            thead,
-                                            tbody {
+                                            tr {
                                                 width: 100%;
+                                                border-bottom: 1px solid #e0e0e0;
+                                                font-size: 16px;
+                                                font-weight: 400;
+                                                color: #000;
+                                                th,
+                                                td {
+                                                    font-size: inherit;
+                                                    font-weight: inherit;
+                                                    color: inherit;
+                                                    padding: 15px 0;
+                                                    border-right: 1px solid #e0e0e0;
 
-                                                tr {
-                                                    width: 100%;
-                                                    border-bottom: 1px solid #e0e0e0;
-
-                                                    th,
-                                                    td {
-                                                        font-size: 16px;
-                                                        font-weight: 400;
-                                                        color: #000;
-                                                        padding: 15px 0;
-                                                        border-right: 1px solid #e0e0e0;
-
-                                                        &:last-child {
-                                                            border-right: none;
-                                                        }
+                                                    &:last-child {
+                                                        border-right: none;
                                                     }
                                                 }
                                             }
+                                        }
 
-                                            thead {
-                                                tr {
-                                                    background-color: #f0f8fe
+                                        thead {
+                                            tr {
+                                                background-color: #f0f8fe;
+                                            }
+                                        }
+
+                                        tbody{
+                                            tr{
+                                                &.bold{
+                                                    background-color: #f8f8f8;
+                                                    font-weight: 500;
                                                 }
                                             }
                                         }
+                                    }
+                                    &:last-child{
+                                        margin-bottom: 0
                                     }
                                 }
                             }

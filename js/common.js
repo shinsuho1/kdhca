@@ -134,7 +134,7 @@ window.addEventListener("DOMContentLoaded", function () {
     if (url != "main") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
-            if (windwo.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
+            if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
             let scrollTop = window.scrollY;
             if(scrollTop > 0){
                 header.classList.add("bg");
