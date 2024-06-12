@@ -1248,7 +1248,43 @@ main {
                                     }
                                 }
                             }
-                            ul {
+                            .cpation{
+                                width: 100%;
+                                @include flex-space-center;
+                                margin-bottom: 80px;
+                                .left{
+                                    @include flex-center;
+                                    gap: 40px;
+                                    h3{
+                                        font-size: 24px;
+                                        font-weight: 600;
+                                        color: #0e6cae;
+                                    }
+                                    ul{
+                                        @include flex-center;
+                                    }
+                                }
+                                .right{
+                                    span{
+                                        font-size: 16px;
+                                        font-weight: 500;
+                                        color: #0E6CAE;
+                                    }
+                                    select{
+                                        width: 137px;
+                                        height: 39px;
+
+                                        margin-left: 30px;
+                                        color: #0E6CAE;
+                                        font-size: 16px;
+                                        font-weight: 500;
+                                        outline: none;
+                                        padding: 0 10px;
+                                        border: 1px solid #0E6CAE;
+                                    }
+                                }
+                            }
+                            .info {
                                 width: 100%;
 
                                 li {
@@ -1261,9 +1297,10 @@ main {
                                         display: flex;
                                         justify-content: center;
                                         align-items: center;
+                                        flex-wrap: wrap;
                                         gap: 140px;
                                         canvas{
-                                            width: calc(100%/3) !important;
+                                            width: calc(100%/3 - (140px * 2 / 3)) !important;
                                             height: initial !important;
                                         }
                                     }
