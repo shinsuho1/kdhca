@@ -15,6 +15,7 @@ $(".menuicon").on("click", function () {
 
 $("#tab-menu .menu>span").on("click", function (e) {
     e.preventDefault();
+    $(this).parent().toggleClass("active");
     $(this).siblings().stop().slideToggle();
 });
 

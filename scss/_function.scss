@@ -318,19 +318,20 @@ section {
     display: block;
 }
 
-html {
-    // &::-webkit-scrollbar {
-    //     width: 4px;
-    //     height: 10px;
-    // }
+*:not(html,body,main) {
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
 
-    // &::-webkit-scrollbar-thumb {
-    //     background-color: #aaa;
-    // }
+    &::-webkit-scrollbar-thumb {
+        background-color: #0e6cae;
+        border-radius: 4px;
+    }
 
-    // &::-webkit-scrollbar-track {
-    //     background-color: transparent;
-    // }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
 }
 
 

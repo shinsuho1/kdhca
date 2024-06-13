@@ -22,239 +22,277 @@ $PAGE_CODE_2 = "0401";
             <div class="wrap">
                 <ul class="info">
                     <li>
+                        <div class="caption">
+                            <h3>연도별 사업자 및 사업장수</h3>
+                            <ul class="line colorType01">
+                                <li>사업장 수</li>
+                                <li>사업자 수</li>
+                            </ul>
+                        </div>
                         <canvas id="year_chart"></canvas>
-                        <table class="table01">
-                            <colgroup>
-                                <col width="15%">
-                                <col>
-                                <col>
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>연도</th>
-                                    <th>사업장 수</th>
-                                    <th>사업자 수</th>
+                        <div class="table-box">
+                            <table class="table01">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>연도</th>
+                                        <th>사업장 수</th>
+                                        <th>사업자 수</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2018</td>
-                                    <td>108</td>
-                                    <td>77</td>
-                                </tr>
-                                <tr>
-                                    <td>2017</td>
-                                    <td>106</td>
-                                    <td>75</td>
-                                </tr>
-                                <tr>
-                                    <td>2016</td>
-                                    <td>103</td>
-                                    <td>73</td>
-                                </tr>
-                                <tr>
-                                    <td>2015</td>
-                                    <td>95</td>
-                                    <td>66</td>
-                                </tr>
-                                <tr>
-                                    <td>2014</td>
-                                    <td>91</td>
-                                    <td>64</td>
-                                </tr>
-                                <tr>
-                                    <td>2013</td>
-                                    <td>89</td>
-                                    <td>63</td>
-                                </tr>
-                                <tr>
-                                    <td>2012</td>
-                                    <td>85</td>
-                                    <td>58</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2018</td>
+                                        <td>108</td>
+                                        <td>77</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017</td>
+                                        <td>106</td>
+                                        <td>75</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2016</td>
+                                        <td>103</td>
+                                        <td>73</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2015</td>
+                                        <td>95</td>
+                                        <td>66</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2014</td>
+                                        <td>91</td>
+                                        <td>64</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2013</td>
+                                        <td>89</td>
+                                        <td>63</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2012</td>
+                                        <td>85</td>
+                                        <td>58</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </li>
                     <li>
+                        <div class="caption">
+                            <h3>연도별 연료사용량</h3>
+                            <ul class="bar colorType02">
+                                <li>CHP</li>
+                                <li>열전용보일러</li>
+                                <li>기타</li>
+                            </ul>
+                        </div>
                         <canvas id="year_chart2"></canvas>
-                        <table class="table02">
-                            <colgroup>
-                                <col width="15%">
-                                <col>
-                                <col>
-                                <col>
-                                <col>
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>연도</th>
-                                    <th>CHP</th>
-                                    <th>열전용보일러</th>
-                                    <th>기타</th>
-                                    <th>합계</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2018</td>
-                                    <td>15,215,290</td>
-                                    <td>1,357,285</td>
-                                    <td>14,495</td>
-                                    <td>16,587,070</td>
-                                </tr>
-                                <tr>
-                                    <td>2017</td>
-                                    <td>12,001,462</td>
-                                    <td>2,343,182</td>
-                                    <td>1,213</td>
-                                    <td>14,345,857</td>
-                                </tr>
-                                <tr>
-                                    <td>2016</td>
-                                    <td>10,986,171</td>
-                                    <td>2,450,262</td>
-                                    <td>802,753</td>
-                                    <td>14,239,186</td>
-                                </tr>
-                                <tr>
-                                    <td>2015</td>
-                                    <td>9,429,465</td>
-                                    <td>905,204</td>
-                                    <td>317,068</td>
-                                    <td>10,651,737</td>
-                                </tr>
-                                <tr>
-                                    <td>2014</td>
-                                    <td>9,070,045</td>
-                                    <td>1,045,446</td>
-                                    <td>306,269</td>
-                                    <td>10,421,760</td>
-                                </tr>
-                                <tr>
-                                    <td>2013</td>
-                                    <td>8,757,726</td>
-                                    <td>2,111,868</td>
-                                    <td>306,269</td>
-                                    <td>11,147,600</td>
-                                </tr>
-                                <tr>
-                                    <td>2012</td>
-                                    <td>9,032,871</td>
-                                    <td>1,493,158</td>
-                                    <td>218,828</td>
-                                    <td>10,744,857</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-box">
+                            <table class="table02">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>연도</th>
+                                        <th>CHP</th>
+                                        <th>열전용보일러</th>
+                                        <th>기타</th>
+                                        <th>합계</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2018</td>
+                                        <td>15,215,290</td>
+                                        <td>1,357,285</td>
+                                        <td>14,495</td>
+                                        <td>16,587,070</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017</td>
+                                        <td>12,001,462</td>
+                                        <td>2,343,182</td>
+                                        <td>1,213</td>
+                                        <td>14,345,857</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2016</td>
+                                        <td>10,986,171</td>
+                                        <td>2,450,262</td>
+                                        <td>802,753</td>
+                                        <td>14,239,186</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2015</td>
+                                        <td>9,429,465</td>
+                                        <td>905,204</td>
+                                        <td>317,068</td>
+                                        <td>10,651,737</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2014</td>
+                                        <td>9,070,045</td>
+                                        <td>1,045,446</td>
+                                        <td>306,269</td>
+                                        <td>10,421,760</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2013</td>
+                                        <td>8,757,726</td>
+                                        <td>2,111,868</td>
+                                        <td>306,269</td>
+                                        <td>11,147,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2012</td>
+                                        <td>9,032,871</td>
+                                        <td>1,493,158</td>
+                                        <td>218,828</td>
+                                        <td>10,744,857</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
+                        <div class="caption">
+                            <h3>연도별 열 생산량 및 판매량</h3>
+                            <ul class="line colorType01">
+                                <li>생산량</li>
+                                <li>판매량</li>
+                            </ul>
+                        </div>
                         <canvas id="year_chart3"></canvas>
-                        <table class="table03">
-                            <colgroup>
-                                <col width="15%">
-                                <col>
-                                <col>
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>연도</th>
-                                    <th>생산량(Gcal)</th>
-                                    <th>판매량(Gcal)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2018</td>
-                                    <td>117,424,830</td>
-                                    <td>63,472,434</td>
-                                </tr>
-                                <tr>
-                                    <td>2017</td>
-                                    <td>109,876,840</td>
-                                    <td>58,958,216</td>
-                                </tr>
-                                <tr>
-                                    <td>2016</td>
-                                    <td>92,452,733</td>
-                                    <td>54,057,691</td>
-                                </tr>
-                                <tr>
-                                    <td>2015</td>
-                                    <td>80,379,048</td>
-                                    <td>49,367,961</td>
-                                </tr>
-                                <tr>
-                                    <td>2014</td>
-                                    <td>79,267,197</td>
-                                    <td>41,776,531</td>
-                                </tr>
-                                <tr>
-                                    <td>2013</td>
-                                    <td>274,652,138</td>
-                                    <td>41,119,661</td>
-                                </tr>
-                                <tr>
-                                    <td>2012</td>
-                                    <td>69,034,660</td>
-                                    <td>42,716,113</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-box">
+                            <table class="table03">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>연도</th>
+                                        <th>생산량(Gcal)</th>
+                                        <th>판매량(Gcal)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2018</td>
+                                        <td>117,424,830</td>
+                                        <td>63,472,434</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017</td>
+                                        <td>109,876,840</td>
+                                        <td>58,958,216</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2016</td>
+                                        <td>92,452,733</td>
+                                        <td>54,057,691</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2015</td>
+                                        <td>80,379,048</td>
+                                        <td>49,367,961</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2014</td>
+                                        <td>79,267,197</td>
+                                        <td>41,776,531</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2013</td>
+                                        <td>274,652,138</td>
+                                        <td>41,119,661</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2012</td>
+                                        <td>69,034,660</td>
+                                        <td>42,716,113</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
+                        <div class="caption">
+                            <h3>연도별 전기 생산량 및 판매량</h3>
+                            <ul class="line colorType01">
+                                <li>생산량</li>
+                                <li>판매량</li>
+                            </ul>
+                        </div>
                         <canvas id="year_chart4"></canvas>
-                        <table class="table04">
-                            <colgroup>
-                                <col width="15%">
-                                <col>
-                                <col>
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>연도</th>
-                                    <th>생산량(MWh)</th>
-                                    <th>판매량(MWh)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2018</td>
-                                    <td>53,622,951</td>
-                                    <td>55,263,109</td>
-                                </tr>
-                                <tr>
-                                    <td>2017</td>
-                                    <td>47,290,531</td>
-                                    <td>47,344,849</td>
-                                </tr>
-                                <tr>
-                                    <td>2016</td>
-                                    <td>39,040,780</td>
-                                    <td>39,798,643 </td>
-                                </tr>
-                                <tr>
-                                    <td>2015</td>
-                                    <td>29,269,194</td>
-                                    <td>29,443,213</td>
-                                </tr>
-                                <tr>
-                                    <td>2014</td>
-                                    <td>28,365,375</td>
-                                    <td>29,061,237</td>
-                                </tr>
-                                <tr>
-                                    <td>2013</td>
-                                    <td>25,019,538</td>
-                                    <td>27,745,081</td>
-                                </tr>
-                                <tr>
-                                    <td>2012</td>
-                                    <td>26,811,108</td>
-                                    <td>28,445,330</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-box">
+                            <table class="table04">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>연도</th>
+                                        <th>생산량(MWh)</th>
+                                        <th>판매량(MWh)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2018</td>
+                                        <td>53,622,951</td>
+                                        <td>55,263,109</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017</td>
+                                        <td>47,290,531</td>
+                                        <td>47,344,849</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2016</td>
+                                        <td>39,040,780</td>
+                                        <td>39,798,643 </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2015</td>
+                                        <td>29,269,194</td>
+                                        <td>29,443,213</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2014</td>
+                                        <td>28,365,375</td>
+                                        <td>29,061,237</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2013</td>
+                                        <td>25,019,538</td>
+                                        <td>27,745,081</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2012</td>
+                                        <td>26,811,108</td>
+                                        <td>28,445,330</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -276,10 +314,80 @@ include_once "../include/footer.html"
         data_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
         data_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
     });
-    gradient = ctx.createLinearGradient(0, 25, 0, 300);
-    gradient.addColorStop(0, 'rgba(234, 73, 77, 0.6)');
-    gradient.addColorStop(0.35, 'rgba(234, 73, 77, 0.2)');
-    gradient.addColorStop(1, 'rgba(234, 73, 77, 0.0)');
+    gradient_red = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient_red.addColorStop(0, 'rgba(234, 73, 77, 0.5)');
+    gradient_red.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+    gradient_blue = ctx.createLinearGradient(0, 0, 0, 500);
+    gradient_blue.addColorStop(0, 'rgba(57, 146, 208, 0.5)');
+    gradient_blue.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+
+    const Plugin = {
+        beforeDraw: function(chart, args, options) {
+            const ctx = chart.ctx;
+            const canvas = chart.canvas;
+            const chartArea = chart.chartArea;
+
+            ctx.fillStyle = '#f8f8f8';
+            ctx.fillRect(chartArea.left, chartArea.bottom,
+                chartArea.right - chartArea.left, chartArea.top - chartArea.bottom);
+        },
+    };
+
+    function tooltip(unit_value) {
+        return {
+            enabled: true,
+            backgroundColor: "#fff",
+            borderColor: "#707070",
+            borderWidth: ".5",
+            displayColors: false,
+            padding: {
+                top: 15,
+                bottom: 15,
+                left: 10,
+                right: 10,
+            },
+            bodyColor: "#000",
+            bodyFont: {
+                size: 12,
+                weight: 400,
+                family: "ScoreDream",
+            },
+            callbacks: {
+                title: function() {
+                    return null;
+                },
+                label: function(context) {
+                    console.log(context);
+                    return `${context.label} | ${context.dataset.label} ${context.formattedValue}${unit_value}`;
+                }
+            }
+        }
+    }
+
+    function font_size(context) {
+        const width = context.chart.width;
+        let size = 16;
+        if (window.innerWidth <= 1024) {
+            size = 14;
+            if (window.innerWidth <= 767) {
+                size = 12;
+                if (window.innerWidth <= 450) {
+                    size = 10;
+                }
+            }
+        }
+        return {
+            size: size,
+            family: 'ScoreDream',
+            weight: '400',
+        }
+    };
+
+
+
+
     const year_chart1 = new Chart(ctx, {
         type: 'line',
         data: {
@@ -292,8 +400,8 @@ include_once "../include/footer.html"
                 borderWidth: 1.5,
                 pointStyle: 'circle',
                 fill: true,
-                backgroundColor: gradient,
-                // pointRadius: 5
+                backgroundColor: gradient_red,
+                pointRadius: 5
             }, {
                 label: '사업자수',
                 data: data_2.reverse(),
@@ -302,24 +410,51 @@ include_once "../include/footer.html"
                 borderWidth: 1.5,
                 pointStyle: 'circle',
                 fill: true,
-                backgroundColor: gradient,
-                // pointRadius: 5
+                backgroundColor: gradient_blue,
+                pointRadius: 5
             }, ]
+
         },
         options: {
-            scales: {
-                y: {
-                    min: 50,
-                    max: 120,
+            plugins: {
+                legend: {
+                    display: false,
                 },
+                tooltip: tooltip(""),
+            },
+            scales: {
                 x: {
+                    offset: true,
                     grid: {
                         color: 'transparent',
                     },
-                }
+                    ticks: {
+                        color: '#707070',
+                        padding: 10,
+                        font: font_size,
+                    },
+                },
+                y: {
+                    offset: true,
+                    min: 50,
+                    max: 110,
+                    grid: {
+                        color: '#e0e0e0',
+                    },
+                    ticks: {
+                        stepSize: 10,
+                        color: '#707070',
+                        padding: 10,
+                        font: font_size,
+                    },
+
+                },
             },
-        }
+        },
+        plugins: [Plugin],
+        maintainAspectRatio: false,
     });
+
 
 
     let ctx2 = document.getElementById('year_chart2').getContext('2d'),
@@ -330,9 +465,9 @@ include_once "../include/footer.html"
         data1_3 = [];
     data1_element.forEach((el, index) => {
         data1_labels.push(el.querySelectorAll("td")[0].textContent);
-        data1_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
-        data1_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
-        data1_3.push(el.querySelectorAll("td")[3].textContent.replace(/,/g, ""));
+        data1_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "") / 1000000);
+        data1_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "") / 1000000);
+        data1_3.push(el.querySelectorAll("td")[3].textContent.replace(/,/g, "") / 1000000);
     });
     const year_chart2 = new Chart(ctx2, {
         type: 'bar',
@@ -356,21 +491,44 @@ include_once "../include/footer.html"
             ]
         },
         options: {
-            layout: {
-                padding: 10
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip("M"),
             },
             scales: {
                 x: {
                     stacked: true,
+                    offset: true,
                     grid: {
                         color: 'transparent',
+                    },
+                    ticks: {
+                        color: '#707070',
+                        font: font_size,
                     },
                 },
                 y: {
                     stacked: true,
+                    offset: true,
+                    min: 5,
+                    max: 15,
+                    grid: {
+                        color: '#e0e0e0'
+                    },
+                    ticks: {
+                        stepSize: 5,
+                        color: '#707070',
+                        font: font_size,
+                        callback: function(context) {
+                            return context + "M"
+                        },
+                    },
                 }
             }
         },
+        plugins: [Plugin],
     });
 
 
@@ -381,8 +539,8 @@ include_once "../include/footer.html"
         data3_2 = [];
     data3_element.forEach((el, index) => {
         data3_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
-        data3_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
-        data3_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
+        data3_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "") / 1000000);
+        data3_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "") / 1000000);
     });
     const year_chart3 = new Chart(ctx3, {
         type: 'line',
@@ -396,8 +554,8 @@ include_once "../include/footer.html"
                 borderWidth: 1.5,
                 pointStyle: 'circle',
                 fill: true,
-                backgroundColor: gradient,
-                // pointRadius: 5
+                backgroundColor: gradient_red,
+                pointRadius: 5
             }, {
                 label: '판매량(Gcal)',
                 data: data3_2.reverse(),
@@ -406,19 +564,47 @@ include_once "../include/footer.html"
                 borderWidth: 1.5,
                 pointStyle: 'circle',
                 fill: true,
-                backgroundColor: gradient,
-                // pointRadius: 5
+                backgroundColor: gradient_blue,
+                pointRadius: 5
             }, ]
         },
         options: {
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip("M"),
+            },
             scales: {
                 x: {
+                    offset: true,
                     grid: {
                         color: 'transparent',
                     },
+                    ticks: {
+                        color: '#707070',
+                        font: font_size,
+                    },
+                },
+                y: {
+                    offset: true,
+                    min: 40,
+                    max: 280,
+                    grid: {
+                        color: '#e0e0e0'
+                    },
+                    ticks: {
+                        stepSize: 40,
+                        color: '#707070',
+                        font: font_size,
+                        callback: function(context) {
+                            return context + "M"
+                        },
+                    },
                 }
             },
-        }
+        },
+        plugins: [Plugin],
     });
 
     let ctx4 = document.getElementById('year_chart4').getContext('2d'),
@@ -428,8 +614,8 @@ include_once "../include/footer.html"
         data4_2 = [];
     data4_element.forEach((el, index) => {
         data4_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
-        data4_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
-        data4_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
+        data4_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "") / 1000000);
+        data4_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "") / 1000000);
     });
     const year_chart4 = new Chart(ctx4, {
         type: 'line',
@@ -443,8 +629,8 @@ include_once "../include/footer.html"
                 borderWidth: 1.5,
                 pointStyle: 'circle',
                 fill: true,
-                backgroundColor: gradient,
-                // pointRadius: 5
+                backgroundColor: gradient_red,
+                pointRadius: 5
             }, {
                 label: '판매량(Gcal)',
                 data: data4_2.reverse(),
@@ -453,18 +639,46 @@ include_once "../include/footer.html"
                 borderWidth: 1.5,
                 pointStyle: 'circle',
                 fill: true,
-                backgroundColor: gradient,
-                // pointRadius: 5
+                backgroundColor: gradient_blue,
+                pointRadius: 5
             }, ]
         },
         options: {
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip("M"),
+            },
             scales: {
                 x: {
+                    offset: true,
                     grid: {
                         color: 'transparent',
                     },
+                    ticks: {
+                        color: '#707070',
+                        font: font_size,
+                    }
+                },
+                y: {
+                    offset: true,
+                    grid: {
+                        color: '#e0e0e0'
+                    },
+                    min: 20,
+                    max: 60,
+                    ticks: {
+                        stepSize: 10,
+                        color: '#707070',
+                        font: font_size,
+                        callback: function(context) {
+                            return context + "M"
+                        },
+                    }
                 }
             },
-        }
+        },
+        plugins: [Plugin],
     });
 </script>

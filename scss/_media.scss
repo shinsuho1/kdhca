@@ -535,6 +535,117 @@
                     }
                 }
             }
+            &.statistics {
+                section {
+                    &.s02 {
+                        article {
+                            .wrap {
+                                .tabs{
+                                    height: 60px;
+                                    margin-bottom: 60px;
+                                    a{
+                                        font-size: 18px;
+                                    }
+                                }
+                                .caption{
+                                    h3{
+                                        font-size: 20px;
+                                    }
+                                    ul{
+                                        gap: 10px;
+                                        li{
+                                            gap: 7px;
+                                        }
+    
+                                    }
+                                    span{
+                                        font-size: 16px;
+                                    }
+                                    select{
+                                        margin-left: 20px;
+                                    }
+    
+                                    .left{
+                                        gap: 30px;
+                                    }
+                                }
+                                .canvas-wrap{
+                                    gap: 60px 60px;
+                                    margin-bottom: 100px;
+                                    .box{
+                                        width: calc(100%/3 - (60px * 2 / 3));
+                                        .canvas-title{
+                                            font-size: 18px;
+                                            margin-bottom: 20px;
+                                        }
+                                    }
+                                }
+    
+                                .info {
+                                    >li {
+                                        .table-box{
+                                            table {
+                                                min-width: 1000px;
+                                                thead,
+                                                tbody {
+                                                    tr {
+                                                        font-size: 14px;
+                                                        th,
+                                                        td {
+                                                            padding: 10px 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+    
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.year{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    canvas{
+                                        margin: 15px 0 50px;
+                                        max-height: 400px;
+                                    }
+                                    .info{
+                                        >li{
+                                            margin-bottom: 80px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.supply{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    >.caption{
+                                        margin-bottom: 40px;
+                                    }
+                                    .info{
+                                        .caption{
+                                            margin-bottom: 15px;
+                                        }
+                                        >li{
+                                            margin-bottom: 50px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             &.cs_center{
                 .search-form{
                     gap: 15px;
@@ -1028,6 +1139,90 @@
                     }
                 }
 
+            }
+
+            &.statistics {
+                section {
+                    &.s02 {
+                        article {
+                            .wrap {
+                                .tabs{
+                                    height: 50px;
+                                    margin-bottom: 50px;
+                                    a{
+                                        font-size: 16px;
+                                    }
+                                }
+                                .caption{
+                                    span{
+                                        font-size: 14px;
+                                    }
+                                    select{
+                                        width: 100px;
+                                        height: 30px;
+                                        margin-left: 10px;
+                                        font-size: 14px;
+                                    }
+    
+                                    .left{
+                                        gap: 20px;
+                                    }
+                                }
+                                .canvas-wrap{
+                                    gap: 30px 40px;
+                                    margin-bottom: 80px;
+                                    .box{
+                                        width: calc(100%/3 - (40px * 2 / 3));
+                                        .canvas-title{
+                                            font-size: 16px;
+                                            margin-bottom: 15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.year{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    canvas{
+                                        margin: 10px 0 40px;
+                                        max-height: 350px;
+                                    }
+                                    .info{
+                                        >li{
+                                            margin-bottom: 60px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.supply{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    >.caption{
+                                        margin-bottom: 30px;
+                                    }
+                                    .info{
+                                        .caption{
+                                            margin-bottom: 10px;
+                                        }
+                                        >li{
+                                            margin-bottom: 40px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             &.cs_center{
@@ -1530,6 +1725,77 @@
                 }
             }
 
+            &.statistics {
+                section {
+                    &.s02 {
+                        article {
+                            .wrap {
+                                .tabs{
+                                    height: 40px;
+                                    margin-bottom: 40px;
+                                    a{
+                                        font-size: 14px;
+                                    }
+                                }
+                                .caption{
+                                    flex-direction: column;
+                                    h3{
+                                        text-align: center;
+                                    }
+                                    select{
+                                        width: 80px;
+                                    }
+                                    .left{
+                                        flex-wrap: wrap;
+                                    }
+                                }
+                                .canvas-wrap{
+                                    gap: 30px 40px;
+                                    margin-bottom: 60px;
+                                    .box{
+                                        width: calc(100%/2 - (40px * 1 / 2));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.year{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    .caption{
+                                        align-items: center;
+                                    }
+                                    canvas{
+                                        margin: 10px 0 30px;
+                                    }
+                                    .info{
+                                        >li{
+                                            margin-bottom: 50px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.supply{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    >.caption{
+                                        margin-bottom: 20px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             &.cs_center{
                 .search-form{
                     height: 40px;
@@ -1567,7 +1833,7 @@
     }
 }
 
-@media (max-width: 540px) {
+@media (max-width:540px) {
     #tab-menu{
         .inner{
             font-size: 12px;
@@ -1982,6 +2248,53 @@
                                             &.end{
                                                 gap: 15px;
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.statistics {
+                section {
+                    &.s02 {
+                        article {
+                            .wrap {
+                                .tabs{
+                                    height: initial;
+                                    margin-bottom: 35px;
+                                    flex-wrap: wrap;
+                                    a{
+                                        height: 35px;
+                                        font-size: 13px;
+                                    }
+                                }
+                                .caption{
+                                    h3{
+                                        font-size: 18px;
+                                    }
+                                }
+                                .canvas-wrap{
+                                    gap: 20px 20px;
+                                    margin-bottom: 60px;
+                                    .box{
+                                        width: calc(100%/2 - (20px * 1 / 2));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.year{
+                    section{
+                        &.s02{
+                            article{
+                                .wrap{
+                                    .info{
+                                        >li{
+                                            margin-bottom: 40px;
                                         }
                                     }
                                 }

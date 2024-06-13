@@ -747,6 +747,8 @@ main {
                                         gap: 140px;
 
                                         p {
+                                            width: 195px;
+                                            min-width: 195px;
                                             font-size: 18px;
                                             font-weight: 500;
                                             padding: 15px 50px;
@@ -1043,6 +1045,293 @@ main {
                 }
             }
         }
+        &.statistics {
+            section {
+                &.s02 {
+                    article {
+                        .wrap {
+                            .tabs{
+                                width: 100%;
+                                height: 80px;
+                                @include flex-center;
+                                margin-bottom: 65px;
+                                a{
+                                    @include fullsize;
+                                    @include flex-center;
+                                    border-bottom: 1px solid #0E6CAE;
+                                    border-right: 1px solid #fff;
+                                    background-color: #F8F8F8;
+                                    font-size: 20px;
+                                    font-weight: 600;
+                                    color: #B2B2B2;
+                                    &.active{
+                                        border: 1px solid #0E6CAE;
+                                        border-bottom: none;
+                                        background-color: #fff;
+                                        color: #0E6CAE;
+                                    }
+                                }
+                            }
+                            .caption{
+                                width: 100%;
+                                @include flex-space-center;
+                                flex-wrap: wrap;
+                                gap: 10px 0;
+                                h3{
+                                    font-size: 24px;
+                                    font-weight: 600;
+                                    color: #0e6cae;
+                                }
+                                ul{
+                                    @include flex-center;
+                                    gap: 15px;
+                                    li{
+                                        line-height: 1;
+                                        @include flex-center;
+                                        gap: 10px;
+                                        font-size: 14px;
+                                    }
+                                    &.line{
+                                        li{
+                                            &::before{
+                                                content: "";
+                                                width: 30px;
+                                                height: 4px;
+                                            }
+                                        }
+                                    }
+                                    &.bar,&.pie{
+                                        li{
+                                            &::before{
+                                                content: "";
+                                                width: 10px;
+                                                height: 10px;
+                                            }
+                                        }
+                                    }
+
+                                }
+                                span{
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                    color: #0E6CAE;
+                                }
+                                select{
+                                    width: 137px;
+                                    height: 39px;
+                                    margin-left: 30px;
+                                    color: #0E6CAE;
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                    outline: none;
+                                    padding: 0 10px;
+                                    border: 1px solid #0E6CAE;
+                                    -webkit-appearance: none;
+                                    background-image: url(../images/common/search_arrow.svg);
+                                    background-repeat: no-repeat;
+                                    background-size: 18px 8px;
+                                    background-position-y: center;
+                                    background-position-x: 93%;
+                                }
+
+                                .left{
+                                    @include flex-center;
+                                    gap: 40px;
+                                }
+
+                                .right{
+                                }
+                            }
+                            .canvas-wrap{
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-wrap: wrap;
+                                gap: 80px 140px;
+                                margin-bottom: 100px;
+                                .box{
+                                    width: calc(100%/3 - (140px * 2 / 3));
+                                    .canvas-title{
+                                        width: 100%;
+                                        font-size: 20px;
+                                        font-weight: 500;
+                                        margin-bottom: 40px;
+                                        text-align: center;
+                                    }
+                                    canvas{
+                                        width: 100% !important;
+                                        height: initial !important;
+                                    }
+                                }
+                            }
+
+                            .info {
+                                width: 100%;
+
+                                >li {
+                                    width: 100%;
+                                    @include flex-column-center;
+                                    .table-box{
+                                        width: 100%;
+                                        overflow-x: auto;
+                                        table {
+                                            width: 100%;
+                                            text-align: center;
+                                            border: 1px solid #e0e0e0;
+                                            border-bottom: none;
+    
+                                            thead,
+                                            tbody {
+                                                width: 100%;
+    
+                                                tr {
+                                                    width: 100%;
+                                                    border-bottom: 1px solid #e0e0e0;
+                                                    font-size: 16px;
+                                                    font-weight: 400;
+                                                    color: #000;
+                                                    th,
+                                                    td {
+                                                        font-size: inherit;
+                                                        font-weight: inherit;
+                                                        color: inherit;
+                                                        padding: 15px 0;
+                                                        border-right: 1px solid #e0e0e0;
+    
+                                                        &:last-child {
+                                                            border-right: none;
+                                                        }
+                                                    }
+                                                }
+                                            }
+    
+                                            thead {
+                                                tr {
+                                                    background-color: #f0f8fe;
+                                                }
+                                            }
+    
+                                            tbody{
+                                                tr{
+                                                    &.bold{
+                                                        background-color: #f8f8f8;
+                                                        font-weight: 500;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                    &:last-child{
+                                        margin-bottom: 0
+                                    }
+                                }
+                            }
+                            .colorType01{
+                                li{
+                                    &:nth-child(1){
+                                        &::before{
+                                            background-color: #dd2025;
+                                        }
+                                    }
+                                    &:nth-child(2){
+                                        &::before{
+                                            background-color: #0e6cae
+                                        }
+                                    }
+                                }
+                            }
+                            .colorType02{
+                                li{
+                                    &:nth-child(1){
+                                        &::before{
+                                            background-color: #0E6CAE;
+                                        }
+                                    }
+                                    &:nth-child(2){
+                                        &::before{
+                                            background-color: #4EA5E2;
+                                        }
+                                    }
+                                    &:nth-child(3){
+                                        &::before{
+                                            background-color: #6FDBE1
+                                        }
+                                    }
+                                }
+                            }
+                            .colorType03{
+                                li{
+                                    &:nth-child(1){
+                                        &::before{
+                                            background-color: #3389ef;
+                                        }
+                                    }
+                                    &:nth-child(2){
+                                        &::before{
+                                            background-color: #74d1fa;
+                                        }
+                                    }
+                                    &:nth-child(3){
+                                        &::before{
+                                            background-color: #c7eeff
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.year{
+                section{
+                    &.s02{
+                        article{
+                            .wrap{
+                                .caption{
+                                    align-items: flex-end;
+                                }
+                                canvas{
+                                    margin: 20px 0 60px;
+                                    max-height: 450px;
+                                }
+                                .info{
+                                    >li{
+                                        margin-bottom: 120px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.supply{
+                section{
+                    &.s02{
+                        article{
+                            .wrap{
+                                >.caption{
+                                    margin-bottom: 80px;
+                                }
+                                .info{
+                                    .caption{
+                                        margin-bottom: 20px
+                                    }
+                                    >li{
+                                        margin-bottom: 60px;
+                                        &:last-child{
+                                            margin-bottom: 0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         &.cs_center {
             .search-form {
@@ -1216,146 +1505,6 @@ main {
                     &:hover {
                         color: #006eb5;
                         opacity: .9;
-                    }
-                }
-            }
-        }
-
-        &.statistics {
-            section {
-                &.s02 {
-                    article {
-                        .wrap {
-                            .tabs{
-                                width: 100%;
-                                height: 80px;
-                                @include flex-center;
-                                margin-bottom: 65px;
-                                a{
-                                    @include fullsize;
-                                    @include flex-center;
-                                    border-bottom: 1px solid #0E6CAE;
-                                    border-right: 1px solid #fff;
-                                    background-color: #F8F8F8;
-                                    font-size: 20px;
-                                    font-weight: 600;
-                                    color: #B2B2B2;
-                                    &.active{
-                                        border: 1px solid #0E6CAE;
-                                        border-bottom: none;
-                                        background-color: #fff;
-                                        color: #0E6CAE;
-                                    }
-                                }
-                            }
-                            .cpation{
-                                width: 100%;
-                                @include flex-space-center;
-                                margin-bottom: 80px;
-                                .left{
-                                    @include flex-center;
-                                    gap: 40px;
-                                    h3{
-                                        font-size: 24px;
-                                        font-weight: 600;
-                                        color: #0e6cae;
-                                    }
-                                    ul{
-                                        @include flex-center;
-                                    }
-                                }
-                                .right{
-                                    span{
-                                        font-size: 16px;
-                                        font-weight: 500;
-                                        color: #0E6CAE;
-                                    }
-                                    select{
-                                        width: 137px;
-                                        height: 39px;
-
-                                        margin-left: 30px;
-                                        color: #0E6CAE;
-                                        font-size: 16px;
-                                        font-weight: 500;
-                                        outline: none;
-                                        padding: 0 10px;
-                                        border: 1px solid #0E6CAE;
-                                    }
-                                }
-                            }
-                            .info {
-                                width: 100%;
-
-                                li {
-                                    width: 100%;
-                                    @include flex-column-center;
-                                    gap: 60px;
-                                    margin-bottom: 120px;
-                                    .canvas-box{
-                                        width: 100%;
-                                        display: flex;
-                                        justify-content: center;
-                                        align-items: center;
-                                        flex-wrap: wrap;
-                                        gap: 140px;
-                                        canvas{
-                                            width: calc(100%/3 - (140px * 2 / 3)) !important;
-                                            height: initial !important;
-                                        }
-                                    }
-                                    table {
-                                        width: 100%;
-                                        text-align: center;
-                                        border: 1px solid #e0e0e0;
-                                        border-bottom: none;
-
-                                        thead,
-                                        tbody {
-                                            width: 100%;
-
-                                            tr {
-                                                width: 100%;
-                                                border-bottom: 1px solid #e0e0e0;
-                                                font-size: 16px;
-                                                font-weight: 400;
-                                                color: #000;
-                                                th,
-                                                td {
-                                                    font-size: inherit;
-                                                    font-weight: inherit;
-                                                    color: inherit;
-                                                    padding: 15px 0;
-                                                    border-right: 1px solid #e0e0e0;
-
-                                                    &:last-child {
-                                                        border-right: none;
-                                                    }
-                                                }
-                                            }
-                                        }
-
-                                        thead {
-                                            tr {
-                                                background-color: #f0f8fe;
-                                            }
-                                        }
-
-                                        tbody{
-                                            tr{
-                                                &.bold{
-                                                    background-color: #f8f8f8;
-                                                    font-weight: 500;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    &:last-child{
-                                        margin-bottom: 0
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }

@@ -321,6 +321,7 @@ footer{
                 img{
                     width: 21px;
                     object-fit: contain;
+                    transition: .5s;
                 }
             }
             ul{
@@ -345,7 +346,12 @@ footer{
                     }
                 }
             }
-            border-left: none
+            border-left: none;
+            &.active{
+                img{
+                    transform: rotate(180deg);
+                }
+            }
         }
 
     }
