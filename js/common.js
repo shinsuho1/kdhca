@@ -6,7 +6,7 @@ let html = document.querySelector("html"),
     footer = document.querySelector("footer"),
     menuicon = document.querySelector(".menuicon"),
     header_gnb = document.querySelector("header .header-wrap #gnb")
-
+    header_blur = document.querySelector(".header_blur");
 $(".menuicon").on("click", function () {
     $(this).toggleClass("active");
     $("#gnb.mo").toggleClass("active");
@@ -18,6 +18,8 @@ $("#tab-menu .menu>span").on("click", function (e) {
     $(this).parent().toggleClass("active");
     $(this).siblings().stop().slideToggle();
 });
+
+
 
 window.addEventListener("DOMContentLoaded", function () {
 
@@ -37,9 +39,11 @@ window.addEventListener("DOMContentLoaded", function () {
         header_gnb.classList.add("pc");
         header_gnb.addEventListener("mouseenter", () => {
             header.classList.add("hover");
+            header_blur.classList.add("on");
         });
         header.addEventListener("mouseleave", function () {
             header.classList.remove("hover");
+            header_blur.classList.remove("on");
         });
     }
 
@@ -74,6 +78,12 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
+
+        document.querySelector(".page-arrow").addEventListener("click",()=>{
+            $.fn.fullpage.moveTo(2, 1);
+
+        });
+
         var main_slide = new Swiper(".main_slide", {
             effect: "fade",
             loop: true,

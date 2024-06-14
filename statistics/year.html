@@ -29,7 +29,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>사업자 수</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart"></canvas>
+                        <canvas id="year_chart" class="chart"></canvas>
                         <div class="table-box">
                             <table class="table01">
                                 <colgroup>
@@ -95,7 +95,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>기타</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart2"></canvas>
+                        <canvas id="year_chart2" class="chart"></canvas>
                         <div class="table-box">
                             <table class="table02">
                                 <colgroup>
@@ -176,7 +176,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>판매량</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart3"></canvas>
+                        <canvas id="year_chart3" class="chart"></canvas>
                         <div class="table-box">
                             <table class="table03">
                                 <colgroup>
@@ -239,7 +239,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>판매량</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart4"></canvas>
+                        <canvas id="year_chart4" class="chart"></canvas>
                         <div class="table-box">
                             <table class="table04">
                                 <colgroup>
@@ -304,59 +304,62 @@ include_once "../include/footer.html"
 ?>
 
 <script>
-    let ctx = document.getElementById('year_chart').getContext('2d'),
-        data_element = document.querySelectorAll(".table01 tbody tr"),
-        data_labels = [],
-        data_1 = [],
-        data_2 = [];
-    data_element.forEach((el, index) => {
-        data_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
-        data_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
-        data_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
+    let year_chart = document.querySelectorAll(".chart"),
+        data01_element = document.querySelectorAll(".table01 tbody tr"),
+        data02_element = document.querySelectorAll(".table02 tbody tr"),
+        data03_element = document.querySelectorAll(".table03 tbody tr"),
+        data04_element = document.querySelectorAll(".table04 tbody tr");
+
+
+    let data01_area = {
+        label: [],
+        data01: [],
+        data02: [],
+    }
+    let data02_area = {
+        label: [],
+        data01: [],
+        data02: [],
+        data03: [],
+    }
+    let data03_area = {
+        label: [],
+        data01: [],
+        data02: []
+    }
+    let data04_area = {
+        label: [],
+        data01: [],
+        data02: []
+    }
+    data01_element.forEach((el, index) => {
+        data01_area.label.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, "").trim());
+        data01_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim());
+        data01_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim())
+    });
+    data02_element.forEach((el, index) => {
+        data02_area.label.push(el.querySelectorAll("td")[0].textContent);
+        data02_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+        data02_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+        data02_area.data03.push(el.querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+    });
+    data03_element.forEach((el, index) => {
+        data03_area.label.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, "").trim());
+        data03_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+        data03_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    });
+    data04_element.forEach((el, index) => {
+        data04_area.label.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, "").trim());
+        data04_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+        data04_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
     });
 
-    let ctx2 = document.getElementById('year_chart2').getContext('2d'),
-        data1_element = document.querySelectorAll(".table02 tbody tr"),
-        data1_labels = [],
-        data1_1 = [],
-        data1_2 = [],
-        data1_3 = [];
-    data1_element.forEach((el, index) => {
-        data1_labels.push(el.querySelectorAll("td")[0].textContent);
-        data1_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "") / 1000000);
-        data1_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "") / 1000000);
-        data1_3.push(el.querySelectorAll("td")[3].textContent.replace(/,/g, "") / 1000000);
-    });
 
-    let ctx3 = document.getElementById('year_chart3').getContext('2d'),
-        data3_element = document.querySelectorAll(".table03 tbody tr"),
-        data3_labels = [],
-        data3_1 = [],
-        data3_2 = [];
-    data3_element.forEach((el, index) => {
-        data3_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
-        data3_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "") / 1000000);
-        data3_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "") / 1000000);
-    });
-
-    let ctx4 = document.getElementById('year_chart4').getContext('2d'),
-        data4_element = document.querySelectorAll(".table04 tbody tr"),
-        data4_labels = [],
-        data4_1 = [],
-        data4_2 = [];
-    data4_element.forEach((el, index) => {
-        data4_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
-        data4_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "") / 1000000);
-        data4_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "") / 1000000);
-    });
-
-
-
-    gradient_red = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient_red = year_chart[0].getContext("2d").createLinearGradient(0, 0, 0, 300);
     gradient_red.addColorStop(0, 'rgba(234, 73, 77, 0.5)');
     gradient_red.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
-    gradient_blue = ctx.createLinearGradient(0, 0, 0, 500);
+    gradient_blue = year_chart[0].getContext("2d").createLinearGradient(0, 0, 0, 450);
     gradient_blue.addColorStop(0, 'rgba(57, 146, 208, 0.5)');
     gradient_blue.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
@@ -376,7 +379,7 @@ include_once "../include/footer.html"
     // chart.js 툴팁
     function tooltip(unit_value) {
         return {
-            enabled: true,
+            enabled: false,
             backgroundColor: "#fff",
             borderColor: "#707070",
             borderWidth: ".5",
@@ -398,8 +401,56 @@ include_once "../include/footer.html"
                     return null;
                 },
                 label: function(context) {
-                    return `${context.label} | ${context.dataset.label} ${context.formattedValue}${unit_value}`;
+                    return `${context.label}/${context.dataset.label}/${context.formattedValue}${unit_value}`;
                 }
+            },
+            external: function(context) {
+                let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                if (!tooltipEl) {
+                    tooltipEl = document.createElement('div');
+                    tooltipEl.id = 'chartjs-tooltip';
+                    document.body.appendChild(tooltipEl);
+                }
+                const tooltipModel = context.tooltip;
+                if (tooltipModel.opacity === 0) {
+                    tooltipEl.style.opacity = 0;
+                    return;
+                }
+
+                tooltipEl.classList.remove('above', 'below', 'no-transform');
+                if (tooltipModel.yAlign) {
+                    tooltipEl.classList.add(tooltipModel.yAlign);
+                } else {
+                    tooltipEl.classList.add('no-transform');
+                }
+
+                function getBody(bodyItem) {
+                    return bodyItem.lines;
+                }
+
+                // Set Text
+                if (tooltipModel.body) {
+                    const bodyLines = tooltipModel.body.map(getBody);
+                    let borderColor = this.labelColors[0].borderColor,
+                        hoverBackgroundColor = this.dataPoints[0].dataset.hoverBackgroundColor,
+                        strongColor = borderColor == "rgba(0,0,0,0.1)" ? hoverBackgroundColor : borderColor;
+                    bodyLines.forEach(function(el, index) {
+                        let innerHtml = el[0].split("/");
+                        tooltipEl.innerHTML = `
+                            <div class="normal">
+                                <div>${innerHtml[0]}</div> 
+                                <div>${innerHtml[1]}</div>
+                            </div>
+                            <strong style="color:${strongColor}">${innerHtml[2]}</strong>
+                        `;
+                    });
+                }
+
+                const position = context.chart.canvas.getBoundingClientRect();
+                tooltipEl.style.opacity = 1;
+                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX - tooltipEl.getBoundingClientRect().width / 2 + 'px';
+                tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 10 + 'px';
             }
         }
     }
@@ -461,6 +512,7 @@ include_once "../include/footer.html"
                 ticks: {
                     color: '#707070',
                     font: font_size,
+                    padding: 10,
                 },
             },
             y: {
@@ -476,7 +528,7 @@ include_once "../include/footer.html"
                     color: '#707070',
                     font: font_size,
                     callback: function(context) {
-                        return context + (unit == "" ? "" : unit)
+                        return context + (unit == "" ? "" : unit) + ' ' + ' ' + ' '
                     },
                 },
 
@@ -485,16 +537,22 @@ include_once "../include/footer.html"
     }
 
 
-    const year_chart1 = new Chart(ctx, {
+
+
+
+    const year_chart1 = new Chart(year_chart[0].getContext('2d'), {
         type: 'line',
         data: {
-            labels: data_labels.reverse(),
+            labels: data01_area.label.reverse(),
             datasets: [
-                line01_dataset('사업장수', data_1.reverse(), '#DD2025', '#FFDFE0', gradient_red),
-                line01_dataset('사업자수', data_2.reverse(), '#0e6cae', '#d7efff', gradient_blue),
+                line01_dataset('사업장수', data01_area.data01.reverse(), '#DD2025', '#FFDFE0', gradient_red),
+                line01_dataset('사업자수', data01_area.data02.reverse(), '#0e6cae', '#d7efff', gradient_blue),
             ],
         },
         options: {
+            layout: {
+                autoPadding: false,
+            },
             plugins: {
                 legend: {
                     display: false,
@@ -506,28 +564,34 @@ include_once "../include/footer.html"
         plugins: [beforeDrawFunction],
     });
 
-    const year_chart2 = new Chart(ctx2, {
+    const year_chart2 = new Chart(year_chart[1].getContext('2d'), {
         type: 'bar',
         data: {
-            labels: data1_labels.reverse(),
+            labels: data02_area.label.reverse(),
             datasets: [{
                     label: 'CHP',
-                    data: data1_1.reverse(),
-                    backgroundColor: "#0E6CAE",
+                    data: data02_area.data01.reverse(),
+                    backgroundColor: "#9BC0DB",
+                    hoverBackgroundColor: "#0E6CAE",
                 },
                 {
                     label: '열전용보일러',
-                    data: data1_2.reverse(),
-                    backgroundColor: "#4EA5E2",
+                    data: data02_area.data02.reverse(),
+                    backgroundColor: "#B4D7EF",
+                    hoverBackgroundColor: "#4EA5E2",
                 },
                 {
                     label: '기타',
-                    data: data1_3.reverse(),
-                    backgroundColor: "#6FDBE1",
+                    data: data02_area.data03.reverse(),
+                    backgroundColor: "#C1EDEF",
+                    hoverBackgroundColor: "#6FDBE1",
                 },
             ]
         },
         options: {
+            layout: {
+                autoPadding: false,
+            },
             plugins: {
                 legend: {
                     display: false,
@@ -539,16 +603,19 @@ include_once "../include/footer.html"
         plugins: [beforeDrawFunction],
     });
 
-    const year_chart3 = new Chart(ctx3, {
+    const year_chart3 = new Chart(year_chart[2].getContext('2d'), {
         type: 'line',
         data: {
-            labels: data3_labels.reverse(),
+            labels: data03_area.label.reverse(),
             datasets: [
-                line01_dataset('생산량(Gcal)', data3_1.reverse(), '#DD2025', '#FFDFE0', gradient_red),
-                line01_dataset('판매량(Gcal)', data3_2.reverse(), '#0e6cae', '#d7efff', gradient_blue),
+                line01_dataset('생산량(Gcal)', data03_area.data01.reverse(), '#DD2025', '#FFDFE0', gradient_red),
+                line01_dataset('판매량(Gcal)', data03_area.data02.reverse(), '#0e6cae', '#d7efff', gradient_blue),
             ],
         },
         options: {
+            layout: {
+                autoPadding: false,
+            },
             plugins: {
                 legend: {
                     display: false,
@@ -560,17 +627,19 @@ include_once "../include/footer.html"
         plugins: [beforeDrawFunction],
     });
 
-    console.log(year_chart1)
-    const year_chart4 = new Chart(ctx4, {
+    const year_chart4 = new Chart(year_chart[3].getContext('2d'), {
         type: 'line',
         data: {
-            labels: data4_labels.reverse(),
+            labels: data04_area.label.reverse(),
             datasets: [
-                line01_dataset('생산량(Gcal)', data4_1.reverse(), '#DD2025', '#FFDFE0', gradient_red),
-                line01_dataset('판매량(Gcal)', data4_2.reverse(), '#0e6cae', '#d7efff', gradient_blue),
+                line01_dataset('생산량(Gcal)', data04_area.data01.reverse(), '#DD2025', '#FFDFE0', gradient_red),
+                line01_dataset('판매량(Gcal)', data04_area.data02.reverse(), '#0e6cae', '#d7efff', gradient_blue),
             ],
         },
         options: {
+            layout: {
+                autoPadding: false,
+            },
             plugins: {
                 legend: {
                     display: false,
@@ -582,3 +651,4 @@ include_once "../include/footer.html"
         plugins: [beforeDrawFunction],
     });
 </script>
+

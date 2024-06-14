@@ -91,8 +91,10 @@
 
             .right {
                 .user {
-                    padding: 8px 20px;
-                    font-size: 14px;
+                    a{
+                        font-size: 14px;
+                        padding: 8px 20px;
+                    }
                 }
             }
         }
@@ -585,7 +587,7 @@
                                     >li {
                                         .table-box{
                                             table {
-                                                min-width: 1000px;
+                                                min-width: 800px;
                                                 thead,
                                                 tbody {
                                                     tr {
@@ -714,8 +716,10 @@
 
             .right {
                 .user {
-                    padding: 5px 16px;
-                    font-size: 13px;
+                    a{
+                        font-size: 13px;
+                        padding: 5px 16px;
+                    }
                 }
 
                 .menuicon {
@@ -1754,6 +1758,9 @@
                                     margin-bottom: 60px;
                                     .box{
                                         width: calc(100%/2 - (40px * 1 / 2));
+                                        canvas{
+                                            opacity: 1;
+                                        }
                                     }
                                 }
                             }
@@ -2265,10 +2272,9 @@
                                 .tabs{
                                     height: initial;
                                     margin-bottom: 35px;
-                                    flex-wrap: wrap;
                                     a{
                                         height: 35px;
-                                        font-size: 13px;
+                                        font-size: 12px;
                                     }
                                 }
                                 .caption{

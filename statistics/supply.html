@@ -63,11 +63,11 @@ $PAGE_CODE_2 = "0402";
                         <canvas id="supply_chart03"></canvas>
                     </div>
                     <div class="box">
-                        <div class="canvas-title">2018 사업자수 현황</div>
+                        <div class="canvas-title">2018 허가현황(업체수)</div>
                         <canvas id="supply_chart04"></canvas>
                     </div>
                     <div class="box">
-                        <div class="canvas-title">2018 허가현황(업체수)</div>
+                        <div class="canvas-title">2018 공급현황(세대수)</div>
                         <canvas id="supply_chart05"></canvas>
                     </div>
                     <div class="box">
@@ -213,23 +213,32 @@ include_once "../include/footer.html"
 
 <script>
     let ctx_canvas = document.querySelectorAll(".canvas-wrap canvas"),
-        data_element = document.querySelectorAll(".supply_table01 tbody tr"),
-        data_labels = {
-            ctx01: [],
-            ctx02: [],
-            ctx03: [],
-            ctx04: [],
-            ctx05: [],
-            ctx06: [],
-        },
-        data_1 = [],
-        data_2 = [];
-    data_element.forEach((el, index) => {
-        // data_labels.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, ""));
-        // data_1.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, ""));
-        // data_2.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, ""));
+        data01_element = document.querySelectorAll(".supply_table01 tbody tr");
+
+    let data_area = {
+        label: [],
+        data01: [],
+        data02: [],
+        data03: [],
+        data04: [],
+        data05: [],
+        data06: [],
+        data07: [],
+    }
+    data01_element.forEach((el, index) => {
+        // 합계 제외
+        if (index == 3) return false;
+        data_area.label.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, "").trim());
+        data_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim());
+        data_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim());
+        data_area.data03.push(el.querySelectorAll("td")[3].textContent.replace(/,/g, "").trim());
+        data_area.data04.push(el.querySelectorAll("td")[4].textContent.replace(/,/g, "").trim());
+        data_area.data05.push(el.querySelectorAll("td")[5].textContent.replace(/,/g, "").trim());
+        data_area.data06.push(el.querySelectorAll("td")[6].textContent.replace(/,/g, "").trim());
+        data_area.data07.push(el.querySelectorAll("td")[7].textContent.replace(/,/g, "").trim());
     });
 
+    // chartjs 폰트 반응형
     function font_size(context) {
         const width = context.chart.width
         const size = Math.round(width / 13)
@@ -239,226 +248,168 @@ include_once "../include/footer.html"
             weight: 600,
         }
     };
-    const year_chart1 = new Chart(ctx_canvas[0], {
-        type: 'pie',
-        data: {
-            labels: ['지역냉난방', '산업단지', '병행'],
-            datasets: [{
-                label: '지역냉난방',
-                data: [32, 39, 6],
-                borderColor: 'transparent',
-                fill: true,
-                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
-                borderWidth: 1,
-                borderColor: '#fff',
-            }]
+
+    // chartjs 옵션
+    let options = {
+        responsive: false,
+        maintainAspectRatio: false,
+        layout: {
+            padding: 20,
         },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
+        plugins: {
+            legend: {
+                display: false,
+            },
+            tooltip: tooltip(),
+            datalabels: {
+                formatter: function(value, context) {
+                    let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                    if (t % 1 == 0) t = Math.floor(t);
+                    return (t <= 10 ? "" : t + "%");
                 },
-                labels: {
-                    render: 'value',
-                    fontColor: 'black',
-                    fontSize: 15,
-                    precision: 2
-                },
-                datalabels: {
-                    formatter: function(value, context) {
-                        let t = Math.round(value / context.chart.getDatasetMeta(0).total * 100);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: font_size,
-                }
+                color: '#fff',
+                font: font_size,
             }
         },
+    };
+
+    // chartjs 값(데이터)
+    function data(data_value) {
+        return {
+            labels: data_area.label,
+            datasets: [{
+                data: data_value,
+                borderColor: 'transparent',
+                fill: true,
+                backgroundColor: ['rgba(51,137,239,.8)', '#D6F2FE', '#EFFAFF'],
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
+                borderWidth: 1,
+                borderColor: '#fff',
+                hoverOffset: 20,
+            }]
+        }
+    }
+
+    // chartjs 툴팁
+    function tooltip() {
+        let padding = {
+            top: 15,
+            bottom: 15,
+            left: 10,
+            right: 10,
+        }
+
+        if (window.innerWidth <= 1024) {
+            padding = {
+                top: 10,
+                bottom: 10,
+                left: 7,
+                bottom: 7,
+            };
+        }
+        return {
+            enabled: false,
+            backgroundColor: "#fff",
+            borderColor: "#707070",
+            borderWidth: ".5",
+            padding: padding,
+            bodyColor: "#000",
+            bodyFont: {
+                size: 12,
+                weight: 400,
+                family: "ScoreDream",
+            },
+            callbacks: {
+                title: function() {
+                    return null;
+                },
+                label: function(context) {
+                    let t = context.formattedValue.replace(/,/g, "") / context.chart.getDatasetMeta(0).total * 100;
+                    return `${context.label}/${context.formattedValue}/${t.toFixed(1)}%`;
+                }
+            },
+            external: function(context) {
+                let tooltipEl = document.getElementById('chartjs-tooltip');
+                if (!tooltipEl) {
+                    tooltipEl = document.createElement('div');
+                    tooltipEl.id = 'chartjs-tooltip';
+                    document.body.appendChild(tooltipEl);
+                }
+                const tooltipModel = context.tooltip;
+                if (tooltipModel.opacity === 0) {
+                    tooltipEl.style.opacity = 0;
+                    return;
+                }
+
+                tooltipEl.classList.remove('above', 'below', 'no-transform');
+                if (tooltipModel.yAlign) {
+                    tooltipEl.classList.add(tooltipModel.yAlign);
+                } else {
+                    tooltipEl.classList.add('no-transform');
+                }
+
+                function getBody(bodyItem) {
+                    return bodyItem.lines;
+                }
+
+                // Set Text
+                if (tooltipModel.body) {
+                    const bodyLines = tooltipModel.body.map(getBody);
+                    let hoverBackgroundColor = this.dataPoints[0].dataset.hoverBackgroundColor;
+                    let bg_color = hoverBackgroundColor[this.dataPoints[0].dataset.data.indexOf(bodyLines[0][0].split("/")[1].replace(/,/g, ""))];
+                    bodyLines.forEach(function(el, index) {
+                        let innerHtml = el[0].split("/");
+                        tooltipEl.innerHTML = `
+                            <div class="normal">
+                                <div><div class="box" style="background-color: ${bg_color}"></div>${innerHtml[0]}</div> 
+                                <div>${innerHtml[1]} (${innerHtml[2]})</div>
+                            </div>
+                        `;
+                    });
+                }
+
+                const position = context.chart.canvas.getBoundingClientRect();
+                tooltipEl.style.opacity = 1;
+                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX - tooltipEl.getBoundingClientRect().width / 2 + 'px';
+                tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+            }
+        }
+    }
+
+    const year_chart1 = new Chart(ctx_canvas[0], {
+        type: 'pie',
+        data: data(data_area.data01),
+        options: options,
         plugins: [ChartDataLabels]
     });
     const year_chart2 = new Chart(ctx_canvas[1], {
         type: 'pie',
-        data: {
-            labels: ['지역냉난방', '산업단지', '병행'],
-            datasets: [{
-                label: '지역냉난방',
-                data: [32, 39, 6],
-                borderColor: 'transparent',
-                fill: true,
-                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
-                borderWidth: 1,
-                borderColor: '#fff',
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                labels: {
-                    render: 'value',
-                    fontColor: 'black',
-                    fontSize: 15,
-                    precision: 2
-                },
-                datalabels: {
-                    formatter: function(value, context) {
-                        let t = Math.round(value / context.chart.getDatasetMeta(0).total * 100);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: font_size,
-                }
-            }
-        },
-        plugins: [ChartDataLabels],
+        data: data(data_area.data02),
+        options: options,
+        plugins: [ChartDataLabels]
     });
     const year_chart3 = new Chart(ctx_canvas[2], {
         type: 'pie',
-        data: {
-            labels: ['지역냉난방', '산업단지', '병행'],
-            datasets: [{
-                label: '지역냉난방',
-                data: [32, 39, 6],
-                borderColor: 'transparent',
-                fill: true,
-                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
-                borderWidth: 1,
-                borderColor: '#fff',
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                labels: {
-                    render: 'value',
-                    fontColor: 'black',
-                    fontSize: 15,
-                    precision: 2
-                },
-                datalabels: {
-                    formatter: function(value, context) {
-                        let t = Math.round(value / context.chart.getDatasetMeta(0).total * 100);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: font_size,
-                }
-            }
-        },
-        plugins: [ChartDataLabels],
+        data: data(data_area.data03),
+        options: options,
+        plugins: [ChartDataLabels]
     });
     const year_chart4 = new Chart(ctx_canvas[3], {
         type: 'pie',
-        data: {
-            labels: ['지역냉난방', '산업단지', '병행'],
-            datasets: [{
-                label: '지역냉난방',
-                data: [32, 39, 6],
-                borderColor: 'transparent',
-                fill: true,
-                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
-                borderWidth: 1,
-                borderColor: '#fff',
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                labels: {
-                    render: 'value',
-                    fontColor: 'black',
-                    fontSize: 15,
-                    precision: 2
-                },
-                datalabels: {
-                    formatter: function(value, context) {
-                        let t = Math.round(value / context.chart.getDatasetMeta(0).total * 100);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: font_size,
-                }
-            }
-        },
-        plugins: [ChartDataLabels],
+        data: data(data_area.data04),
+        options: options,
+        plugins: [ChartDataLabels]
     });
     const year_chart5 = new Chart(ctx_canvas[4], {
         type: 'pie',
-        data: {
-            labels: ['지역냉난방', '산업단지', '병행'],
-            datasets: [{
-                label: '지역냉난방',
-                data: [32, 39, 6],
-                borderColor: 'transparent',
-                fill: true,
-                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
-                borderWidth: 1,
-                borderColor: '#fff',
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                labels: {
-                    render: 'value',
-                    fontColor: 'black',
-                    fontSize: 15,
-                    precision: 2
-                },
-                datalabels: {
-                    formatter: function(value, context) {
-                        let t = Math.round(value / context.chart.getDatasetMeta(0).total * 100);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: font_size,
-                }
-            }
-        },
-        plugins: [ChartDataLabels],
+        data: data(data_area.data05),
+        options: options,
+        plugins: [ChartDataLabels]
     });
     const year_chart6 = new Chart(ctx_canvas[5], {
         type: 'pie',
-        data: {
-            labels: ['지역냉난방', '산업단지', '병행'],
-            datasets: [{
-                label: '지역냉난방',
-                data: [32, 39, 6],
-                borderColor: 'transparent',
-                fill: true,
-                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
-                borderWidth: 1,
-                borderColor: '#fff',
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                labels: {
-                    render: 'value',
-                    fontColor: 'black',
-                    fontSize: 15,
-                    precision: 2
-                },
-                datalabels: {
-                    formatter: function(value, context) {
-                        let t = Math.round(value / context.chart.getDatasetMeta(0).total * 100);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: font_size,
-                }
-            }
-        },
-        plugins: [ChartDataLabels],
+        data: data(data_area.data06),
+        options: options,
+        plugins: [ChartDataLabels]
     });
 </script>
