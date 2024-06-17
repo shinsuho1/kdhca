@@ -29,7 +29,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>사업자 수</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart" class="chart"></canvas>
+                        <canvas id="year_chart" class="canvas-chart"></canvas>
                         <div class="table-box">
                             <table class="table01">
                                 <colgroup>
@@ -95,7 +95,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>기타</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart2" class="chart"></canvas>
+                        <canvas id="year_chart2" class="canvas-chart"></canvas>
                         <div class="table-box">
                             <table class="table02">
                                 <colgroup>
@@ -176,7 +176,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>판매량</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart3" class="chart"></canvas>
+                        <canvas id="year_chart3" class="canvas-chart"></canvas>
                         <div class="table-box">
                             <table class="table03">
                                 <colgroup>
@@ -239,7 +239,7 @@ $PAGE_CODE_2 = "0401";
                                 <li>판매량</li>
                             </ul>
                         </div>
-                        <canvas id="year_chart4" class="chart"></canvas>
+                        <canvas id="year_chart4" class="canvas-chart"></canvas>
                         <div class="table-box">
                             <table class="table04">
                                 <colgroup>
@@ -304,7 +304,7 @@ include_once "../include/footer.html"
 ?>
 
 <script>
-    let year_chart = document.querySelectorAll(".chart"),
+    let year_chart = document.querySelectorAll(".canvas-chart"),
         data01_element = document.querySelectorAll(".table01 tbody tr"),
         data02_element = document.querySelectorAll(".table02 tbody tr"),
         data03_element = document.querySelectorAll(".table03 tbody tr"),
@@ -401,7 +401,8 @@ include_once "../include/footer.html"
                     return null;
                 },
                 label: function(context) {
-                    return `${context.label}/${context.dataset.label}/${context.formattedValue}${unit_value}`;
+                    let t = Number(context.formattedValue);
+                    return `${context.label}/${context.dataset.label}/${t.toFixed(2) % 1 != 0 ? t.toFixed(2) : t.toFixed(0)}${unit_value}`;
                 }
             },
             external: function(context) {
@@ -429,20 +430,19 @@ include_once "../include/footer.html"
                     return bodyItem.lines;
                 }
 
-                // Set Text
                 if (tooltipModel.body) {
                     const bodyLines = tooltipModel.body.map(getBody);
                     let borderColor = this.labelColors[0].borderColor,
                         hoverBackgroundColor = this.dataPoints[0].dataset.hoverBackgroundColor,
                         strongColor = borderColor == "rgba(0,0,0,0.1)" ? hoverBackgroundColor : borderColor;
                     bodyLines.forEach(function(el, index) {
-                        let innerHtml = el[0].split("/");
+                        let el_text = el[0].split("/");
                         tooltipEl.innerHTML = `
                             <div class="normal">
-                                <div>${innerHtml[0]}</div> 
-                                <div>${innerHtml[1]}</div>
+                                <div>${el_text[0]}</div> 
+                                <div>${el_text[1]}</div>
                             </div>
-                            <strong style="color:${strongColor}">${innerHtml[2]}</strong>
+                            <strong style="color:${strongColor}">${el_text[2]}</strong>
                         `;
                     });
                 }

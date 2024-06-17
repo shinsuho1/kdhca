@@ -368,7 +368,7 @@
                                             }
     
                                             .txt-wrap {
-                                                padding: 100px 5%;
+                                                padding: 150px 5% 100px;
                                                 ul {
                                                     width: calc(50% - 100px);
     
@@ -587,7 +587,7 @@
                                     >li {
                                         .table-box{
                                             table {
-                                                min-width: 800px;
+                                                min-width: 1000px;
                                                 thead,
                                                 tbody {
                                                     tr {
@@ -631,15 +631,19 @@
                         &.s02{
                             article{
                                 .wrap{
-                                    >.caption{
-                                        margin-bottom: 40px;
-                                    }
-                                    .info{
-                                        .caption{
-                                            margin-bottom: 15px;
-                                        }
-                                        >li{
-                                            margin-bottom: 50px;
+                                    .chart-area{
+                                        .chart{
+                                            >.caption{
+                                                margin-bottom: 40px;
+                                            }
+                                            .info{
+                                                .caption{
+                                                    margin-bottom: 15px;
+                                                }
+                                                >li{
+                                                    margin-bottom: 50px;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -931,7 +935,7 @@
                                             }
     
                                             .txt-wrap {
-                                                padding: 60px 5%;
+                                                padding: 150px 5% 60px;
                                                 ul {
                                                     width: calc(70% - 60px);
     
@@ -1068,7 +1072,6 @@
                                             flex-direction: column;
                                             justify-content: center;
                                             align-items: center;
-
                                             h2 {
                                                 width: initial;
                                                 font-size: 24px;
@@ -1116,11 +1119,14 @@
                                 .wrap{
                                     ul{
                                         li{
-                                            margin-bottom: 40px;
+                                            margin-bottom: 60px;
                                             flex-direction: column;
                                             .img-wrap{
                                                 min-width: initial;
                                                 max-width: 100%;
+                                            }
+                                            .text{
+                                                width: 100%;
                                             }
                                             &.start{
                                                 gap: 20px;
@@ -1211,15 +1217,20 @@
                         &.s02{
                             article{
                                 .wrap{
-                                    >.caption{
-                                        margin-bottom: 30px;
-                                    }
-                                    .info{
-                                        .caption{
-                                            margin-bottom: 10px;
-                                        }
-                                        >li{
-                                            margin-bottom: 40px;
+                                    .chart-area{
+                                        .chart{
+                                            >.caption{
+                                                margin-bottom: 30px;
+                                            }
+                                            .info{
+                                                .caption{
+                                                    margin-bottom: 10px;
+                                                }
+                                                >li{
+                                                    margin-bottom: 40px;
+                                                }
+                                            }
+
                                         }
                                     }
                                 }
@@ -1525,7 +1536,7 @@
                                             }
     
                                             .txt-wrap {
-                                                padding: 40px 5%;
+                                                padding: 150px 5% 40px;
                                                 ul {
                                                     width: calc(80% - 40px);
                                                     
@@ -1710,7 +1721,7 @@
                                 .wrap{
                                     ul{
                                         li{
-                                            margin-bottom: 30px;
+                                            margin-bottom: 50px;
                                             .text{
                                                 h3{
                                                     font-size: 20px;
@@ -1793,8 +1804,12 @@
                         &.s02{
                             article{
                                 .wrap{
-                                    >.caption{
-                                        margin-bottom: 20px;
+                                    .chart-area{
+                                        .chart{
+                                            >.caption{
+                                                margin-bottom: 20px;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1836,6 +1851,29 @@
                     }
                 }
             }
+        }
+    }
+    #chartjs-tooltip {
+        font-size: 10px;
+        padding: 10px 8px;
+        flex-direction: column;
+        gap: 10px;
+        .normal {
+            flex-direction: column;
+            gap: 8px;
+    
+            >div {
+                @include flex-center;
+                &:first-child {    
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    
+        strong {
+            font-size: 16px;
         }
     }
 }
@@ -2078,7 +2116,7 @@
                                         .his-list {
     
                                             .txt-wrap {
-                                                padding: 40px 5%;
+                                                padding: 100vh 5% 40px;
                                                 ul {
                                                     width: calc(80% - 20px);
                                                     
@@ -2239,7 +2277,7 @@
                                 .wrap{
                                     ul{
                                         li{
-                                            margin-bottom: 25px;
+                                            margin-bottom: 30px;
                                             .text{
                                                 h3{
                                                     font-size: 18px;
@@ -2250,10 +2288,10 @@
                                                 }
                                             }
                                             &.start{
-                                                gap: 15px;
+                                                gap: 10px;
                                             }
                                             &.end{
-                                                gap: 15px;
+                                                gap: 10px;
                                             }
                                         }
                                     }

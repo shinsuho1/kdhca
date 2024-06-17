@@ -76,6 +76,9 @@ window.addEventListener("DOMContentLoaded", function () {
                 } else if (index == 2 && direction == "up") {
                     header.classList.remove("bg");
                 }
+                if(index < 5 && direction == "down"){
+                    document.querySelectorAll("#mainPage .section")[index].classList.add("load");
+                }
             }
         });
 
@@ -132,12 +135,12 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
         let main_bis = document.querySelector("#mainPage .s02 ul"),
-            min_bis_li = document.querySelectorAll("#mainPage .s02 li");;
+            min_bis_li = document.querySelectorAll("#mainPage .s02 li");
         min_bis_li.forEach((el, index) => {
             el.addEventListener("mouseenter", function () {
                 main_bis.querySelector(".active").classList.remove("active");
                 el.classList.add("active");
-                document.querySelector(".s02 .bg img").setAttribute("src", `../images/main/business_bg0${index + 1}.png`);
+                document.querySelector(".s02 .bg").style.backgroundImage = `url(../images/main/business_bg0${index + 1}.png)`;
             });
         });
     }

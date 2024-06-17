@@ -49,7 +49,7 @@ main {
                         }
                     }
                 }
-                &.active {
+                &.load {
                     .title{
                         span{
                             opacity: 1;
@@ -112,7 +112,8 @@ main {
                                         top: 0;
                                         left: 0;
                                         z-index: 1;
-                                        animation: zoom-out 3.5s forwards;
+                                        transform: scale(1.1);
+                                        @include transition(all 3.5s);
                                         >img,
                                         >video,
                                         >iframe {
@@ -137,7 +138,8 @@ main {
                                             margin-bottom: 30px;
                                             line-height: 1.3;
                                             opacity: 0;
-                                            animation: fade-up 1.5s .3s forwards;
+                                            transform: translateY(50px);
+                                            @include transition(all 1.5s .3s);
                                         }
 
                                         p {
@@ -146,22 +148,25 @@ main {
                                             margin-bottom: 20px;
                                             line-height: 1.5;
                                             opacity: 0;
-                                            animation: fade-up 1.5s .6s forwards;
+                                            transform: translateY(50px);
+                                            @include transition(all 1.5s .6s);
                                         }
                                     }
-                                    // &.swiper-slide-active{
-                                    //     .bg{
-                                    //         animation: zoom-out 3.5s;
-                                    //     }
-                                    //     .title{
-                                    //         h2{
-                                    //             animation: fade-up 1.5s .3s forwards;
-                                    //         }
-                                    //         p{
-                                    //             animation: fade-up 1.5s .6s forwards;
-                                    //         }
-                                    //     }
-                                    // }
+                                    &.swiper-slide-active{
+                                        .bg{
+                                            transform: scale(1);
+                                        }
+                                        .title{
+                                            h2{
+                                                opacity: 1;
+                                                transform: translateY(0);
+                                            }
+                                            p{
+                                                opacity: 1;
+                                                transform: translateY(0);
+                                            }
+                                        }
+                                    }
                                 }
                             }
 
@@ -214,8 +219,8 @@ main {
                     top: 0;
                     left: 0;
                     z-index: 1;
-                    transition: .5s;
-
+                    @include transition(.5s);
+                    @include bg-cover("../images/main/business_bg01.png");
                     img {
                         @include fullsize;
                         object-fit: cover;
@@ -270,7 +275,6 @@ main {
                                             object-fit: contain;
 
                                             path {
-                                                @include transition(all .3s);
                                                 stroke: #c3c3c3;
                                             }
                                         }
@@ -280,13 +284,11 @@ main {
                                         font-weight: 700;
                                         font-size: 24px;
                                         margin-bottom: 10px;
-                                        @include transition(all .3s);
                                     }
 
                                     a {
                                         font-weight: 500;
                                         font-size: 12px;
-                                        @include transition(all .3s);
                                     }
 
                                     &.active {
@@ -482,7 +484,6 @@ main {
                         font-weight: 600;
                         text-align: center;
                         opacity: 0;
-                        animation: fade-up 1s .3s forwards;
                     }
 
                     .content {
@@ -591,7 +592,7 @@ main {
 
                                         .txt-wrap {
                                             width: 100%;
-                                            height: 210vh;
+                                            min-height: 230vh;
                                             padding: 120px 5%;
                                             display: flex;
                                             justify-content: flex-end;
@@ -627,6 +628,13 @@ main {
                                                         .detail {
                                                             font-weight: 400;
                                                             color: #000;
+                                                            ul{
+                                                                width: 100%;
+                                                                li{
+                                                                    width: 100%;
+                                                                    margin-bottom: 10px;
+                                                                }
+                                                            }
                                                         }
 
                                                         &:last-child {
@@ -785,7 +793,7 @@ main {
                                                         font-size: 20px;
                                                         font-weight: 600;
                                                         color: #fff;
-                                                        transition: .3s;
+                                                        @include transition(.3s);
 
                                                         span {
                                                             @include drag-off;
@@ -889,6 +897,7 @@ main {
                     }
 
                     &.s02 {
+                        overflow-x: hidden;
                         article {
                             .wrap {
                                 ul {
@@ -1151,6 +1160,10 @@ main {
                                 flex-wrap: wrap;
                                 gap: 60px 100px;
                                 margin-bottom: 100px;
+                                .horizontal-chart{
+                                    width: 100%;
+                                    max-height: 300px;
+                                }
                                 .box{
                                     width: calc(100%/3 - (100px * 2 / 3));
                                     .canvas-title{
@@ -1164,7 +1177,7 @@ main {
                                         width: 100% !important;
                                         height: initial !important;
                                         opacity: .9;
-                                        transition: .5s;
+                                        @include transition(.5s);
                                     }
                                     &:hover{
                                         canvas{
@@ -1319,17 +1332,32 @@ main {
                     &.s02{
                         article{
                             .wrap{
-                                >.caption{
-                                    margin-bottom: 80px;
-                                }
-                                .info{
-                                    .caption{
-                                        margin-bottom: 20px
-                                    }
-                                    >li{
-                                        margin-bottom: 60px;
-                                        &:last-child{
-                                            margin-bottom: 0
+                                .chart-area{
+                                    width: 100%;
+                                    .chart{
+                                        width: 100%;
+                                        display: none;
+                                        >.caption{
+                                            margin-bottom: 80px;
+                                        }
+                                        .info{
+                                            .caption{
+                                                margin-bottom: 20px
+                                            }
+                                            >li{
+                                                margin-bottom: 60px;
+                                                &:last-child{
+                                                    margin-bottom: 0
+                                                }
+                                            }
+                                        }
+                                        &.active{
+                                            display: block;
+                                        }
+                                        &:nth-child(2){
+                                            >.caption{
+                                                margin-bottom: 30px;
+                                            }
                                         }
                                     }
                                 }
@@ -1459,7 +1487,7 @@ main {
                     tr {
                         border-bottom: 1px solid #bcbcbc;
                         background-color: #fafafa;
-                        transition: .3s;
+                        @include transition(.3s);
                         height: 60px;
 
                         td {
@@ -1498,7 +1526,7 @@ main {
                     font-size: 16px;
                     font-weight: 300;
                     color: #000;
-                    transition: .3s;
+                    @include transition(.3s);
 
                     a {
                         display: flex;
@@ -1523,6 +1551,7 @@ main {
                         article{
                             max-width: 1200px;
                             .wrap{
+                                @include flex-column-center;
                                 .title-box{
                                     width: 100%;
                                     padding: 30px 30px;
@@ -1535,8 +1564,11 @@ main {
                                         margin-bottom: 20px
                                     }
                                     ul{
-                                        @include flex-center;
-                                        gap: 20px;
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        align-items: center;
+                                        gap: 15px;
+                                        line-height: 1;
                                         li{
 
                                         }
@@ -1549,11 +1581,26 @@ main {
                                     @include flex-column-center;
                                     gap: 30px;
                                     font-size: 18px;
+                                    font-weight: 400;
                                     line-height: 1.5;
+                                    margin-bottom: 50px;
                                     img{
                                         width: 100%;
                                         max-width: 900px;
                                         object-fit: contain;
+                                    }
+                                }
+                                .back{
+                                    @include flex-center;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    border: 1px solid #0e6cae;
+                                    padding: 10px 50px;
+                                    color: #0e6cae;
+                                    @include transition(.3s);
+                                    &:hover{
+                                        background-color: #0e6cae;
+                                        color: #fff;
                                     }
                                 }
                             }
@@ -1569,7 +1616,7 @@ main {
     position: absolute;
     font-size: 12px;
     font-weight: 400;
-    transition: .3s;
+    @include transition(.3s);
     border: 0.5px solid #aaa;
     padding: 13px 10px;
     border-radius: 5px;
@@ -1579,6 +1626,7 @@ main {
     gap: 10px;
     line-height: 1;
     pointer-events: none;
+    white-space: nowrap;
     .box{
         width: 12px;
         height: 12px;

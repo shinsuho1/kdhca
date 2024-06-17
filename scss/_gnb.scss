@@ -344,6 +344,9 @@ footer{
                     &:hover{
                         background-color: #333;
                     }
+                    &.none{
+                        display: none;
+                    }
                 }
             }
             border-left: none;
