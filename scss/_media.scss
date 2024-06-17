@@ -1047,8 +1047,9 @@
                                 .content {
                                     .text {
                                         width: 100%;
-                                        padding: 0 5%;
-
+                                        br{
+                                            display: none !important;
+                                        }
                                         p {
                                             font-size: 20px;
                                             margin-bottom: 15px;

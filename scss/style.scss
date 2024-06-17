@@ -225,6 +225,16 @@ main {
                         @include fullsize;
                         object-fit: cover;
                     }
+                    &::after{
+                        position: absolute;
+                        content: "";
+                        @include fullsize;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                        background-color: #000;
+                        opacity: .3;
+                    }
                 }
 
                 article {
@@ -270,6 +280,9 @@ main {
                                     .icon-svg {
                                         width: 60px;
                                         margin-bottom: 20px;
+                                        opacity: 0;
+                                        transform: translateY(50px);
+                                        @include transition(all 1s .6s);
                                         svg {
                                             width: 100%;
                                             object-fit: contain;
@@ -284,11 +297,18 @@ main {
                                         font-weight: 700;
                                         font-size: 24px;
                                         margin-bottom: 10px;
+                                        opacity: 0;
+                                        transform: translateY(50px);
+                                        @include transition(all 1s .9s);
                                     }
 
                                     a {
+                                        display: block;
                                         font-weight: 500;
                                         font-size: 12px;
+                                        opacity: 0;
+                                        transform: translateY(50px);
+                                        @include transition(all 1s .9s);
                                     }
 
                                     &.active {
@@ -312,20 +332,23 @@ main {
                         }
                     }
                 }
-                &.active{
+                &.load{
                     article{
                         .wrap{
                             .content{
                                 ul{
                                     li{
                                         .icon-svg{
-                                            
+                                            opacity: 1;
+                                            transform: translateY(0)
                                         }
                                         p{
-
+                                            opacity: 1;
+                                            transform: translateY(0)
                                         }
                                         a{
-
+                                            opacity: 1;
+                                            transform: translateY(0)
                                         }
                                     }
                                 }
@@ -484,6 +507,7 @@ main {
                         font-weight: 600;
                         text-align: center;
                         opacity: 0;
+                        animation: fade-up 1s .3s forwards;
                     }
 
                     .content {
@@ -558,6 +582,7 @@ main {
                                             position: absolute;
                                             top: 0;
                                             left: 0;
+                                            z-index: 2;
                                             .img-area {
                                                 width: 100%;
                                                 height: 100vh;
@@ -597,9 +622,10 @@ main {
                                             display: flex;
                                             justify-content: flex-end;
                                             align-items: flex-end;
-
+                                            position: relative;
+                                            z-index: 1;
                                             ul {
-                                                width: calc(50% - 120px);
+                                                width: calc(50% - 240px);
 
                                                 li {
                                                     display: flex;
@@ -608,7 +634,6 @@ main {
                                                     font-size: 14px;
                                                     gap: 60px;
                                                     margin-bottom: 60px;
-
                                                     p {
                                                         font-weight: 600;
                                                     }
@@ -633,6 +658,18 @@ main {
                                                                 li{
                                                                     width: 100%;
                                                                     margin-bottom: 10px;
+                                                                    margin-left: 15px;
+                                                                    position: relative;
+                                                                    &::before{
+                                                                        content: "";
+                                                                        position: absolute;
+                                                                        width: 3px;
+                                                                        height: 3px;
+                                                                        border-radius: 50%;
+                                                                        background-color: #000;
+                                                                        top: 9px;
+                                                                        left: -15px;
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -1580,7 +1617,7 @@ main {
                                     width: 100%;
                                     @include flex-column-center;
                                     gap: 30px;
-                                    font-size: 18px;
+                                    font-size: 16px;
                                     font-weight: 400;
                                     line-height: 1.5;
                                     margin-bottom: 50px;

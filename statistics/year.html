@@ -310,7 +310,6 @@ include_once "../include/footer.html"
         data03_element = document.querySelectorAll(".table03 tbody tr"),
         data04_element = document.querySelectorAll(".table04 tbody tr");
 
-
     let data01_area = {
         label: [],
         data01: [],
@@ -318,6 +317,7 @@ include_once "../include/footer.html"
     }
     let data02_area = {
         label: [],
+        dataLabel: [],
         data01: [],
         data02: [],
         data03: [],
@@ -355,13 +355,18 @@ include_once "../include/footer.html"
     });
 
 
-    gradient_red = year_chart[0].getContext("2d").createLinearGradient(0, 0, 0, 300);
+    gradient_red = year_chart[0].getContext("2d").createLinearGradient(0, 25, 0, 300);
     gradient_red.addColorStop(0, 'rgba(234, 73, 77, 0.5)');
     gradient_red.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
-    gradient_blue = year_chart[0].getContext("2d").createLinearGradient(0, 0, 0, 450);
+    gradient_blue = year_chart[0].getContext("2d").createLinearGradient(0, 25, 0, 450);
     gradient_blue.addColorStop(0, 'rgba(57, 146, 208, 0.5)');
     gradient_blue.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+    let red_cricle = new Image(),
+        blue_cricle = new Image();
+    red_cricle.src = "../images/common/red_chart_circle.png";
+    blue_cricle.src = "../images/common/blue_chart_circle.png";
 
 
     const beforeDrawFunction = {
@@ -376,13 +381,63 @@ include_once "../include/footer.html"
         },
     };
 
+    // chart.js 폰트 + 반응형
+    function font_size(context) {
+        let size = 16;
+        if (window.innerWidth <= 1024) {
+            size = 14;
+            if (window.innerWidth <= 767) {
+                size = 12;
+                if (window.innerWidth <= 450) {
+                    size = 10;
+                }
+            }
+        }
+        return {
+            size: size,
+            family: 'ScoreDream',
+            weight: '400',
+        }
+    };
+
+    // cahrt.js 데이터 (수정)
+    function line01_dataset(label, data, borderColor, pointBackgroundColor, gradient) {
+        let pointRadius = 4,
+            pointImage = "";
+        if (window.innerWidth <= 1024) {
+            pointRadius = 3;
+            if (window.innerWidth <= 767) {
+                pointRadius = 2;
+                if (window.innerWidth <= 450) {
+                    pointRadius = 1;
+                }
+            }
+        }
+        if (gradient == gradient_red) {
+            pointImage = red_cricle;
+        } else if (gradient == gradient_blue) {
+            pointImage = blue_cricle;
+        }
+        return {
+            label: label,
+            data: data,
+            borderColor: borderColor,
+            pointBackgroundColor: pointBackgroundColor,
+            pointStyle: pointImage,
+            borderWidth: 1.5,
+            fill: true,
+            backgroundColor: gradient,
+            pointRadius: pointRadius,
+        }
+    }
+
     // chart.js 툴팁
     function tooltip(unit_value) {
         return {
             enabled: false,
             backgroundColor: "#fff",
             borderColor: "#707070",
-            borderWidth: ".5",
+            borderWidth: "0.5",
             displayColors: false,
             padding: {
                 top: 15,
@@ -451,55 +506,9 @@ include_once "../include/footer.html"
                 tooltipEl.style.opacity = 1;
                 tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX - tooltipEl.getBoundingClientRect().width / 2 + 'px';
                 tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 10 + 'px';
-            }
+            },
         }
     }
-
-    // chart.js 폰트 + 반응형
-    function font_size(context) {
-        const width = context.chart.width;
-        let size = 16;
-        if (window.innerWidth <= 1024) {
-            size = 14;
-            if (window.innerWidth <= 767) {
-                size = 12;
-                if (window.innerWidth <= 450) {
-                    size = 10;
-                }
-            }
-        }
-        return {
-            size: size,
-            family: 'ScoreDream',
-            weight: '400',
-        }
-    };
-
-    // cahrt.js 데이터 (수정)
-    function line01_dataset(label, data, borderColor, pointBackgroundColor, gradient) {
-        let pointRadius = 5;
-        if (window.innerWidth <= 1024) {
-            pointRadius = 4;
-            if (window.innerWidth <= 767) {
-                pointRadius = 3;
-                if (window.innerWidth <= 450) {
-                    pointRadius = 1.5;
-                }
-            }
-        }
-        return {
-            label: label,
-            data: data,
-            borderColor: borderColor,
-            pointBackgroundColor: pointBackgroundColor,
-            borderWidth: 1.5,
-            pointStyle: 'circle',
-            fill: true,
-            backgroundColor: gradient,
-            pointRadius: pointRadius,
-        }
-    }
-
     // chart.js 축
     function line01_scales(max, min, stepSize, unit, stacked) {
         return {
@@ -536,20 +545,9 @@ include_once "../include/footer.html"
         }
     }
 
-
-
-
-
-    const year_chart1 = new Chart(year_chart[0].getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: data01_area.label.reverse(),
-            datasets: [
-                line01_dataset('사업장수', data01_area.data01.reverse(), '#DD2025', '#FFDFE0', gradient_red),
-                line01_dataset('사업자수', data01_area.data02.reverse(), '#0e6cae', '#d7efff', gradient_blue),
-            ],
-        },
-        options: {
+    // chart.js 옵션(tooltip, line01_scales 포함)
+    function options(unit_value, label, data, borderColor, pointBackgroundColor, gradient) {
+        return {
             layout: {
                 autoPadding: false,
             },
@@ -557,12 +555,36 @@ include_once "../include/footer.html"
                 legend: {
                     display: false,
                 },
-                tooltip: tooltip(""),
+                annotation: {
+                    annotations: {
+                        box1: {
+                            drawTime: "afterDraw",
+                            display: (context, options) => {
+                                console.log(context)
+                            }
+                        }
+                    }
+                },
+                tooltip: tooltip(unit_value),
+
             },
-            scales: line01_scales(110, 50, 10, ""),
+            scales: line01_scales(label, data, borderColor, pointBackgroundColor, gradient),
+        }
+    }
+
+    const year_chart1 = new Chart(year_chart[0].getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: data01_area.label.reverse(),
+            datasets: [
+                line01_dataset('사업장수', data01_area.data01.reverse(), '#DD2025', '#DD2025', gradient_red),
+                line01_dataset('사업자수', data01_area.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
+            ],
         },
+        options: options("", 110, 50, 10, ""),
         plugins: [beforeDrawFunction],
     });
+
 
     const year_chart2 = new Chart(year_chart[1].getContext('2d'), {
         type: 'bar',
@@ -588,18 +610,7 @@ include_once "../include/footer.html"
                 },
             ]
         },
-        options: {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip("M"),
-            },
-            scales: line01_scales(15, 5, 5, "M", true),
-        },
+        options: options("M", 15, 5, 5, "M", true),
         plugins: [beforeDrawFunction],
     });
 
@@ -608,22 +619,11 @@ include_once "../include/footer.html"
         data: {
             labels: data03_area.label.reverse(),
             datasets: [
-                line01_dataset('생산량(Gcal)', data03_area.data01.reverse(), '#DD2025', '#FFDFE0', gradient_red),
-                line01_dataset('판매량(Gcal)', data03_area.data02.reverse(), '#0e6cae', '#d7efff', gradient_blue),
+                line01_dataset('생산량(Gcal)', data03_area.data01.reverse(), '#DD2025', '#DD2025', gradient_red),
+                line01_dataset('판매량(Gcal)', data03_area.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip("M"),
-            },
-            scales: line01_scales(280, 40, 40, "M"),
-        },
+        options: options("M", 280, 40, 40, "M"),
         plugins: [beforeDrawFunction],
     });
 
@@ -632,23 +632,11 @@ include_once "../include/footer.html"
         data: {
             labels: data04_area.label.reverse(),
             datasets: [
-                line01_dataset('생산량(Gcal)', data04_area.data01.reverse(), '#DD2025', '#FFDFE0', gradient_red),
-                line01_dataset('판매량(Gcal)', data04_area.data02.reverse(), '#0e6cae', '#d7efff', gradient_blue),
+                line01_dataset('생산량(Gcal)', data04_area.data01.reverse(), '#DD2025', '#DD2025', gradient_red),
+                line01_dataset('판매량(Gcal)', data04_area.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip("M"),
-            },
-            scales: line01_scales(60, 20, 10, "M"),
-        },
+        options: options("M", 60, 20, 10, "M"),
         plugins: [beforeDrawFunction],
     });
 </script>
-
