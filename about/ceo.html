@@ -11,6 +11,10 @@ $PAGE_CODE_2 = "0101";
         <?php include_once "../include/tabmenu.html" ?>
     </section>
     <section class="s01">
+        <canvas class="circle01" width="2400" height="2400"></canvas>
+        <canvas class="circle02" width="2600" height="2600"></canvas>
+        <canvas class="circle03" width="3400" height="3400"></canvas>
+        <canvas class="circle04" width="4000" height="4000"></canvas>
         <article>
             <div class="wrap" data-aos="fade-up">
                 <h2>
@@ -19,23 +23,23 @@ $PAGE_CODE_2 = "0101";
                 </h2>
                 <div class="text">
                     <span>
-                        열병합발전소, 열전용보일러 및 자원회수시설 등 집중된 시설에서 생산된 열 또는 열과 전기를 주거, <br class="pc-only"/>
-                        상업지역 및 산업단지 내 다수 사용자에게 일괄적으로 공급판매하는 집단에너지는 국가 에너지 절감 <br class="pc-only"/>
-                        및 효율 향상에 크게 기여하고 있습니다. <br class="pc-only"/>
-                        열과 전기를 동시에 생산하기에 발전효율이 높고, 발전과정에서 탄소와 미세먼지를 거의 배출하지 <br class="pc-only"/>
-                        않아 온실가스 저감효과가 높으며, 수요지 인근에 위치하여 대규모 송전선로 및 장거리 연료 배관이 <br class="pc-only"/>
-                        필요 없는 대표적인 분산전원이기 때문입니다. <br class="block"/>
-                        <br class="block"/>
-                        이러한 중요성을 인식한 정부의 에너지전환 정책에 따라 앞으로 재생에너지의 공급 불안정성에 <br class="pc-only"/>
+                        열병합발전소, 열전용보일러 및 자원회수시설 등 집중된 시설에서 생산된 열 또는 열과 전기를 주거, <br class="pc-only" />
+                        상업지역 및 산업단지 내 다수 사용자에게 일괄적으로 공급판매하는 집단에너지는 국가 에너지 절감 <br class="pc-only" />
+                        및 효율 향상에 크게 기여하고 있습니다. <br class="pc-only" />
+                        열과 전기를 동시에 생산하기에 발전효율이 높고, 발전과정에서 탄소와 미세먼지를 거의 배출하지 <br class="pc-only" />
+                        않아 온실가스 저감효과가 높으며, 수요지 인근에 위치하여 대규모 송전선로 및 장거리 연료 배관이 <br class="pc-only" />
+                        필요 없는 대표적인 분산전원이기 때문입니다. <br class="block" />
+                        <br class="block" />
+                        이러한 중요성을 인식한 정부의 에너지전환 정책에 따라 앞으로 재생에너지의 공급 불안정성에 <br class="pc-only" />
                         대응하는 비상전원이자 브릿지에너지로서 집단에너지의 역할이 더욱 커질 것으로 예상됩니다.
                     </span>
                     <span>
-                        최근 에너지정책 환경 하에서 우리 집단에너지사업자들은 『기후변화에 관한 국제연합 기본협약』에 <br class="pc-only"/>
-                        능동적으로 대응하고 에너지절약과 국민생활의 편익 증진에 이바지하는 본연의 역할을 다해야 한다는 <br class="pc-only"/>
-                        책임감에 한국집단에너지협회 활동을 통해 편리하고 안전하며 경제적인 집단에너지의 우수성과 가치를 <br class="pc-only"/>
-                        더욱 널리 알리고 집단에너지 보급 확대를 통해 밝고 따뜻한 세상을 만들기 위해 최선을 다할 것을 <br class="pc-only"/>
-                        약속 드리며, 앞으로도 협회의 다양한 활동에 대해 아낌없는 응원과 따뜻한 사랑을 보내주시기 바랍니다. <br class="block"/>
-                        <br class="block"/>
+                        최근 에너지정책 환경 하에서 우리 집단에너지사업자들은 『기후변화에 관한 국제연합 기본협약』에 <br class="pc-only" />
+                        능동적으로 대응하고 에너지절약과 국민생활의 편익 증진에 이바지하는 본연의 역할을 다해야 한다는 <br class="pc-only" />
+                        책임감에 한국집단에너지협회 활동을 통해 편리하고 안전하며 경제적인 집단에너지의 우수성과 가치를 <br class="pc-only" />
+                        더욱 널리 알리고 집단에너지 보급 확대를 통해 밝고 따뜻한 세상을 만들기 위해 최선을 다할 것을 <br class="pc-only" />
+                        약속 드리며, 앞으로도 협회의 다양한 활동에 대해 아낌없는 응원과 따뜻한 사랑을 보내주시기 바랍니다. <br class="block" />
+                        <br class="block" />
                         감사합니다.
                     </span>
                 </div>
@@ -47,5 +51,153 @@ $PAGE_CODE_2 = "0101";
     </section>
 </main>
 <?php
-    include_once "../include/footer.html"
+include_once "../include/footer.html"
 ?>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+
+        const canvas = document.querySelector(".circle01");
+        const canvas_ = document.querySelectorAll("#subPage.ceo canvas");
+        function drawEllipse(ctx, x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise) {
+            ctx.beginPath();
+            ctx.ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise);
+            ctx.lineWidth = .3;
+            ctx.stroke();
+            ctx.strokeStyle = "#CDCDCD";
+        }
+
+        function drawCircle(ctx, x, y, radius, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        const circles = [
+            [{
+                    color: '#0E6CAE',
+                    angle: 0
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 1
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 2
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 3
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 4
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 5
+                },
+            ],
+            [{
+                    color: '#CDCDCD',
+                    angle: 0.5
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 1.5
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 2.5
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 3.5
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 4.5
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 5.5
+                },
+            ],
+            [{
+                    color: '#0E6CAE',
+                    angle: 0
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 1
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 2
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 3
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 4
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 5
+                },
+            ],
+            [{
+                    color: '#CDCDCD',
+                    angle: 0.5
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 1.5
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 2.5
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 3.5
+                },
+                {
+                    color: '#CDCDCD',
+                    angle: 4.5
+                },
+                {
+                    color: '#0E6CAE',
+                    angle: 5.5
+                },
+            ],
+        ];
+
+
+        function animate() {
+            canvas_.forEach((el, index) => {
+                let ctx = el.getContext('2d'),
+                    ctxWidth = el.width / 2,
+                    ctxHeight = el.height / 2,
+                    size = ctxHeight <= 2800 ? 750 : 1100;
+                ctx.clearRect(0, 0, el.width, el.height);
+                drawEllipse(ctx, ctxWidth, ctxWidth, ctxWidth - 100, ctxHeight - size, 0, 0, 2 * Math.PI, false);
+
+                circles[index].forEach((ele, index) => {
+                    const x = ctxWidth + ((ctxWidth - 100) * Math.cos(ele.angle));
+                    const y = ctxWidth + ((ctxHeight - size) * Math.sin(ele.angle));
+                    drawCircle(ctx, x, y, 5, ele.color);
+                    ele.angle += 0.0005;
+                });
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    });
+</script>

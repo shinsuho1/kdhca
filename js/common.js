@@ -8,10 +8,12 @@ let html = document.querySelector("html"),
     header_gnb = document.querySelector("header .header-wrap #gnb")
     header_blur = document.querySelector(".header_blur");
 $(".menuicon").on("click", function () {
-    $(this).toggleClass("active");
-    $("#gnb.mo").toggleClass("active");
-    $("header").toggleClass("bg");
+    $(".header-wrap .gnb-wrap").addClass("active");
 });
+$(".gnb-wrap .close").on("click",function(){
+    $(".header-wrap .gnb-wrap").removeClass("active");
+});
+
 
 $("#tab-menu .menu>span").on("click", function (e) {
     e.preventDefault();
@@ -30,6 +32,7 @@ window.addEventListener("DOMContentLoaded", function () {
         header_gnb.classList.add("mo");
         $("#gnb.mo>li>a").on("click",function(e){
             e.preventDefault();
+            $(this).toggleClass("active")
             $(this).siblings().stop().slideToggle();
         });
     } else {

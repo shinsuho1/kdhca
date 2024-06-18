@@ -711,10 +711,31 @@
                 width: 180px;
             }
 
-            #gnb {
-                &.mo {
-                    height: calc(100% - $headerHeight);
-                    top: calc($headerHeight + 5px);
+            .gnb-wrap{
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                right: -100%;
+                background-color: #fff;
+                @include transition(.5s);
+                padding: 40px 5%;
+                z-index: 2;
+                overflow-y: auto;
+                overflow-x: hidden;
+                .moblie-top{
+                    display: flex;
+                }
+                #gnb{
+                    >li{
+                        >a{
+                        }
+                        .sub-menu{
+                        }
+                    }
+                }
+                .address{
+                    display: flex;
                 }
             }
 
@@ -1303,12 +1324,72 @@
                         font-size: 14px;
                     }
                 }
+                &.detail{
+                    section{
+                        &.s02{
+                            padding-top: 80px;
+                            article{
+                                .wrap{
+                                    .title-box{
+                                        padding: 25px;
+                                        h2{
+                                            font-size: 20px;
+                                            margin-bottom: 15px
+                                        }
+                                        ul{
+                                            gap: 10px;
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    .explain{
+                                        padding: 25px;
+                                        gap: 25px;
+                                        margin-bottom: 40px;
+                                    }
+                                    .back{
+                                        padding: 10px 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 }
 
 @media (max-width:767px) {
+    header{
+        .header-wrap{
+            .gnb-wrap{
+                padding: 30px 5%;
+                .moblie-top{
+                    margin-bottom: 60px;
+                    .moblie-logo{
+                        width: 100px;
+                    }
+                }
+                #gnb{
+                    &.mo{
+                        >li{
+                            padding: 15px 0;
+                            >a{
+                                font-size: 20px;
+                            }
+                            .sub-menu{
+                                margin-top: 15px;
+                            }
+                        }
+                    }
+                }
+                .address{
+                    margin-top: 100px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
     footer {
         padding: 25px 0;
 
@@ -1477,6 +1558,9 @@
         }
 
         &#subPage {
+            .sub_banner{
+                min-height: 200px;
+            }
             section {
                 article {
                     .wrap {
@@ -1848,6 +1932,34 @@
                     thead{
                         tr{
                             height: 50px;
+                        }
+                    }
+                }
+                &.detail{
+                    section{
+                        &.s02{
+                            padding-top: 60px;
+                            article{
+                                .wrap{
+                                    .title-box{
+                                        padding: 20px;
+                                        h2{
+                                            font-size: 18px;
+                                            margin-bottom: 10px;
+                                        }
+                                    }
+                                    .explain{
+                                        padding: 20px;
+                                        gap: 20px;
+                                        font-size: 14px;
+                                        margin-bottom: 30px;
+                                    }
+                                    .back{
+                                        font-size: 14px;
+                                        padding: 10px 30px;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -2389,6 +2501,36 @@
                             td{
                                 &:last-child{
                                     display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.detail{
+                    section{
+                        &.s02{
+                            padding-top: 40px;
+                            article{
+                                .wrap{
+                                    .title-box{
+                                        padding: 15px;
+                                        h2{
+                                            font-size: 16px;
+                                            margin-bottom: 8px;
+                                        }
+                                        ul{
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    .explain{
+                                        padding: 15px;
+                                        gap: 15px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                    }
+                                    .back{
+                                        font-size: 13px;
+                                    }
                                 }
                             }
                         }

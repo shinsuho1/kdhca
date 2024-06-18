@@ -522,14 +522,47 @@ main {
                 padding-bottom: 200px;
             }
         }
+        
 
         &.about {
             &.ceo {
                 section {
                     &.s01 {
                         padding: 200px 0;
-
+                        position: relative;
+                        overflow: hidden;
+                        canvas{
+                            position: absolute;
+                            z-index: 1;
+                            background-color: transparent;
+                            // left: 50%;
+                            // top: 50%;
+                            // transform: translate(-50%,-50%) rotate(0);    
+                            @include drag-off;
+                            &:nth-child(1){
+                                left: 35%;
+                                top: 40%;
+                                transform: translate(-50%,-50%) rotate(-20deg);    
+                            }
+                            &:nth-child(2){
+                                left: 35%;
+                                top: 40%;
+                                transform: translate(-50%,-50%) rotate(-20deg);
+                            }
+                            &:nth-child(3){
+                                left: 35%;
+                                top: 13%;
+                                transform: translate(-50%,-50%) rotate(-20deg);
+                            }
+                            &:nth-child(4){
+                                left: 35%;
+                                top: 0%;
+                                transform: translate(-50%,-50%) rotate(-20deg);
+                            }
+                        }
                         article {
+                            position: relative;
+                            z-index: 2;
                             .wrap {
                                 h2 {
                                     font-size: 40px;
@@ -1586,19 +1619,20 @@ main {
                     &.s02{
                         padding-top: 100px;
                         article{
-                            max-width: 1200px;
+                            // max-width: 1200px;
                             .wrap{
                                 @include flex-column-center;
                                 .title-box{
                                     width: 100%;
-                                    padding: 30px 30px;
+                                    padding: 30px;
                                     border-top: 1px solid #000;
                                     border-bottom: 1px solid #ddd;
                                     h2{
                                         width: 100%;
                                         font-size: 22px;
                                         font-weight: 500;
-                                        margin-bottom: 20px
+                                        margin-bottom: 20px;
+                                        line-height: 1.5;
                                     }
                                     ul{
                                         display: flex;
@@ -1606,9 +1640,7 @@ main {
                                         align-items: center;
                                         gap: 15px;
                                         line-height: 1;
-                                        li{
-
-                                        }
+                                        font-size: 16px;
                                     }
                                 }
                                 .explain{
@@ -1635,6 +1667,7 @@ main {
                                     padding: 10px 50px;
                                     color: #0e6cae;
                                     @include transition(.3s);
+                                    line-height: 1;
                                     &:hover{
                                         background-color: #0e6cae;
                                         color: #fff;
