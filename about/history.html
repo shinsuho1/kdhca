@@ -735,7 +735,6 @@ include_once "../include/footer.html"
                 end: "bottom bottom",
                 pin: true,
                 invalidateOnRefresh: true,
-                // markers: true,
             },
         });
     });
@@ -746,27 +745,19 @@ include_once "../include/footer.html"
                 trigger: $(this),
                 start: "top top",
                 end: "+=85%",
-                //scrub: 1,
                 scrub: true,
-                //markers: true,
-                //invalidateOnRefresh: true,
-                toggleClass: {
-                    targets: $(".his-list").eq(q),
-                    className: "active"
-                },
                 onUpdate: function(self) {
                     if (window.innerWidth > 1025) {
                         gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
                             width: 100 - (self.progress.toFixed(3) * 50) + "%"
                         });
+                    } else {
+                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
+                            width: 100 - (self.progress.toFixed(3) * 50) + "%",
+                            height: 100 - (self.progress.toFixed(3) * 50) + "vh"
+                        });
                     }
-                },
-                onLeave: function() {
-                    $(".his-list").eq(q).addClass("on_leave");
-                },
-                onEnterBack: function() {
-                    $(".his-list").eq(q).removeClass("on_leave");
-                },
+                }
             },
         })
     });

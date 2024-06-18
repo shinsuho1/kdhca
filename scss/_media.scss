@@ -810,6 +810,9 @@
                                 font-size: 48px;
                                 margin-bottom: 20px;
                             }
+                            .more-btn{
+                                margin-top: 15px;
+                            }
                         }
                     }
                 }
@@ -900,9 +903,6 @@
                                         padding: 30px 20px;
                                     }
                                 }
-                                .more-btn{
-                                    justify-content: center;
-                                }
                             }
                         }
                     }
@@ -960,15 +960,16 @@
                                 .wrap {
                                     .content {
                                         .his-list {
-                                            min-height: 50vh;
+                                            min-height: 30vh;
                                             .pin-spacer{
-                                                padding-bottom: 0 !important;
-                                                height: initial !important;
+                                                // padding-bottom: 0 !important;
+                                                // height: initial !important;
                                             }
                                             .img-wrap {
-                                                position: initial !important;  
-                                                transform: translate(0) !important;
-                                                height: 50vh;              
+                                                // position: initial !important;  
+                                                // transform: translate(0) !important;
+                                                min-height: 30vh;
+                                                height: 100vh;              
                                                 .img-area {
                                                     width: 100% !important;                              
                                                     position: absolute;
@@ -980,10 +981,10 @@
                                             }
     
                                             .txt-wrap {
-                                                min-height: initial;
+                                                // min-height: initial;
 
                                                 padding: 60px 5% 60px;
-                                                justify-content: flex-start;
+                                                // justify-content: flex-start;
                                                 ul {
                                                     width: 100%;
                                                     li {
@@ -1099,7 +1100,7 @@
                                     .text {
                                         width: 100%;
                                         br{
-                                            display: none !important;
+                                            display: none;
                                         }
                                         p {
                                             font-size: 20px;
@@ -1467,6 +1468,9 @@
 
                             p {
                                 font-size: 14px;
+                            }
+                            .more-btn{
+                                margin-top: 10px;
                             }
                         }
                     }

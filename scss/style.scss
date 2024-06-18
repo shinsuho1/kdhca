@@ -47,6 +47,15 @@ main {
                             transform: translateY(50px);
                             @include transition(all 1s .8s);
                         }
+                        .more-btn {
+                            display: inline-block;
+                            font-size: 12px;
+                            font-weight: 500;
+                            margin-top: 20px;
+                            opacity: 0;
+                            transform: translateY(50px);
+                            @include transition(all 1s .8s);
+                        }
                     }
                 }
                 &.load {
@@ -60,6 +69,10 @@ main {
                             transform: translateX(-3px) translateY(0);
                         }
                         p{
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                        a{
                             opacity: 1;
                             transform: translateY(0);
                         }
@@ -390,19 +403,8 @@ main {
                         display: flex;
                         gap: 200px;
                         width: 100%;
-
                         .table {
                             width: 100%;
-                            .more-btn {
-                                width: 100%;
-                                display: flex;
-                                justify-content: flex-end;
-                                align-items: center;
-                                padding-top: 10px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            }
-
                             ul {
                                 width: 100%;
 
