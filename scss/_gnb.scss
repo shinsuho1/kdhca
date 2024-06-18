@@ -206,7 +206,7 @@ header{
             }
             .menuicon{
                 width: 28px;
-                height: 17px;
+                height: 16px;
                 position: relative;
                 cursor: pointer;
                 display: none;
@@ -227,7 +227,7 @@ header{
                         transform: translate(-50%,-50%);
                     }
                     &:nth-child(3){
-                        top: 100%;
+                        bottom: 0;
                     }
                 }
                 &.active{

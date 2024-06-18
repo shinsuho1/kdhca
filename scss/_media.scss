@@ -60,27 +60,29 @@
         .header-wrap {
             padding: 0 3%;
             margin: 0;
-
+            height: $headerHeight;
             .logo {
                 width: 190px;
             }
 
-            #gnb {
-                &.pc {
-                    >li {
-                        >a {
-                            font-size: 16px;
-                        }
-
-                        .sub-menu {
-                            margin-bottom: 10px;
-                            font-size: 12px;
-                            padding-top: 0;
-
-                            li {
-                                a {
-                                    .h_br {
-                                        display: block;
+            .gnb-wrap{
+                #gnb {
+                    &.pc {
+                        >li {
+                            >a {
+                                font-size: 16px;
+                            }
+    
+                            .sub-menu {
+                                margin-bottom: 10px;
+                                font-size: 12px;
+                                padding-top: 0;
+    
+                                li {
+                                    a {
+                                        .h_br {
+                                            display: block;
+                                        }
                                     }
                                 }
                             }
@@ -705,6 +707,7 @@
         $headerHeight: 80px;
         height: $headerHeight;
         .header-wrap {
+            height: $headerHeight;
             padding: 0 5%;
 
             .logo {
@@ -726,14 +729,6 @@
                 .moblie-top{
                     display: flex;
                 }
-                #gnb{
-                    >li{
-                        >a{
-                        }
-                        .sub-menu{
-                        }
-                    }
-                }
                 .address{
                     display: flex;
                 }
@@ -751,6 +746,9 @@
                     display: flex;
                 }
             }
+        }
+        .header-bg {
+            height: $headerHeight;
         }
     }
 
@@ -846,17 +844,30 @@
                             gap: 50px;
 
                             .title {
+                                width: 100%;
                                 text-align: center;
                             }
 
                             .content {
                                 ul {
+                                    flex-wrap: wrap;
                                     li {
                                         padding-left: 0;
                                         align-items: center;
-
+                                        width: calc(100%/2);
+                                        height: calc(100%/2);
+                                        padding-bottom: 0;
                                         &:first-child {
                                             border-left: none;
+                                        }
+
+                                        &:nth-child(2) {
+                                            border-right: none;
+                                        }
+                                        
+                                        &:last-child {
+                                            width: 100%;
+                                            border-top: .6px solid #fff;
                                         }
                                     }
                                 }
@@ -1361,33 +1372,16 @@
 
 @media (max-width:767px) {
     header{
+        $headerHeight: 70px;
+        height: $headerHeight;
         .header-wrap{
-            .gnb-wrap{
-                padding: 30px 5%;
-                .moblie-top{
-                    margin-bottom: 60px;
-                    .moblie-logo{
-                        width: 100px;
-                    }
-                }
-                #gnb{
-                    &.mo{
-                        >li{
-                            padding: 15px 0;
-                            >a{
-                                font-size: 20px;
-                            }
-                            .sub-menu{
-                                margin-top: 15px;
-                            }
-                        }
-                    }
-                }
-                .address{
-                    margin-top: 100px;
-                    font-size: 12px;
-                }
+            height: $headerHeight;
+            .logo{
+                width: 170px;
             }
+        }
+        .header-bg {
+            height: $headerHeight;
         }
     }
     footer {
@@ -2017,6 +2011,65 @@
 }
 
 @media (max-width:450px) {
+    header{
+        $headerHeight: 60px;
+        height: $headerHeight;
+        .header-wrap{
+            height: $headerHeight;
+            .logo{
+                width: 160px;
+            }
+            .gnb-wrap{
+                padding: 30px 5%;
+                .moblie-top{
+                    margin-bottom: 60px;
+                    .moblie-logo{
+                        width: 100px;
+                    }
+                    .close{
+                        width: 20px;
+                    }
+                }
+                #gnb{
+                    &.mo{
+                        >li{
+                            padding: 15px 0;
+                            >a{
+                                font-size: 20px;
+                                margin-left: 25px;
+                                &::before{
+                                    width: 14px;
+                                }
+                            }
+                            .sub-menu{
+                                font-size: 12px;
+                                margin-top: 15px;
+                                margin-left: 25px;
+                                li{
+                                    margin-bottom: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .address{
+                    font-size: 12px;
+                    margin-top: 100px;
+                }
+            }
+            .right{
+                gap: 15px;
+                .user{
+                    a{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .header-bg {
+            height: $headerHeight;
+        }
+    }
     footer {
         padding: 20px 0;
 
@@ -2068,6 +2121,11 @@
 
                 &.s01 {
                     article {
+                        .page-arrow{
+                            svg{
+                                width: 30px;
+                            }
+                        }
                         .wrap {
                             .swiper {
                                 .swiper-wrapper {
@@ -2092,7 +2150,6 @@
                 &.s02 {
                     article {
                         .wrap {
-                            gap: 30px;
 
                             .title {
                                 padding-top: 130px;
@@ -2100,22 +2157,7 @@
 
                             .content {
                                 ul {
-                                    flex-wrap: wrap;
-
                                     li {
-                                        width: calc(100%/2);
-                                        height: calc(100%/2);
-                                        padding-bottom: 0;
-
-                                        &:nth-child(2) {
-                                            border-right: none;
-                                        }
-
-                                        &:last-child {
-                                            width: 100%;
-                                            border-top: .6px solid #fff;
-                                        }
-
                                         p {
                                             font-size: 18px;
                                             margin-bottom: 5px;

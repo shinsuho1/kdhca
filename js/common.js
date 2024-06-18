@@ -27,6 +27,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
     if (window.innerWidth <= 1024) {
         if (header_gnb.classList.contains("pc")) {
+            $(".header-wrap #gnb").off("mouseenter");
+            $("header").off("mouseleave");
             header_gnb.classList.remove("pc");
         }
         header_gnb.classList.add("mo");
@@ -37,30 +39,47 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     } else {
         if (header_gnb.classList.contains("mo")) {
+            $("#gnb.mo>li>a").off("click");
             header_gnb.classList.remove("mo");
         }
         header_gnb.classList.add("pc");
-        header_gnb.addEventListener("mouseenter", () => {
-            header.classList.add("hover");
-            header_blur.classList.add("on");
+        $(".header-wrap #gnb").on("mouseenter",function(){
+            $("header").addClass("hover");
+            $("header_blur").addClass("on");
         });
-        header.addEventListener("mouseleave", function () {
-            header.classList.remove("hover");
-            header_blur.classList.remove("on");
+        $("header").on("mouseleave",function(){
+            $("header").removeClass("hover");
+            $("header_blur").removeClass("on");
         });
     }
 
     window.addEventListener("resize", () => {
         if (window.innerWidth <= 1024) {
             if (header_gnb.classList.contains("pc")) {
+                $(".header-wrap #gnb").off("mouseenter");
+                $("header").off("mouseleave");    
                 header_gnb.classList.remove("pc");
             }
             header_gnb.classList.add("mo");
+            $("#gnb.mo>li>a").on("click",function(e){
+                e.preventDefault();
+                $(this).toggleClass("active")
+                $(this).siblings().stop().slideToggle();
+            });
         } else {
             if (header_gnb.classList.contains("mo")) {
+                $("#gnb.mo>li>a").off("click");
                 header_gnb.classList.remove("mo");
             }
             header_gnb.classList.add("pc");
+            $(".header-wrap #gnb").on("mouseenter",function(){
+                $("header").addClass("hover");
+                $("header_blur").addClass("on");
+            });
+            $("header").on("mouseleave",function(){
+                $("header").removeClass("hover");
+                $("header_blur").removeClass("on");
+            });
         }
     });
     if (document.querySelector("#mainPage")) {
@@ -185,81 +204,3 @@ $("#gnb.mo>li>a").on("click", function (e) {
 
 /* ================================ contact ================================ */
 
-function contactCheck(el) {
-    if (!el.value.trim().length > 0 || el.value.trim().length == 0) {
-        el.focus();
-        return false;
-    }
-    return true;
-}
-
-const form = document.querySelector(".contact form");
-if (form) {
-    let f_submit = document.querySelector(".f_submit"),
-        input_company = document.querySelector(".input_company_name"),
-        input_name = document.querySelector(".input_name"),
-        input_tel = document.querySelector(".input_tel"),
-        input_email = document.querySelector(".input_email"),
-        textarea_detail = document.querySelector(".input_detail"),
-        input_privacy = document.querySelector(".input_privacy"),
-        file_btn = document.querySelectorAll("input.file_btn"),
-        file_name = document.querySelectorAll(".file_name"),
-        file_size = document.querySelectorAll(".file_size"),
-        num = /[0-9]/,
-        email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
-    form.addEventListener('keydown', function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-        };
-    }, true);
-
-
-    if (file_btn[0]) {
-        file_btn.forEach((el, index) => {
-            el.addEventListener("change", () => {
-                if (el.files[0] == undefined) return false;
-                file_name[index].textContent = el.files[0].name;
-                if (el.files[0].size >= 1024) {
-                    if (el.files[0].size >= (1024 * 1024 * 1024)) {
-                        alert("1000MB를 초과하였습니다.");
-                        file_name[index].textContent = "";
-                        el.value = "";
-                    } else {
-                        file_name[index].innerHTML += `<span class="file_size">${(el.files[0].size / (1024 * 1024)).toFixed(2)} MB</span>`;
-                    }
-                } else {
-                    file_name[index].innerHTML += `<span class="file_size">${(el.files[0].size / (1024 * 1024)).toFixed(10)} MB</span>`;
-                }
-            });
-        });
-    }
-
-    function contactCheck(el) {
-        if (el == input_tel && !num.test(el.value)) {
-            el.focus();
-            return false;
-        } else if (el == input_email && !email.test(input_email.value)) {
-            el.focus();
-            return false;
-        } else if (el == input_privacy && !el.checked) {
-            el.focus();
-            return false;
-        } else if (!el.value.trim().length > 0 || el.value.trim().length == 0) {
-            el.focus();
-            return false;
-        }
-        return true;
-    }
-
-    f_submit.addEventListener("click", () => {
-        if (!contactCheck(input_name)) {
-            alert("이름을 입력해주세요");
-            return false;
-        }
-        f_submit.disabled = false;
-        form.submit();
-    });
-
-
-}
