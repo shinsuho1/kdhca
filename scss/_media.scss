@@ -52,9 +52,9 @@
     }
 }
 @media (max-width:1340px) {
+    $headerHeight: 85px;
+    $headerBgHeight: 280px;
     header {
-        $headerHeight: 85px;
-        $headerBgHeight: 280px;
         height: $headerHeight;
 
         .header-wrap {
@@ -234,6 +234,7 @@
                             .content {
                                 ul {
                                     li {
+                                        height: calc(100% - $headerHeight);
                                         padding-left: 25px;
 
                                         &:last-child {
@@ -701,10 +702,9 @@
         }
     }
 }
-
 @media (max-width:1024px) {
+    $headerHeight: 80px;
     header {
-        $headerHeight: 80px;
         height: $headerHeight;
         .header-wrap {
             height: $headerHeight;
@@ -808,6 +808,7 @@
 
                             h2 {
                                 font-size: 48px;
+                                margin-bottom: 20px;
                             }
                         }
                     }
@@ -851,23 +852,21 @@
                             .content {
                                 ul {
                                     flex-wrap: wrap;
+                                    border: none;
                                     li {
                                         padding-left: 0;
                                         align-items: center;
-                                        width: calc(100%/2);
-                                        height: calc(100%/2);
+                                        width: 100%;
+                                        height: calc(100%/3);
                                         padding-bottom: 0;
-                                        &:first-child {
+                                        border: none;
+                                        border-bottom: .6px solid #fff;
+                                        &:first-child{
                                             border-left: none;
+                                            border-top:  .6px solid #ffff;
                                         }
-
-                                        &:nth-child(2) {
-                                            border-right: none;
-                                        }
-                                        
-                                        &:last-child {
-                                            width: 100%;
-                                            border-top: .6px solid #fff;
+                                        &.active{
+                                            border-bottom: .6px solid #fff;
                                         }
                                     }
                                 }
@@ -900,6 +899,9 @@
                                     li {
                                         padding: 30px 20px;
                                     }
+                                }
+                                .more-btn{
+                                    justify-content: center;
                                 }
                             }
                         }
@@ -958,24 +960,41 @@
                                 .wrap {
                                     .content {
                                         .his-list {
+                                            min-height: 50vh;
+                                            .pin-spacer{
+                                                padding-bottom: 0 !important;
+                                                height: initial !important;
+                                            }
                                             .img-wrap {
+                                                position: initial !important;  
+                                                transform: translate(0) !important;
+                                                height: 50vh;              
                                                 .img-area {
+                                                    width: 100% !important;                              
+                                                    position: absolute;
+                                                    height: 100%;
                                                     .txt {
-                                                        font-size: 80px;
+                                                        font-size: 72px;
                                                     }
                                                 }
                                             }
     
                                             .txt-wrap {
-                                                padding: 150px 5% 60px;
+                                                min-height: initial;
+
+                                                padding: 60px 5% 60px;
+                                                justify-content: flex-start;
                                                 ul {
-                                                    width: calc(70% - 60px);
-    
+                                                    width: 100%;
                                                     li {
                                                         gap: 40px;
                                                         margin-bottom: 40px;
                                                     }
                                                 }
+                                            }
+                                            &:nth-child(2n){
+                                                display: flex;
+                                                flex-direction: column-reverse;
                                             }
                                         }
                                     }
@@ -1371,8 +1390,8 @@
 }
 
 @media (max-width:767px) {
+    $headerHeight: 70px;
     header{
-        $headerHeight: 70px;
         height: $headerHeight;
         .header-wrap{
             height: $headerHeight;
@@ -1443,6 +1462,7 @@
 
                             h2 {
                                 font-size: 38px;
+                                margin-bottom: 15px;
                             }
 
                             p {
@@ -1604,37 +1624,16 @@
                                 .wrap {
                                     .content {
                                         .his-list {
-                                            .img-wrap {
-                                                .img-area {
-                                                    .txt {
-                                                        opacity: 1;
-                                                        font-size: 60px;
-                                                        @include transition(1s);
-                                                    }
-                                                }
-                                            }
-    
+
                                             .txt-wrap {
-                                                padding: 150px 5% 40px;
-                                                ul {
-                                                    width: calc(80% - 40px);
-                                                    
+                                                padding: 40px 5% 40px;
+                                                ul {                                                    
                                                     li {
-                                                        gap: 10px;
+                                                        gap: 30px;
                                                         margin-bottom: 40px;
-                                                        flex-direction: column;
                                                         .list{
                                                             gap: 10px;
                                                             margin-bottom: 8px;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            &.active,&.on_leave{
-                                                .img-wrap{
-                                                    .img-area{
-                                                        .txt{
-                                                            opacity: 0;
                                                         }
                                                     }
                                                 }
@@ -2011,8 +2010,8 @@
 }
 
 @media (max-width:450px) {
+    $headerHeight: 60px;
     header{
-        $headerHeight: 60px;
         height: $headerHeight;
         .header-wrap{
             height: $headerHeight;
@@ -2113,7 +2112,6 @@
 
                             h2 {
                                 font-size: 32px;
-                                margin-bottom: 10px;
                             }
                         }
                     }
@@ -2158,6 +2156,9 @@
                             .content {
                                 ul {
                                     li {
+                                        .icon-svg{
+                                            width: 40px;
+                                        }
                                         p {
                                             font-size: 18px;
                                             margin-bottom: 5px;
@@ -2269,17 +2270,37 @@
                                 .wrap {
                                     .content {
                                         .his-list {
-    
+                                            .img-wrap{
+                                                .img-area{
+                                                    .txt{
+                                                        font-size: 65px;
+                                                    }
+                                                }
+                                            }
                                             .txt-wrap {
-                                                padding: 100vh 5% 40px;
                                                 ul {
-                                                    width: calc(80% - 20px);
+                                                    width: 100%;
                                                     
                                                     li {
                                                         margin-bottom: 30px;
+                                                        gap: 10px;
+                                                        flex-direction: column;
+                                                        p{
+                                                            height: 21px;
+                                                            line-height: 21px;
+                                                        }
                                                         .list{
-                                                            flex-direction: column;
-                                                            gap: 5px;
+                                                            gap: 15px;
+                                                            .detail{
+                                                                ul{
+                                                                    li{
+                                                                        margin-left: 10px;
+                                                                        &::before{
+                                                                            left: -10px;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }

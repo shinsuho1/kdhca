@@ -330,7 +330,7 @@ section {
     display: block;
 }
 
-*:not(html,body,main) {
+* {
     &::-webkit-scrollbar {
         width: 4px;
         height: 4px;

@@ -130,18 +130,18 @@ window.addEventListener("DOMContentLoaded", function () {
                 delay: 0,
                 disableOnInteraction: true,
             },
-            spaceBetween: 60,
             speed: 8000,
             breakpoints: {
-                1600: {
+                1700: {
                     slidesPerView: 8,
+                    spaceBetween: 60,
                 },
                 1340: {
-                    slidesPerView: 7,
+                    slidesPerView: 6,
                     spaceBetween: 40,
                 },
                 1024: {
-                    slidesPerView: 7,
+                    slidesPerView: 6,
                     spaceBetween: 30,
                 },
                 767: {
@@ -154,8 +154,18 @@ window.addEventListener("DOMContentLoaded", function () {
                 0: {
                     slidesPerView: 3,
                 }
+            },
+            on:{
+                resize: function(el){
+                    setTimeout(() => {
+                        el.autoplay.running == true;
+                        el.autoplay.paused == true;
+                        el.autoplay.start();   
+                    }, 100); 
+                }
             }
         });
+
         let main_bis = document.querySelector("#mainPage .s02 ul"),
             min_bis_li = document.querySelectorAll("#mainPage .s02 li");
         min_bis_li.forEach((el, index) => {

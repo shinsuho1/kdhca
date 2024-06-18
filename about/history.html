@@ -19,7 +19,7 @@ $PAGE_CODE_2 = "0102";
                         <div>
                             <div class="img-wrap">
                                 <div class="img-area">
-                                    <img src="../images/about/history01.png" alt="">
+                                    <img src="../images/about/history01.png" alt="2023년 ~ 2021년 연혁">
                                     <div class="txt">
                                         2023
                                         <br />
@@ -727,8 +727,6 @@ include_once "../include/footer.html"
     gsap.registerPlugin(ScrollTrigger);
 
     $(".his-list .img-wrap").each(function(q) {
-        console.log($(this))
-
         gsap.to($(this), {
             scrollTrigger: {
                 trigger: $(this),
@@ -757,17 +755,9 @@ include_once "../include/footer.html"
                     className: "active"
                 },
                 onUpdate: function(self) {
-                    if (window.innerWidth >= 1025) {
+                    if (window.innerWidth > 1025) {
                         gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
                             width: 100 - (self.progress.toFixed(3) * 50) + "%"
-                        });
-                    } else if (window.innerWidth >= 768 && window.innerWidth < 1025) {
-                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
-                            width: 100 - (self.progress.toFixed(3) * 70) + "%"
-                        });
-                    } else if (window.innerWidth < 768) {
-                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
-                            width: 100 - (self.progress.toFixed(3) * 80) + "%"
                         });
                     }
                 },
