@@ -20,8 +20,10 @@ header{
             @include flex-center;
             @include bg-contain("../images/common/logo_white.svg");
             z-index: 1;
+            @include transition(.3s)
         }
         .gnb-wrap{
+            position: relative;
             .moblie-top{
                 width: 100%;
                 display: none;
@@ -169,6 +171,11 @@ header{
                 }
             }
             .address{
+                position: absolute;
+                width: 100%;
+                padding: 0 5%;
+                bottom: 5%;
+                left: 0;
                 display: none;
                 flex-direction: column;
                 justify-content: flex-start;

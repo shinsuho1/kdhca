@@ -406,7 +406,7 @@
                                             margin-bottom: 10px;
                                         }
 
-                                        iframe {
+                                        iframe,.map {
                                             margin-bottom: 20px;
                                         }
                                     }
@@ -1006,7 +1006,7 @@
                                             }
                                         }
 
-                                        iframe {
+                                        iframe,.map {
                                             margin-bottom: 15px;
                                         }
 
@@ -1089,7 +1089,6 @@
                                         }
                                         p {
                                             font-size: 20px;
-                                            margin-bottom: 15px;
                                         }
 
                                         span {
@@ -1364,6 +1363,39 @@
                                     }
                                     .back{
                                         padding: 10px 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.member{
+                &.login{
+                    section{
+                        &.s01{
+                            padding: 140px 0 200px;
+                            article{
+                                .wrap{
+                                    h2{
+                                        font-size: 50px;
+                                        margin-bottom: 50px;
+                                    }
+                                    .form-wrap{
+                                        form{
+                                            font-size: 16px;
+                                            label{
+                                                padding: 0 15px;
+                                                max-height: 50px;
+                                                height: 50px;
+                                            }
+                                        }
+                                        .find_password{
+                                            font-size: 14px;
+                                            span{
+                                                margin-left: 0px;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1666,7 +1698,7 @@
                                             }
                                         }
 
-                                        iframe {
+                                        iframe,.map {
                                             margin-bottom: 20px;
                                         }
 
@@ -1762,7 +1794,6 @@
 
                                                 p {
                                                     font-size: 14px;
-                                                    margin-bottom: 20px;
                                                 }
 
                                                 .info {
@@ -1955,6 +1986,35 @@
                     }
                 }
             }
+            &.member{
+                &.login{
+                    section{
+                        &.s01{
+                            padding: 120px 0 180px;
+                            article{
+                                .wrap{
+                                    h2{
+                                        font-size: 40px;
+                                        margin-bottom: 40px;
+                                    }
+                                    .form-wrap{
+                                        form{
+                                            font-size: 14px;
+                                            label{
+                                                max-height: 50px;
+                                                height: 50px;
+                                                &.submit{
+                                                    margin-bottom: 10px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     #chartjs-tooltip {
@@ -2024,7 +2084,7 @@
                                                 }
                                             }
                                             .txt-wrap{
-                                                min-height: 250vh;
+                                                min-height: 230px;
                                                 ul{
                                                     width: 100%;
                                                 }
@@ -2230,16 +2290,14 @@
                             .table {
                                 ul {
                                     li {
-                                        padding: 20px 15px;
+                                        padding: 25px 20px;
 
                                         .tit {
                                             font-size: 14px;
-                                            margin-bottom: 5px;
                                         }
 
                                         .date {
                                             font-size: 11px;
-                                            margin-bottom: 5px;
                                         }
 
                                         p {
@@ -2358,8 +2416,8 @@
                                             gap: 8px 15px;
                                         }
 
-                                        iframe {
-                                            min-width: 200px;
+                                        iframe,.map {
+                                            min-height: 200px;
                                         }
 
                                         .method {
@@ -2627,6 +2685,36 @@
                                     }
                                     .back{
                                         font-size: 13px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.member{
+                &.login{
+                    section{
+                        &.s01{
+                            padding: 100px 0 140px;
+                            article{
+                                .wrap{
+                                    h2{
+                                        font-size: 32px;
+                                        margin-bottom: 30px;
+                                    }
+                                    .form-wrap{
+                                        form{
+                                            font-size: 13px;
+                                            label{
+                                                max-height: 45px;
+                                                height: 45px;
+                                                .icon-svg{
+                                                    width: 18px;
+                                                    min-width: 18px;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }

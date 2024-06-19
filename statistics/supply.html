@@ -642,6 +642,10 @@ include_once "../include/footer.html"
             chartArr[index].data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
             chartArr[index].update();
         });
+        el.addEventListener("touchend", function() {
+            chartArr[index].data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
+            chartArr[index].update();
+        });
     });
     // horizontal Chart
     const myChart07 = new Chart(ctx_canvas[6], {
