@@ -34,7 +34,10 @@ window.addEventListener("DOMContentLoaded", function () {
         header_gnb.classList.add("mo");
         $("#gnb.mo>li>a").off('click').on("click",function(e){
             e.preventDefault();
-            $(this).toggleClass("active")
+            $(this).toggleClass("active");
+            $(".sub-menu").each((index,el)=>{
+                $(el).slideUp();
+            });
             $(this).siblings().stop().slideToggle();
         });
     } else {
@@ -45,11 +48,11 @@ window.addEventListener("DOMContentLoaded", function () {
         header_gnb.classList.add("pc");
         $(".header-wrap #gnb").on("mouseenter",function(){
             $("header").addClass("hover");
-            $("header_blur").addClass("on");
+            $(".header_blur").addClass("on");
         });
         $("header").on("mouseleave",function(){
             $("header").removeClass("hover");
-            $("header_blur").removeClass("on");
+            $(".header_blur").removeClass("on");
         });
     }
 
@@ -63,7 +66,10 @@ window.addEventListener("DOMContentLoaded", function () {
             header_gnb.classList.add("mo");
             $("#gnb.mo>li>a").off('click').on("click",function(e){
                 e.preventDefault();
-                $(this).toggleClass("active")
+                $(this).toggleClass("active");
+                $(".sub-menu").each((index,el)=>{
+                    $(el).slideUp();
+                });    
                 $(this).siblings().stop().slideToggle();
             });
         } else {
@@ -74,11 +80,11 @@ window.addEventListener("DOMContentLoaded", function () {
             header_gnb.classList.add("pc");
             $(".header-wrap #gnb").off('click').on("mouseenter",function(){
                 $("header").addClass("hover");
-                $("header_blur").addClass("on");
+                $(".header_blur").addClass("on");
             });
             $("header").off('click').on("mouseleave",function(){
                 $("header").removeClass("hover");
-                $("header_blur").removeClass("on");
+                $(".header_blur").removeClass("on");
             });
         }
     });

@@ -32,7 +32,7 @@ main {
                         h2 {
                             font-size: 60px;
                             font-weight: 700;
-                            margin-bottom: 25px;
+                            margin-bottom: 30px;
                             line-height: 1;
                             opacity: 0;
                             transform: translateX(-3px) translateY(50px);
@@ -321,7 +321,7 @@ main {
                                         font-weight: 500;
                                         font-size: 12px;
                                         opacity: 0;
-                                        transform: translateY(50px);
+                                        transform: translate(1.5px,50px);
                                     }
 
                                     &.active {
@@ -369,7 +369,7 @@ main {
                                         }
                                         a{
                                             opacity: 1;
-                                            transform: translateY(0);
+                                            transform: translate(1.5px,0);
                                         }
                                     }
                                 }
@@ -1694,28 +1694,23 @@ main {
             }
         }
         &.member{
-            section{
-                &.s01{
-                    padding: 240px 0 300px;
-                    .wrap{
-                        max-width: 650px;
-                        width: 100%;
-                        margin: 0 auto;
-                        h2{
-                            font-size: 60px;
-                            line-height: 1;
-                            font-weight: 600;
-                            margin-bottom: 60px;
-                            text-align: center;
-                        }
-                    }
-                }
-            }
             &.login,&.find_password{
                 section{
                     &.s01{
+                        padding: 240px 0 300px;
+
                         article{
                             .wrap{
+                                max-width: 650px;
+                                width: 100%;
+                                margin: 0 auto;  
+                                h2{
+                                    font-size: 60px;
+                                    line-height: 1;
+                                    font-weight: 600;
+                                    margin-bottom: 60px;
+                                    text-align: center;
+                                }     
                                 .form-wrap{
                                     width: 100%;
                                     form{
