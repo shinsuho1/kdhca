@@ -120,6 +120,10 @@ window.addEventListener("DOMContentLoaded", function () {
                 el: ".swiper-pagination",
                 type: "fraction",
             },
+            navigation: {
+                nextEl: ".main_slide_btns .next",
+                prevEl: ".main_slide_btns .prev",
+            },
         });
 
         var main_s04_banner = new Swiper("#mainPage .s04 .swiper", {
@@ -150,9 +154,11 @@ window.addEventListener("DOMContentLoaded", function () {
                 },
                 450: {
                     slidesPerView: 4,
+                    spaceBetween: 15,
                 },
                 0: {
                     slidesPerView: 3,
+                    spaceBetween: 10,
                 }
             },
             on:{

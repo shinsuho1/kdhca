@@ -247,6 +247,15 @@
     }
 }
 
+@keyframes fade-only{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 @keyframes fade-up{
     0%{
         transform: translateY(50px);

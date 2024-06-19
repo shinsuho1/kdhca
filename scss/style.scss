@@ -110,7 +110,8 @@ main {
 
                             .swiper-wrapper {
                                 @include fullsize;
-
+                                position: relative;
+                                z-index: 3;
                                 .swiper-slide {
                                     @include fullsize;
                                     position: relative;
@@ -182,41 +183,38 @@ main {
                                     }
                                 }
                             }
-
-                            .swiper-pagination {
-                                position: absolute;
-                                color: #Fff;
+                            .main_slide_btns{
                                 max-width: $innerWidth;
                                 width: 100%;
+                                position: absolute;
                                 left: 50%;
-                                transform: translateX(-50%);
                                 bottom: 20vh;
+                                transform: translateX(-50%);
+                                z-index: 4;
                                 display: flex;
                                 justify-content: flex-end;
                                 align-items: center;
-                                font-weight: 500;
+                                gap: 10px;
+                                color: #Fff;
                                 font-size: 14px;
-
-                                &::before {
-                                    content: "";
+                                font-weight: 500;
+                                line-height: 1;
+                                opacity: 0;
+                                animation: fade-only 1s .6s forwards;
+                                .slide_btn{
                                     width: 8px;
-                                    aspect-ratio: 8/6;
-                                    @include bg-cover("../images/common/left-arrow.svg");
-                                    font-size: inherit;
-                                    color: inherit;
-                                    font-weight: inherit;
-                                    margin-right: 5px;
+                                    aspect-ratio: 6/11;
+                                    cursor: pointer;
+                                    @include flex-center;
+                                    img{
+                                        @include fullsize;
+                                        object-fit: cover;
+                                    }
                                 }
-
-                                &::after {
-                                    content: "";
-                                    width: 8px;
-                                    aspect-ratio: 8/6;
-                                    @include bg-cover("../images/common/right-arrow.svg");
-                                    font-size: inherit;
-                                    color: inherit;
-                                    font-weight: inherit;
-                                    margin-left: 5px;
+                                .swiper-pagination {
+                                    width: initial;
+                                    position: initial;
+                                    pointer-events: none;
                                 }
                             }
                         }
@@ -618,6 +616,9 @@ main {
                                         width: 100%;
                                         min-height: 100vh;
                                         position: relative;
+                                        .pin-spacer{
+                                            @include drag-off;
+                                        }
                                         .img-wrap {
                                             @include fullsize;
                                             position: absolute;
@@ -976,6 +977,7 @@ main {
 
                     &.s02 {
                         overflow-x: hidden;
+                        overflow-y: hidden;
                         article {
                             .wrap {
                                 ul {
@@ -1108,7 +1110,7 @@ main {
                                             p {
                                                 font-size: 16px;
                                                 font-weight: 400;
-                                                line-height: 1.5;
+                                                line-height: 1.7;
                                             }
                                         }
 
