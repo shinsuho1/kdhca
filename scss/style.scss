@@ -1694,22 +1694,28 @@ main {
             }
         }
         &.member{
-            &.login{
+            section{
+                &.s01{
+                    padding: 240px 0 300px;
+                    .wrap{
+                        max-width: 650px;
+                        width: 100%;
+                        margin: 0 auto;
+                        h2{
+                            font-size: 60px;
+                            line-height: 1;
+                            font-weight: 600;
+                            margin-bottom: 60px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            &.login,&.find_password{
                 section{
                     &.s01{
-                        padding: 240px 0 300px;
                         article{
                             .wrap{
-                                max-width: 650px;
-                                width: 100%;
-                                margin: 0 auto;
-                                h2{
-                                    font-size: 60px;
-                                    line-height: 1;
-                                    font-weight: 600;
-                                    margin-bottom: 60px;
-                                    text-align: center;
-                                }
                                 .form-wrap{
                                     width: 100%;
                                     form{
@@ -1782,6 +1788,54 @@ main {
                                             margin-left: 3px;
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.find_password222{
+                section{
+                    &.s01{
+                        .wrap{
+                            form{
+                                width: 100%;
+                                label{
+                                    width: 100%;
+                                    @include flex-center;
+                                    gap: 20px;
+                                    margin-bottom: 10px;
+                                    height: 60px;
+                                    min-height: 60px;
+                                    input{
+                                        width: 100%;
+                                        height: 100%;
+                                        background-color: #f3f3f3;
+                                        font-size: 17px;
+                                        padding: 0 20px;
+                                        &::placeholder{
+                                            color: #8d8d8d;
+                                        }
+                                    }
+                                    &:last-child{
+                                        margin-bottom: 0;
+                                    }
+                                    &.submit{
+                                        background-color: #000;
+                                        color: #fff;
+                                        @include flex-center;
+                                    }
+                                }
+                            }
+                            .btns{
+                                width: 100%;
+                                @include flex-center;
+                                margin-top: 30px;
+                                a{
+                                    font-size: 14px;
+                                    padding: 10px 50px;
+                                    background-color: #086cae;
+                                    color: #fff;
                                 }
                             }
                         }

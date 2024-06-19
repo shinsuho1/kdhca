@@ -1371,16 +1371,22 @@
                 }
             }
             &.member{
-                &.login{
+                section{
+                    &.s01{
+                        padding: 140px 0 200px;
+                        .wrap{
+                            h2{
+                                font-size: 50px;
+                                margin-bottom: 50px;
+                            }
+                        }
+                    }
+                }
+                &.login,&.find_password{
                     section{
                         &.s01{
-                            padding: 140px 0 200px;
                             article{
                                 .wrap{
-                                    h2{
-                                        font-size: 50px;
-                                        margin-bottom: 50px;
-                                    }
                                     .form-wrap{
                                         form{
                                             font-size: 16px;
@@ -1987,16 +1993,22 @@
                 }
             }
             &.member{
-                &.login{
+                section{
+                    &.s01{
+                        padding: 120px 0 180px;
+                        .wrap{
+                            h2{
+                                font-size: 40px;
+                                margin-bottom: 40px;
+                            }
+                        }
+                    }
+                }
+                &.login,&.find_password{
                     section{
                         &.s01{
-                            padding: 120px 0 180px;
                             article{
                                 .wrap{
-                                    h2{
-                                        font-size: 40px;
-                                        margin-bottom: 40px;
-                                    }
                                     .form-wrap{
                                         form{
                                             font-size: 14px;
@@ -2693,16 +2705,22 @@
                 }
             }
             &.member{
-                &.login{
+                section{
+                    &.s01{
+                        padding: 100px 0 140px;
+                        .wrap{
+                            h2{
+                                font-size: 32px;
+                                margin-bottom: 30px;
+                            }
+                        }
+                    }
+                }
+                &.login,&.find_password{
                     section{
                         &.s01{
-                            padding: 100px 0 140px;
                             article{
                                 .wrap{
-                                    h2{
-                                        font-size: 32px;
-                                        margin-bottom: 30px;
-                                    }
                                     .form-wrap{
                                         form{
                                             font-size: 13px;

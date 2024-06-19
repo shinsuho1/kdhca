@@ -7,7 +7,7 @@ include_once "../include/header.html"
         <article>
             <div class="wrap">
                 <h2>LOGIN</h2>
-                    <div class="form-wrap">
+                <div class="form-wrap">
                     <form action="">
                         <label>
                             <input type="text" placeholder="아이디를 입력하세요." class="input_id">
@@ -28,7 +28,7 @@ include_once "../include/header.html"
                             <a href="#none">로그인하기</a>
                         </label>
                     </form>
-                    <a href="#none" class="find_password">비밀번호 변경하기 <span>></span></a>
+                    <a href="./find_password.html" class="find_password">비밀번호 변경하기 <span>></span></a>
                 </div>
             </div>
         </article>
@@ -40,11 +40,11 @@ include_once "../include/footer.html"
 ?>
 
 <script>
-    $(".password_label .icon-svg").on("click", function(){
-        if($(this).parent().hasClass("active")){
-            $(this).siblings().attr("type","text");
-        }else{
-            $(this).siblings().attr("type","password");
+    $(".password_label .icon-svg").on("click", function() {
+        if ($(this).parent().hasClass("active")) {
+            $(this).siblings().attr("type", "text");
+        } else {
+            $(this).siblings().attr("type", "password");
         }
         $(this).parent().toggleClass("active");
     });
