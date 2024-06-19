@@ -26,20 +26,20 @@ $("#tab-menu .menu>span").on("click", function (e) {
 window.addEventListener("DOMContentLoaded", function () {
 
     if (window.innerWidth <= 1024) {
+        $(".header-wrap #gnb").off("mouseenter");
+        $("header").off("mouseleave");
         if (header_gnb.classList.contains("pc")) {
-            $(".header-wrap #gnb").off("mouseenter");
-            $("header").off("mouseleave");
             header_gnb.classList.remove("pc");
         }
         header_gnb.classList.add("mo");
-        $("#gnb.mo>li>a").on("click",function(e){
+        $("#gnb.mo>li>a").off('click').on("click",function(e){
             e.preventDefault();
             $(this).toggleClass("active")
             $(this).siblings().stop().slideToggle();
         });
     } else {
+        $("#gnb.mo>li>a").off("click");
         if (header_gnb.classList.contains("mo")) {
-            $("#gnb.mo>li>a").off("click");
             header_gnb.classList.remove("mo");
         }
         header_gnb.classList.add("pc");
@@ -55,28 +55,28 @@ window.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", () => {
         if (window.innerWidth <= 1024) {
+            $(".header-wrap #gnb").off("mouseenter");
+            $("header").off("mouseleave");    
             if (header_gnb.classList.contains("pc")) {
-                $(".header-wrap #gnb").off("mouseenter");
-                $("header").off("mouseleave");    
                 header_gnb.classList.remove("pc");
             }
             header_gnb.classList.add("mo");
-            $("#gnb.mo>li>a").on("click",function(e){
+            $("#gnb.mo>li>a").off('click').on("click",function(e){
                 e.preventDefault();
                 $(this).toggleClass("active")
                 $(this).siblings().stop().slideToggle();
             });
         } else {
+            $("#gnb.mo>li>a").off("click");
             if (header_gnb.classList.contains("mo")) {
-                $("#gnb.mo>li>a").off("click");
                 header_gnb.classList.remove("mo");
             }
             header_gnb.classList.add("pc");
-            $(".header-wrap #gnb").on("mouseenter",function(){
+            $(".header-wrap #gnb").off('click').on("mouseenter",function(){
                 $("header").addClass("hover");
                 $("header_blur").addClass("on");
             });
-            $("header").on("mouseleave",function(){
+            $("header").off('click').on("mouseleave",function(){
                 $("header").removeClass("hover");
                 $("header_blur").removeClass("on");
             });

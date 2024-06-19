@@ -275,7 +275,8 @@ main {
                                 align-items: flex-end;
                                 li {
                                     width: calc(100%/3);
-                                    height: calc(100% - $headerHeight);
+                                    // height: calc(100% - $headerHeight);
+                                    height: 100%;
                                     border-right: 0.6px solid #fff;
                                     padding-left: 45px;
                                     display: flex;
