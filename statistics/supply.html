@@ -22,18 +22,18 @@ $PAGE_CODE_2 = "0402";
             <div class="wrap">
                 <div class="tabs">
                     <a href="#none" class="active">총괄</a>
-                    <a href="#none">지역난방</a>
-                    <a href="#none">산업단지</a>
-                    <a href="#none">병행사업자</a>
-                    <a href="#none">지역냉방</a>
+                    <a href="javascript:alert('준비중입니다');">지역난방</a>
+                    <a href="javascript:alert('준비중입니다');">산업단지</a>
+                    <a href="javascript:alert('준비중입니다');">병행사업자</a>
+                    <a href="javascript:alert('준비중입니다');">지역냉방</a>
                 </div>
                 <script>
                     let n = true;
                     if (!n) {
                         document.querySelectorAll(".tabs a").forEach((el, index) => {
-                            el.addEventListener("click", function() {
+                            el.addEventListener("click", function(e) {
                                 if (el.classList.contains("active")) return false;
-
+                                e.preventDefault();
                                 document.querySelector(".tabs a.active").classList.remove("active");
                                 document.querySelector(".chart-area .chart.active").classList.remove("active");
 
