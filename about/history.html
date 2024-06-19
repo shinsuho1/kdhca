@@ -767,23 +767,33 @@ include_once "../include/footer.html"
                         gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
                             width: 100 - (self.progress.toFixed(3) * 50) + "%"
                         });
-                    } else {
-                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
-                            width: 100 - (self.progress.toFixed(3) * 50) + "%",
-                            height: 100 - (self.progress.toFixed(3) * 50) + "vh"
-                        });
                     }
-
-                    // else if (window.innerWidth >= 768 && window.innerWidth < 1025) {
+                    // else {
                     //     gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
-                    //         width: 100 - (self.progress.toFixed(3) * 70) + "%"
-                    //     });
-                    // } else if (window.innerWidth < 768) {
-                    //     gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
-                    //         width: 100 - (self.progress.toFixed(3) * 80) + "%"
+                    //         width: 100 - (self.progress.toFixed(3) * 50) + "%",
+                    //         height: 100 - (self.progress.toFixed(3) * 50) + "vh"
                     //     });
                     // }
-                }
+                    else if (window.innerWidth >= 768 && window.innerWidth < 1025) {
+                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
+                            width: 100 - (self.progress.toFixed(3) * 70) + "%"
+                        });
+                    } else if (window.innerWidth >= 541 && window.innerWidth < 768) {
+                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
+                            width: 100 - (self.progress.toFixed(3) * 80) + "%"
+                        });
+                    } else if (window.innerWidth < 541) {
+                        let imgWidth = 100 - (self.progress.toFixed(3) * 100);
+                        if (imgWidth <= 35) {
+                            $(".his-list").eq(q).addClass("hide");
+                        } else {
+                            $(".his-list").eq(q).removeClass("hide");
+                        }
+                        gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
+                            width:imgWidth + "%",
+                        });
+                    }
+                },
             },
         })
     });

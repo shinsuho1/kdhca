@@ -887,7 +887,7 @@
                     }
 
                     article {
-                        padding-top: 150px;
+                        padding-top: 20vh;
                         height: 100%;
 
                         .wrap {
@@ -962,42 +962,23 @@
                                 .wrap {
                                     .content {
                                         .his-list {
-                                            min-height: 30vh;
-                                            .pin-spacer{
-                                                // padding-bottom: 0 !important;
-                                                // height: initial !important;
-                                            }
                                             .img-wrap {
-                                                // position: initial !important;  
-                                                // transform: translate(0) !important;
-                                                min-height: 30vh;
-                                                height: 100vh;              
                                                 .img-area {
-                                                    width: 100% !important;                              
-                                                    position: absolute;
-                                                    height: 100%;
                                                     .txt {
-                                                        font-size: 72px;
+                                                        font-size: 62px;
                                                     }
                                                 }
                                             }
     
                                             .txt-wrap {
-                                                // min-height: initial;
-
                                                 padding: 60px 5% 60px;
-                                                // justify-content: flex-start;
                                                 ul {
-                                                    width: 100%;
+                                                    width: calc(70% - 5%);
                                                     li {
                                                         gap: 40px;
                                                         margin-bottom: 40px;
                                                     }
                                                 }
-                                            }
-                                            &:nth-child(2n){
-                                                display: flex;
-                                                flex-direction: column-reverse;
                                             }
                                         }
                                     }
@@ -1542,12 +1523,7 @@
                     }
 
                     article {
-                        padding-top: 0;
-                        @include flex_center;
-
                         .wrap {
-                            justify-content: center;
-
                             .table {
                                 ul {
                                     li {
@@ -1637,10 +1613,17 @@
                                 .wrap {
                                     .content {
                                         .his-list {
-
+                                            .img-wrap{
+                                                .img-area{
+                                                    .txt{
+                                                        font-size: 48px;
+                                                    }
+                                                }
+                                            }
                                             .txt-wrap {
                                                 padding: 40px 5% 40px;
-                                                ul {                                                    
+                                                ul {      
+                                                    width: calc(80% - 5%);                                              
                                                     li {
                                                         gap: 30px;
                                                         margin-bottom: 40px;
@@ -2019,6 +2002,49 @@
     
         }
     }
+    main{
+        &#subPage{
+            &.about{
+                &.history{
+                    section{
+                        &.s01{
+                            article{
+                                .wrap{
+                                    .content{
+                                        .his-list{
+                                            .img-wrap{
+                                                .img-area{
+                                                    .txt{
+                                                        opacity: 1;
+                                                        @include transition(.5s);
+                                                    }
+                                                }
+                                            }
+                                            .txt-wrap{
+                                                min-height: 250vh;
+                                                ul{
+                                                    width: 100%;
+                                                }
+                                            }
+                                            &.hide{
+                                                .img-wrap{
+                                                    .img-area{
+                                                        .txt{
+                                                            opacity: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width:450px) {
@@ -2193,12 +2219,11 @@
                     }
 
                     article {
-                        padding-top: 0;
-                        @include flex_center;
-
+                        padding: 0;
                         .wrap {
-                            gap: 30px;
-
+                            .title{
+                                padding-top: 130px;
+                            }
                             .table {
                                 ul {
                                     li {
@@ -2282,13 +2307,6 @@
                                 .wrap {
                                     .content {
                                         .his-list {
-                                            .img-wrap{
-                                                .img-area{
-                                                    .txt{
-                                                        font-size: 65px;
-                                                    }
-                                                }
-                                            }
                                             .txt-wrap {
                                                 ul {
                                                     width: 100%;
