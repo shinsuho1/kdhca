@@ -41,7 +41,7 @@ include_once "../include/footer.html"
 
 <script>
     $(".password_label .icon-svg").on("click", function() {
-        if ($(this).parent().hasClass("active")) {
+        if (!$(this).parent().hasClass("active")) {
             $(this).siblings().attr("type", "text");
         } else {
             $(this).siblings().attr("type", "password");

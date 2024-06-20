@@ -1845,7 +1845,7 @@ main {
     position: absolute;
     font-size: 12px;
     font-weight: 400;
-    @include transition(all .5s);
+    @include transition(opacity .5s);
     border: 0.5px solid #aaa;
     padding: 13px 10px;
     border-radius: 5px;
