@@ -375,7 +375,6 @@
                                             .txt-wrap {
                                                 padding: 150px 5% 100px;
                                                 ul {
-                                                    width: calc(50% - 100px);
     
                                                     li {
                                                         gap: 50px;
@@ -665,7 +664,6 @@
                     font-size: 18px;
                     select{
                         width: 170px;
-                        padding: 15px 25px 15px;
                         background-size: 20px 9px;
                     }
                     .input-wrap{
@@ -1285,7 +1283,7 @@
                     font-size: 16px;
                     select{
                         width: 150px;
-                        padding: 10px 20px 10px;
+                        padding: 0 20px;
                         background-size: 19px 8px;
                     }
                     .input-wrap{
@@ -1932,7 +1930,7 @@
                     font-size: 14px;
                     select{
                         width: 130px;
-                        padding: 10px 15px 10px;
+                        padding: 0 15px;
                         background-size: 18px 7px;
                         background-position-x: 85%;
                     }
@@ -2083,7 +2081,6 @@
                                                 }
                                             }
                                             .txt-wrap{
-                                                min-height: 230px;
                                                 ul{
                                                     width: 100%;
                                                 }

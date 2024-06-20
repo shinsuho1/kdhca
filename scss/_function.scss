@@ -391,6 +391,9 @@ textarea::placeholder,
 select {
     font-family: inherit;
 }
+select{
+    background-color: #Fff;
+}
 
 input[type="checkbox"] {
     @include appearance_none;

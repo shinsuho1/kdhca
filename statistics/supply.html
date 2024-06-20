@@ -409,8 +409,8 @@ include_once "../include/footer.html"
         data07: [],
     }
     data01_element.forEach((el, index) => {
-        // 합계 제외
-        if (index == 3) return false;
+        
+        if (index == 3) return false; // 합계 제외
         data_area.label.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, "").trim());
         data_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim());
         data_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim());
@@ -646,11 +646,13 @@ include_once "../include/footer.html"
     document.querySelector(".canvas-wrap").addEventListener("click", function() {
         setTimeout(() => {
             document.querySelectorAll(".canvas-wrap .box canvas").forEach(function(el, index) {
-            chartArr[index].data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
-            chartArr[index].update();
-        });
+                chartArr[index].data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
+                chartArr[index].update();
+            });
         }, 100);
     });
+
+
     // horizontal Chart
     const myChart07 = new Chart(ctx_canvas[6], {
         type: 'bar',

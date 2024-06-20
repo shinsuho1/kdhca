@@ -767,14 +767,7 @@ include_once "../include/footer.html"
                         gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
                             width: 100 - (self.progress.toFixed(3) * 50) + "%"
                         });
-                    }
-                    // else {
-                    //     gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
-                    //         width: 100 - (self.progress.toFixed(3) * 50) + "%",
-                    //         height: 100 - (self.progress.toFixed(3) * 50) + "vh"
-                    //     });
-                    // }
-                    else if (window.innerWidth >= 768 && window.innerWidth < 1025) {
+                    }else if (window.innerWidth >= 768 && window.innerWidth < 1025) {
                         gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
                             width: 100 - (self.progress.toFixed(3) * 70) + "%"
                         });
@@ -793,6 +786,7 @@ include_once "../include/footer.html"
                             width:imgWidth + "%",
                         });
                     }
+                    
                 },
             },
         })
