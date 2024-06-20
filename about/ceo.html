@@ -60,6 +60,7 @@ include_once "../include/footer.html"
 
         const canvas = document.querySelector(".circle01");
         const canvas_ = document.querySelectorAll("#subPage.ceo canvas");
+
         function drawEllipse(ctx, x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise) {
             ctx.beginPath();
             ctx.ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise);
@@ -188,7 +189,7 @@ include_once "../include/footer.html"
                 ctx.clearRect(0, 0, el.width, el.height);
                 drawEllipse(ctx, ctxWidth, ctxWidth, ctxWidth - 100, ctxHeight - size, 0, 0, 2 * Math.PI, false);
 
-                circles[index].forEach((ele, index) => {
+                circles[index].forEach((ele, indexs) => {
                     const x = ctxWidth + ((ctxWidth - 100) * Math.cos(ele.angle));
                     const y = ctxWidth + ((ctxHeight - size) * Math.sin(ele.angle));
                     drawCircle(ctx, x, y, 5, ele.color);

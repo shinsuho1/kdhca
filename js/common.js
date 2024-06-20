@@ -5,8 +5,8 @@ let html = document.querySelector("html"),
     header = document.querySelector("header"),
     footer = document.querySelector("footer"),
     menuicon = document.querySelector(".menuicon"),
-    header_gnb = document.querySelector("header .header-wrap #gnb")
-header_blur = document.querySelector(".header_blur");
+    header_gnb = document.querySelector("header .header-wrap #gnb"),
+    header_blur = document.querySelector(".header_blur");
 
 window.addEventListener("DOMContentLoaded", function () {
     $(".menuicon").on("click", function () {
@@ -31,14 +31,14 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    $(".header-wrap #gnb").off("mouseenter").mouseenter(function (e) {
+    $(".header-wrap #gnb").off("mouseenter").mouseenter(function () {
         if (window.innerWidth > 1024) {
             $("header").addClass("hover");
             $(".header_blur").addClass("on");
         }
     });
 
-    $("header").off("mouseleave").mouseleave(function (e) {
+    $("header").off("mouseleave").mouseleave(function () {
         if (window.innerWidth > 1024) {
             $("header").removeClass("hover");
             $(".header_blur").removeClass("on");
@@ -159,12 +159,13 @@ window.addEventListener("DOMContentLoaded", function () {
     }
     if (url == "information" && document.querySelector(".member")) {
         document.querySelectorAll(".content .box ul li a").forEach((el, index) => {
-            el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`
+            el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`;
             el.addEventListener("click", function (e) {
                 e.preventDefault();
             });
         });
-    } if (url != "main" && url != "account") {
+    } 
+    if (url != "main" && url != "account") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
             if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
@@ -193,7 +194,7 @@ window.addEventListener("DOMContentLoaded", function () {
             table_length = document.querySelectorAll(".cs_table tbody tr").length,
             table_number = document.querySelectorAll(".cs_table tbody tr td").length;
         if (!cs_center_table || !table_length || table_length <= 0 || !table_number || table_number <= 0) {
-            if (cs_center_table) cs_center_table.style.display = "none"; 
+            if (cs_center_table) cs_center_table.style.display = "none";
             document.querySelector(".no_data").style.display = "flex";
         }
     }
