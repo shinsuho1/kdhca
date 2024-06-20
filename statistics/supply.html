@@ -635,17 +635,21 @@ include_once "../include/footer.html"
         plugins: [ChartDataLabels]
     });
 
-    let chartArr = [myChart01,myChart02,myChart03,myChart04,myChart05]
+    let chartArr = [myChart01, myChart02, myChart03, myChart04, myChart05, myChart06]
 
     document.querySelectorAll(".canvas-wrap .box canvas").forEach(function(el, index) {
         el.addEventListener("mouseleave", function() {
             chartArr[index].data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
             chartArr[index].update();
         });
-        el.addEventListener("touchend", function() {
+    });
+    document.querySelector(".canvas-wrap").addEventListener("click", function() {
+        setTimeout(() => {
+            document.querySelectorAll(".canvas-wrap .box canvas").forEach(function(el, index) {
             chartArr[index].data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
             chartArr[index].update();
         });
+        }, 100);
     });
     // horizontal Chart
     const myChart07 = new Chart(ctx_canvas[6], {

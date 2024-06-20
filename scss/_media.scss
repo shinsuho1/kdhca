@@ -752,6 +752,11 @@
         .header-bg {
             height: $headerHeight;
         }
+        &.hover{
+            .header-bg{
+                height: $headerHeight;
+            }
+        }
     }
 
     footer {
@@ -1357,7 +1362,8 @@
                                         margin-bottom: 40px;
                                     }
                                     .back{
-                                        padding: 10px 40px;
+                                        font-size: 16px;
+                                        padding: 15px 50px;
                                     }
                                 }
                             }
@@ -1365,8 +1371,8 @@
                     }
                 }
             }
-            &.member{
-                &.login,&.find_password{
+            &.account{
+                &.login,&.change_password{
                     section{
                         &.s01{
                             padding: 140px 0 200px;
@@ -1971,8 +1977,7 @@
                                         margin-bottom: 30px;
                                     }
                                     .back{
-                                        font-size: 14px;
-                                        padding: 10px 30px;
+                                        padding: 15px 45px;
                                     }
                                 }
                             }
@@ -1980,8 +1985,8 @@
                     }
                 }
             }
-            &.member{
-                &.login,&.find_password{
+            &.account{
+                &.login,&.change_password{
                     section{
                         &.s01{
                             padding: 120px 0 180px;
@@ -2540,7 +2545,7 @@
                                 .wrap{
                                     ul{
                                         li{
-                                            margin-bottom: 30px;
+                                            margin-bottom: 40px;
                                             .text{
                                                 h3{
                                                     font-size: 18px;
@@ -2551,10 +2556,10 @@
                                                 }
                                             }
                                             &.start{
-                                                gap: 10px;
+                                                gap: 15px;
                                             }
                                             &.end{
-                                                gap: 10px;
+                                                gap: 15px;
                                             }
                                         }
                                     }
@@ -2679,7 +2684,7 @@
                                         margin-bottom: 20px;
                                     }
                                     .back{
-                                        font-size: 13px;
+                                        font-size: 14px;
                                     }
                                 }
                             }
@@ -2687,8 +2692,8 @@
                     }
                 }
             }
-            &.member{
-                &.login,&.find_password{
+            &.account{
+                &.login,&.change_password{
                     section{
                         &.s01{
                             padding: 100px 0 140px;
