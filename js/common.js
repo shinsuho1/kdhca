@@ -45,15 +45,6 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-
-    if (window.innerWidth <= 1024) {
-        if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
-        header_gnb.classList.add("mo");
-    } else {
-        if (header_gnb.classList.contains("mo")) header_gnb.classList.remove("mo");
-        header_gnb.classList.add("pc");
-    }
-
     if (url == "main") {
         $('#mainPage').fullpage({
             navigation: false,
@@ -153,7 +144,8 @@ window.addEventListener("DOMContentLoaded", function () {
                 document.querySelector(".s02 .bg").style.backgroundImage = `url(../images/main/business_bg0${index + 1}.png)`;
             });
         });
-    }else if (url == "account"){
+    }
+    if (url == "account"){
         header.classList.add("bg");
 
         $(".password_label .icon-svg").on("click", function() {
@@ -164,14 +156,15 @@ window.addEventListener("DOMContentLoaded", function () {
             }
             $(this).parent().toggleClass("active");
         });
-    }else if(url == "information" && document.querySelector(".member")){
+    }
+    if(url == "information" && document.querySelector(".member")){
         document.querySelectorAll(".content .box ul li a").forEach((el,index)=>{
             el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`
             el.addEventListener("click",function(e){
                 e.preventDefault();
             });
         });
-    }else if (url != "main" && url != "account") {
+    }if (url != "main" && url != "account") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
             if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
@@ -185,7 +178,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         });
     }
-
     if (document.querySelector("#subPage.change_password")) {
         document.querySelector("label.submit a").addEventListener("click", function (e) {
         e.preventDefault();
@@ -242,6 +234,13 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    if (window.innerWidth <= 1024) {
+        if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
+        header_gnb.classList.add("mo");
+    } else {
+        if (header_gnb.classList.contains("mo")) header_gnb.classList.remove("mo");
+        header_gnb.classList.add("pc");
+    }
     window.addEventListener("resize", () => {
         if (window.innerWidth <= 1024) {
             if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
