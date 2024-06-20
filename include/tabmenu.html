@@ -82,13 +82,16 @@
                     echo "공지사항";
                 } ?>
                 <?php if ($PAGE_CODE_2 == "0502") {
-                    echo "회원사 전용";
+                    echo "업계통향";
                 } ?>
                 <?php if ($PAGE_CODE_2 == "0503") {
                     echo "회원사 동정";
                 } ?>
                 <?php if ($PAGE_CODE_2 == "0504") {
                     echo "자료실";
+                } ?>
+                <?php if ($PAGE_CODE_2 == "0505") {
+                    echo "회원사 전용";
                 } ?>
                 <img src="../images/common/tab-menu-arrow.svg" alt="화살표">
             </span>
@@ -123,9 +126,10 @@
                 } else if ($PAGE_CODE_1 == "05") {
                 ?>
                     <li class="<?php if($PAGE_CODE_2 == "0501"){echo 'none';}?>"><a href="../cs_center/notice.html">공지사항</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0502"){echo 'none';}?>"><a href="../cs_center/list02.html">회원사전용</a></li>
+                    <li class="<?php if($PAGE_CODE_2 == "0502"){echo 'none';}?>"><a href="../cs_center/list02.html">업계통향</a></li>
                     <li class="<?php if($PAGE_CODE_2 == "0503"){echo 'none';}?>"><a href="../cs_center/list03.html">회원사 동정</a></li>
                     <li class="<?php if($PAGE_CODE_2 == "0504"){echo 'none';}?>"><a href="../cs_center/list04.html">자료실</a></li>
+                    <li class="<?php if($PAGE_CODE_2 == "0504"){echo 'none';}?>"><a href="../cs_center/list05.html">회원사 전용</a></li>
                 <?php } ?>
             </ul>
         </div>

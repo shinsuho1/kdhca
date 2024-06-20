@@ -6,40 +6,40 @@ let html = document.querySelector("html"),
     footer = document.querySelector("footer"),
     menuicon = document.querySelector(".menuicon"),
     header_gnb = document.querySelector("header .header-wrap #gnb")
-    header_blur = document.querySelector(".header_blur");
+header_blur = document.querySelector(".header_blur");
 
 window.addEventListener("DOMContentLoaded", function () {
     $(".menuicon").on("click", function () {
         $(".header-wrap .gnb-wrap").addClass("active");
     });
-    
-    $(".gnb-wrap .close").on("click",function(){
+
+    $(".gnb-wrap .close").on("click", function () {
         $(".header-wrap .gnb-wrap").removeClass("active");
     });
-    
+
     $("#tab-menu .menu>span").on("click", function (e) {
         e.preventDefault();
         $(this).parent().toggleClass("active");
         $(this).siblings().stop().slideToggle();
     });
-        
-    $("#gnb>li>a").off("click").click(function(e){
-        if(window.innerWidth <= 1024 && ($(this).siblings(".sub-menu").length > 0)){
+
+    $("#gnb>li>a").off("click").click(function (e) {
+        if (window.innerWidth <= 1024 && ($(this).siblings(".sub-menu").length > 0)) {
             e.preventDefault();
             $(".sub-menu").stop().slideUp();
             $(this).siblings(".sub-menu").stop().slideToggle();
         }
     });
 
-    $(".header-wrap #gnb").off("mouseenter").mouseenter(function(e){
-        if(window.innerWidth > 1024){
+    $(".header-wrap #gnb").off("mouseenter").mouseenter(function (e) {
+        if (window.innerWidth > 1024) {
             $("header").addClass("hover");
             $(".header_blur").addClass("on");
         }
     });
 
-    $("header").off("mouseleave").mouseleave(function(e){
-        if(window.innerWidth > 1024){
+    $("header").off("mouseleave").mouseleave(function (e) {
+        if (window.innerWidth > 1024) {
             $("header").removeClass("hover");
             $(".header_blur").removeClass("on");
         }
@@ -61,13 +61,13 @@ window.addEventListener("DOMContentLoaded", function () {
                 } else if (index == 2 && direction == "up") {
                     header.classList.remove("bg");
                 }
-                if(index < 5 && direction == "down"){
+                if (index < 5 && direction == "down") {
                     document.querySelectorAll("#mainPage .section")[index].classList.add("load");
                 }
             }
         });
 
-        document.querySelector(".page-arrow").addEventListener("click",()=>{
+        document.querySelector(".page-arrow").addEventListener("click", () => {
             $.fn.fullpage.moveTo(2, 1);
 
         });
@@ -124,13 +124,13 @@ window.addEventListener("DOMContentLoaded", function () {
                     spaceBetween: 10,
                 }
             },
-            on:{
-                resize: function(el){
+            on: {
+                resize: function (el) {
                     setTimeout(() => {
                         el.autoplay.running == true;
                         el.autoplay.paused == true;
-                        el.autoplay.start();   
-                    }, 100); 
+                        el.autoplay.start();
+                    }, 100);
                 }
             }
         });
@@ -145,10 +145,10 @@ window.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-    if (url == "account"){
+    if (url == "account") {
         header.classList.add("bg");
 
-        $(".password_label .icon-svg").on("click", function() {
+        $(".password_label .icon-svg").on("click", function () {
             if (!$(this).parent().hasClass("active")) {
                 $(this).siblings().attr("type", "text");
             } else {
@@ -157,42 +157,73 @@ window.addEventListener("DOMContentLoaded", function () {
             $(this).parent().toggleClass("active");
         });
     }
-    if(url == "information" && document.querySelector(".member")){
-        document.querySelectorAll(".content .box ul li a").forEach((el,index)=>{
+    if (url == "information" && document.querySelector(".member")) {
+        document.querySelectorAll(".content .box ul li a").forEach((el, index) => {
             el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`
-            el.addEventListener("click",function(e){
+            el.addEventListener("click", function (e) {
                 e.preventDefault();
             });
         });
-    }if (url != "main" && url != "account") {
+    } if (url != "main" && url != "account") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
             if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
             let scrollTop = window.scrollY;
-            if(scrollTop > 0){
+            if (scrollTop > 0) {
                 header.classList.add("bg");
-            }else{
+            } else {
                 header.classList.remove("bg");
             }
             lastScroll = scrollTop;
 
         });
     }
-    if (document.querySelector("#subPage.change_password")) {
-        document.querySelector("label.submit a").addEventListener("click", function (e) {
+
+
+    if (window.innerWidth <= 1024) {
+        if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
+        header_gnb.classList.add("mo");
+    } else {
+        if (header_gnb.classList.contains("mo")) header_gnb.classList.remove("mo");
+        header_gnb.classList.add("pc");
+    }
+
+    if (url == "cs_center" && !document.querySelector("#subPage.detail")) {
+        let cs_center_table = document.querySelector(".cs_table"),
+            table_length = document.querySelectorAll(".cs_table tbody tr").length,
+            table_number = document.querySelectorAll(".cs_table tbody tr td").length;
+        if (!cs_center_table || !table_length || table_length <= 0 || !table_number || table_number <= 0) {
+            if (cs_center_table) cs_center_table.style.display = "none"; 
+            document.querySelector(".no_data").style.display = "flex";
+        }
+    }
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth <= 1024) {
+            if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
+            header_gnb.classList.add("mo");
+        } else {
+            if (header_gnb.classList.contains("mo")) header_gnb.classList.remove("mo");
+            header_gnb.classList.add("pc");
+        }
+    });
+});
+
+/* ================================ contact ================================ */
+function contactCheck(el) {
+    if (!el.value.trim().length > 0 || el.value.trim().length == 0) {
+        el.focus();
+        return false;
+    }
+    return true;
+}
+if (document.querySelector("#subPage.account.change_password")) {
+    document.querySelector("label.submit a").addEventListener("click", function (e) {
         e.preventDefault();
         let memberId = document.querySelector("input.memberId_input"),
             nowPass = document.querySelector("input.nowPass_input"),
             newPass = document.querySelector("input.newPass_input"),
             newPassCheck = document.querySelector("input.newPassCheck_input");
-
-        function contactCheck(el) {
-            if (!el.value.trim().length > 0 || el.value.trim().length == 0) {
-                el.focus();
-                return false;
-            }
-            return true;
-        }
 
         if (!contactCheck(memberId)) {
             alert("회원사 아이디를 입력해주세요.");
@@ -231,26 +262,24 @@ window.addEventListener("DOMContentLoaded", function () {
         }
 
         document.querySelector("form").submit();
-        });
-    }
-
-    if (window.innerWidth <= 1024) {
-        if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
-        header_gnb.classList.add("mo");
-    } else {
-        if (header_gnb.classList.contains("mo")) header_gnb.classList.remove("mo");
-        header_gnb.classList.add("pc");
-    }
-    window.addEventListener("resize", () => {
-        if (window.innerWidth <= 1024) {
-            if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");
-            header_gnb.classList.add("mo");
-        } else {
-            if (header_gnb.classList.contains("mo")) header_gnb.classList.remove("mo");
-            header_gnb.classList.add("pc");
-        }
     });
-});
+}
 
-/* ================================ contact ================================ */
+if (document.querySelector("#subPage.account.login")) {
+    let input_id = document.querySelector(".input_id"),
+        input_password = document.querySelector(".input_password");
 
+    document.querySelector(".submit a").addEventListener("click", function (e) {
+        e.preventDefault();
+        if (!contactCheck(input_id)) {
+            alert("아이디를 입력해주세요");
+            return false;
+        }
+
+        if (!contactCheck(input_password)) {
+            alert("비밀번호를 입력해주세요.");
+            return false;
+        }
+        document.querySelector("form").submit();
+    });
+}

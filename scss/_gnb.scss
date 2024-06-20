@@ -352,10 +352,11 @@ footer{
     .footer-wrap{
         @include inner-center($innerWidth);
         @include flex-space-center;
-        gap: 450px;
+        gap: 400px;
         color: #a8a8a8;
         .logo{
             width: 300px;
+            min-width: 300px;
             img{
                 width: 100%;
                 object-fit: contain;
