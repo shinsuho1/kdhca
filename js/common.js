@@ -158,13 +158,27 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
     if (url == "information" && document.querySelector(".member")) {
-        document.querySelectorAll(".content .box ul li a").forEach((el, index) => {
+        let member_list = document.querySelectorAll(".member .s01 .content .box ul li a");
+        let pop_element = this.document.querySelector(".pop.information-member");
+        member_list.forEach((el, index) => {
             el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`;
             el.addEventListener("click", function (e) {
                 e.preventDefault();
+                let img = pop_element.querySelector(".img-wrap img"),
+                    name = pop_element.querySelector(".text .name");
+                    img.src = el.querySelector(".img-wrap img").getAttribute("src");
+                    img.alt = el.querySelector(".img-wrap img").getAttribute("alt");
+                    name.textContent = el.querySelector(".img-wrap img").getAttribute("alt");
+                pop_element.classList.add("active");
+                body.classList.add("stop_scroll");
             });
         });
-    } 
+        document.querySelector(".pop .close").addEventListener("click",function(e){
+            pop_element.classList.remove("active");
+            body.classList.remove("stop_scroll");
+        });    
+    } ;
+
     if (url != "main" && url != "account") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {

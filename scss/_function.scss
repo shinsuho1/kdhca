@@ -433,6 +433,10 @@ body {
     line-height: 1.3;
     width: 100%;
     overflow-x: hidden;
+    &.stop_scroll{
+        height: 100%;
+        overflow-y: hidden;
+    }
 }
 
 .header_blur {
