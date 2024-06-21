@@ -45,6 +45,10 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    if (window.scrollY > 0){
+        header.classList.add("bg");
+    }
+
     if (url == "main") {
         $('#mainPage').fullpage({
             navigation: false,
@@ -162,22 +166,22 @@ window.addEventListener("DOMContentLoaded", function () {
             el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`;
             el.addEventListener("click", function (e) {
                 e.preventDefault();
-                let img = pop_element.querySelector(".img-wrap img"),
-                    name = pop_element.querySelector(".text .name"),
-                    link = pop_element.querySelector(".link a");
-                    img.src = el.querySelector(".img-wrap img").getAttribute("src");
-                    img.alt = el.querySelector(".img-wrap img").getAttribute("alt");
-                    link.href = el.getAttribute("href");
-                    name.textContent = el.querySelector(".img-wrap img").getAttribute("alt");
+                // let img = pop_element.querySelector(".img-wrap img"),
+                //     name = pop_element.querySelector(".text .name"),
+                //     link = pop_element.querySelector(".link a");
+                //     img.src = el.querySelector(".img-wrap img").getAttribute("src");
+                //     img.alt = el.querySelector(".img-wrap img").getAttribute("alt");
+                //     link.href = el.getAttribute("href");
+                //     name.textContent = el.querySelector(".img-wrap img").getAttribute("alt");
 
-                pop_element.classList.add("active");
+                // pop_element.classList.add("active");
                 // body.classList.add("stop_scroll");
             });
         });
-        document.querySelector(".pop .close").addEventListener("click",function(e){
-            pop_element.classList.remove("active");
+        // document.querySelector(".pop .close").addEventListener("click",function(e){
+        //     pop_element.classList.remove("active");
             // body.classList.remove("stop_scroll");
-        });    
+        // });    
     } ;
 
     if (url != "main" && url != "account") {

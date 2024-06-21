@@ -418,13 +418,17 @@ main {
                                         a {
                                             width: 100%;
                                             @include ellipsis(1);
+                                            &:hover{
+                                                text-decoration: underline;
+                                            }
                                         }
                                     }
 
                                     .date {
                                         font-size: 14px;
                                         font-weight: 500;
-                                        margin-bottom: 30px
+                                        margin-bottom: 30px;
+                                        @include ellipsis(1);
                                     }
 
                                     p {
