@@ -69,7 +69,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         document.querySelector(".page-arrow").addEventListener("click", () => {
             $.fn.fullpage.moveTo(2, 1);
-
         });
 
         var main_slide = new Swiper(".main_slide", {
@@ -147,7 +146,6 @@ window.addEventListener("DOMContentLoaded", function () {
     }
     if (url == "account") {
         header.classList.add("bg");
-
         $(".password_label .icon-svg").on("click", function () {
             if (!$(this).parent().hasClass("active")) {
                 $(this).siblings().attr("type", "text");
@@ -158,24 +156,27 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
     if (url == "information" && document.querySelector(".member")) {
-        let member_list = document.querySelectorAll(".member .s01 .content .box ul li a");
+        let member_list = document.querySelectorAll(".member .s01 .content .box ul>li>a");
         let pop_element = this.document.querySelector(".pop.information-member");
         member_list.forEach((el, index) => {
             el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`;
             el.addEventListener("click", function (e) {
                 e.preventDefault();
                 let img = pop_element.querySelector(".img-wrap img"),
-                    name = pop_element.querySelector(".text .name");
+                    name = pop_element.querySelector(".text .name"),
+                    link = pop_element.querySelector(".link a");
                     img.src = el.querySelector(".img-wrap img").getAttribute("src");
                     img.alt = el.querySelector(".img-wrap img").getAttribute("alt");
+                    link.href = el.getAttribute("href");
                     name.textContent = el.querySelector(".img-wrap img").getAttribute("alt");
+
                 pop_element.classList.add("active");
-                body.classList.add("stop_scroll");
+                // body.classList.add("stop_scroll");
             });
         });
         document.querySelector(".pop .close").addEventListener("click",function(e){
             pop_element.classList.remove("active");
-            body.classList.remove("stop_scroll");
+            // body.classList.remove("stop_scroll");
         });    
     } ;
 

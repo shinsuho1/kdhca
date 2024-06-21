@@ -383,7 +383,7 @@ main {
                 }
 
                 .bg {
-                    width: 975px;
+                    width: 800px;
                     position: absolute;
                     bottom: 0;
                     left: -130px;
@@ -1790,6 +1790,7 @@ main {
                                                 text-align: center;
                                                 color: #fff;
                                                 margin-bottom: 20px;
+                                                padding: 0;
                                                 a{
                                                     @include flex-center;
                                                     @include fullsize;
@@ -1877,6 +1878,7 @@ main {
     @include flex-center;
     @include drag-off;
     opacity: 0;
+    @include transition(.3s);
     h2{
         position: absolute;
         top: 10vw;
@@ -1907,6 +1909,16 @@ main {
         border-radius: 10px;
         @include flex-center;
         gap: 50px;
+        .text{
+            .link{
+                color: #006eb5;
+                font-size: 20px;
+                font-weight: 600;
+                a{
+                    @include font-inherit;
+                }
+            }
+        }
     }
     &.active{
         @include drag-on;
