@@ -858,6 +858,7 @@ main {
                                                     border-radius: 10px;
                                                     position: relative;
                                                     overflow: hidden;
+                                                    @include transition(.3s);
 
                                                     .member-name {
                                                         position: absolute;
@@ -866,12 +867,12 @@ main {
                                                         @include flex-center;
                                                         @include drag-off;
                                                         @include el-hide;
+                                                        @include transition(.3s);
                                                         z-index: 2;
                                                         background-color: #006eb5;
                                                         font-size: 20px;
                                                         font-weight: 600;
                                                         color: #fff;
-                                                        @include transition(.3s);
 
                                                         span {
                                                             @include drag-off;
@@ -889,6 +890,7 @@ main {
                                                     }
 
                                                     &:hover {
+                                                        border-color: #006eb5;
                                                         .member-name {
                                                             @include drag-on;
                                                             @include el-fade;
@@ -1562,7 +1564,7 @@ main {
                 p {
                     font-size: 26px;
                     font-weight: 500;
-                    color: #ccc;
+                    color: #eee;
                 }
             }
 

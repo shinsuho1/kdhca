@@ -52,7 +52,7 @@ header{
             #gnb{
                 &.pc{
                     @include flex-center;
-                    gap: 30px;
+                    gap: 60px;
                     height: 100%;
                     @include transition(.4s);
                     color: #Fff;

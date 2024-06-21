@@ -23,11 +23,21 @@
                 <img src="../images/common/tab-menu-arrow.svg" alt="화살표">
             </span>
             <ul>
-                <li class="<?php if($PAGE_CODE_1 == "01"){echo 'none';}?>"><a href="../about/ceo.html">협회소개</a></li>
-                <li class="<?php if($PAGE_CODE_1 == "02"){echo 'none';}?>"><a href="../information/member.html">회원사 정보</a></li>
-                <li class="<?php if($PAGE_CODE_1 == "03"){echo 'none';}?>"><a href="../energy/heating.html">집단에너지란?</a></li>
-                <li class="<?php if($PAGE_CODE_1 == "04"){echo 'none';}?>"><a href="../statistics/year.html">통계/현황</a></li>
-                <li class="<?php if($PAGE_CODE_1 == "05"){echo 'none';}?>"><a href="../cs_center/notice.html">정보센터</a></li>
+                <li class="<?php if ($PAGE_CODE_1 == "01") {
+                                echo 'none';
+                            } ?>"><a href="../about/ceo.html">협회소개</a></li>
+                <li class="<?php if ($PAGE_CODE_1 == "02") {
+                                echo 'none';
+                            } ?>"><a href="../information/member.html">회원사 정보</a></li>
+                <li class="<?php if ($PAGE_CODE_1 == "03") {
+                                echo 'none';
+                            } ?>"><a href="../energy/heating.html">집단에너지란?</a></li>
+                <li class="<?php if ($PAGE_CODE_1 == "04") {
+                                echo 'none';
+                            } ?>"><a href="../statistics/year.html">통계/현황</a></li>
+                <li class="<?php if ($PAGE_CODE_1 == "05") {
+                                echo 'none';
+                            } ?>"><a href="../cs_center/notice.html">정보센터</a></li>
             </ul>
         </div>
         <div class="menu">
@@ -88,10 +98,11 @@
                     echo "회원사 동정";
                 } ?>
                 <?php if ($PAGE_CODE_2 == "0504") {
-                    echo "자료실";
-                } ?>
-                <?php if ($PAGE_CODE_2 == "0505") {
                     echo "회원사 전용";
+                } ?>
+
+                <?php if ($PAGE_CODE_2 == "0505") {
+                    echo "자료실";
                 } ?>
                 <img src="../images/common/tab-menu-arrow.svg" alt="화살표">
             </span>
@@ -99,37 +110,75 @@
                 <?php
                 if ($PAGE_CODE_1 == "01") {
                 ?>
-                    <li class="<?php if($PAGE_CODE_2 == "0101"){echo 'none';}?>"><a href="../about/ceo.html">인사말</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0102"){echo 'none';}?>"><a href="../about/history.html">협회연혁</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0103"){echo 'none';}?>"><a href="../about/location.html">오시는 길</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0101") {
+                                    echo 'none';
+                                } ?>"><a href="../about/ceo.html">인사말</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0102") {
+                                    echo 'none';
+                                } ?>"><a href="../about/history.html">협회연혁</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0103") {
+                                    echo 'none';
+                                } ?>"><a href="../about/location.html">오시는 길</a></li>
                 <?php
                 } else if ($PAGE_CODE_1 == "02") {
                 ?>
-                    <li class="<?php if($PAGE_CODE_2 == "0201"){echo 'none';}?>"><a href="../information/member.html">회원사 소개</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0202"){echo 'none';}?>"><a href="javascript:alert('준비중입니다');">회원사 현황</a></li>
-                    <?php
+                    <li class="<?php if ($PAGE_CODE_2 == "0201") {
+                                    echo 'none';
+                                } ?>"><a href="../information/member.html">회원사 소개</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0202") {
+                                    echo 'none';
+                                } ?>"><a href="javascript:alert('준비중입니다');">회원사 현황</a></li>
+                <?php
                 } else if ($PAGE_CODE_1 == "03") {
                 ?>
-                    <li class="<?php if($PAGE_CODE_2 == "0301"){echo 'none';}?>"><a href="../energy/heating.html">지역난방</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0302"){echo 'none';}?>"><a href="../energy/cooling.html">지역냉방</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0303"){echo 'none';}?>"><a href="../energy/apartment.html">아파트에 지역냉방을 도입하면</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0304"){echo 'none';}?>"><a href="../energy/area.html">구역형 집단에너지 사업</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0305"){echo 'none';}?>"><a href="../energy/facility.html">시설소개</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0301") {
+                                    echo 'none';
+                                } ?>"><a href="../energy/heating.html">지역난방</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0302") {
+                                    echo 'none';
+                                } ?>"><a href="../energy/cooling.html">지역냉방</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0303") {
+                                    echo 'none';
+                                } ?>"><a href="../energy/apartment.html">아파트에 지역냉방을 도입하면</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0304") {
+                                    echo 'none';
+                                } ?>"><a href="../energy/area.html">구역형 집단에너지 사업</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0305") {
+                                    echo 'none';
+                                } ?>"><a href="../energy/facility.html">시설소개</a></li>
                 <?php
                 } else if ($PAGE_CODE_1 == "04") {
                 ?>
-                    <li class="<?php if($PAGE_CODE_2 == "0401"){echo 'none';}?>"><a href="../statistics/year.html">연도별 추이</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0402"){echo 'none';}?>"><a href="../statistics/supply.html">공급현황</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0403"){echo 'none';}?>"><a href="javascript:alert('준비중입니다');">설비현황</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0404"){echo 'none';}?>"><a href="javascript:alert('준비중입니다');">운영실적</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0401") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/year.html">연도별 추이</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0402") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/supply.html">공급현황</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0403") {
+                                    echo 'none';
+                                } ?>"><a href="javascript:alert('준비중입니다');">설비현황</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0404") {
+                                    echo 'none';
+                                } ?>"><a href="javascript:alert('준비중입니다');">운영실적</a></li>
                 <?php
                 } else if ($PAGE_CODE_1 == "05") {
                 ?>
-                    <li class="<?php if($PAGE_CODE_2 == "0501"){echo 'none';}?>"><a href="../cs_center/notice.html">공지사항</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0502"){echo 'none';}?>"><a href="../cs_center/list02.html">업계통향</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0503"){echo 'none';}?>"><a href="../cs_center/list03.html">회원사 동정</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0504"){echo 'none';}?>"><a href="../cs_center/list04.html">자료실</a></li>
-                    <li class="<?php if($PAGE_CODE_2 == "0504"){echo 'none';}?>"><a href="../cs_center/list05.html">회원사 전용</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0501") {
+                                    echo 'none';
+                                } ?>"><a href="../cs_center/notice.html">공지사항</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0502") {
+                                    echo 'none';
+                                } ?>"><a href="../cs_center/list02.html">업계통향</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0503") {
+                                    echo 'none';
+                                } ?>"><a href="../cs_center/list03.html">회원사 동정</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0504") {
+                                    echo 'none';
+                                } ?>"><a href="../cs_center/list04.html">회원사 전용</a></li>
+                    <li class="<?php if ($PAGE_CODE_2 == "0505") {
+                                    echo 'none';
+                                } ?>"><a href="../cs_center/list05.html">자료실</a></li>
                 <?php } ?>
             </ul>
         </div>

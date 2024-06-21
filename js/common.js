@@ -9,11 +9,11 @@ let html = document.querySelector("html"),
     header_blur = document.querySelector(".header_blur");
 
 window.addEventListener("DOMContentLoaded", function () {
-    $(".menuicon").on("click", function () {
+    $(".menuicon").on("click", function (e) {
         $(".header-wrap .gnb-wrap").addClass("active");
     });
 
-    $(".gnb-wrap .close").on("click", function () {
+    $(".gnb-wrap .close").on("click", function (e) {
         $(".header-wrap .gnb-wrap").removeClass("active");
     });
 
@@ -31,14 +31,14 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    $(".header-wrap #gnb").off("mouseenter").mouseenter(function () {
+    $(".header-wrap #gnb").off("mouseenter").mouseenter(function (e) {
         if (window.innerWidth > 1024) {
             $("header").addClass("hover");
             $(".header_blur").addClass("on");
         }
     });
 
-    $("header").off("mouseleave").mouseleave(function () {
+    $("header").off("mouseleave").mouseleave(function (e) {
         if (window.innerWidth > 1024) {
             $("header").removeClass("hover");
             $(".header_blur").removeClass("on");
@@ -218,6 +218,7 @@ function contactCheck(el) {
     }
     return true;
 }
+
 if (document.querySelector("#subPage.account.change_password")) {
     document.querySelector("label.submit a").addEventListener("click", function (e) {
         e.preventDefault();
