@@ -783,9 +783,6 @@ include_once "../include/footer.html"
                             $(".his-list").eq(q).removeClass("hide");
                         }
 
-                        if(imgWidth == 100){
-                            $(".his-list").eq(q).find(".img-wrap .img-area").css("width","0% !important")
-                        }
                         gsap.to($(".his-list").eq(q).find(".img-wrap .img-area"), 0.5, {
                             width:imgWidth + "%",
                         });
