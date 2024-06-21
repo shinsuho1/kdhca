@@ -2090,7 +2090,7 @@
     main{
         &#subPage{
             &.about{
-                &.history{
+                &.history{  
                     section{
                         &.s01{
                             article{
@@ -2106,8 +2106,7 @@
                                                 }
                                             }
                                             .txt-wrap{
-                                                // padding-top: 700px;
-                                                padding-top: 100vh;
+                                                padding-top: 110vh;
                                                 ul{
                                                     width: 100%;
                                                 }
