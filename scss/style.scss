@@ -1187,13 +1187,13 @@ main {
                                 }
                                 ul{
                                     @include flex-center;
-                                    gap: 15px;
+                                    gap: 20px;
                                     flex-wrap: wrap;
                                     li{
                                         line-height: 1;
                                         @include flex-center;
                                         gap: 10px;
-                                        font-size: 14px;
+                                        font-size: 16px;
                                     }
                                     &.line{
                                         li{
@@ -1208,8 +1208,8 @@ main {
                                         li{
                                             &::before{
                                                 content: "";
-                                                width: 10px;
-                                                height: 10px;
+                                                width: 13px;
+                                                height: 13px;
                                             }
                                         }
                                     }

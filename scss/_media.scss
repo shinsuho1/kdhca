@@ -557,13 +557,6 @@
                                     h3{
                                         font-size: 20px;
                                     }
-                                    ul{
-                                        gap: 10px;
-                                        li{
-                                            gap: 7px;
-                                        }
-    
-                                    }
                                     span{
                                         font-size: 16px;
                                     }
@@ -1206,6 +1199,22 @@
                                     }
                                 }
                                 .caption{
+                                    ul{
+                                        gap: 15px;
+                                        li{
+                                            gap: 7px;
+                                            font-size: 14px;
+                                        }
+                                        &.bar,&.pie{
+                                            li{
+                                                &::before{
+                                                    width: 10px;
+                                                    height: 10px;
+                                                }
+                                            }
+                                        }
+
+                                    }
                                     span{
                                         font-size: 14px;
                                     }
