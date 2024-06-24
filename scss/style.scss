@@ -1188,6 +1188,7 @@ main {
                                 ul{
                                     @include flex-center;
                                     gap: 15px;
+                                    flex-wrap: wrap;
                                     li{
                                         line-height: 1;
                                         @include flex-center;
@@ -1253,7 +1254,7 @@ main {
                                 margin-bottom: 100px;
                                 .horizontal-chart{
                                     width: 100%;
-                                    max-height: 300px;
+                                    max-height: 250px;
                                 }
                                 .box{
                                     width: calc(100%/3 - (100px * 2 / 3));
@@ -1308,7 +1309,7 @@ main {
                                                         font-size: inherit;
                                                         font-weight: inherit;
                                                         color: inherit;
-                                                        padding: 15px 0;
+                                                        padding: 15px 10px;
                                                         border-right: 1px solid #e0e0e0;
     
                                                         &:last-child {
@@ -1321,6 +1322,13 @@ main {
                                             thead {
                                                 tr {
                                                     background-color: #f0f8fe;
+                                                    &:nth-child(2){
+                                                        th{
+                                                            &:last-child{
+                                                                border-right: 1px solid #e0e0e0;
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
     
@@ -1329,6 +1337,39 @@ main {
                                                     &.bold{
                                                         background-color: #f8f8f8;
                                                         font-weight: 500;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.title_left{
+                                            table{
+                                                tbody{
+                                                    tr{
+                                                        td{
+                                                            &:nth-child(2),&:nth-child(3){
+                                                                text-align: left;
+                                                            }
+                                                        }
+                                                        &:last-child{
+                                                            td{
+                                                                &:nth-child(2),&:nth-child(3){
+                                                                    text-align: center;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            &.supply_table06{
+                                                table{
+                                                    tbody{
+                                                        tr{
+                                                            td{
+                                                                &:nth-child(4){
+                                                                    text-align: left;
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -1371,6 +1412,12 @@ main {
                                             background-color: #6FDBE1
                                         }
                                     }
+                                    &:nth-child(4){
+                                        &::before{
+                                            background-color: #a5f1f7;
+                                        }
+                                    }
+
                                 }
                             }
                             .colorType03{
@@ -1418,7 +1465,7 @@ main {
                     }
                 }
             }
-            &.supply{
+            &:not(&.year){
                 section{
                     &.s02{
                         article{
@@ -1445,10 +1492,27 @@ main {
                                         &.active{
                                             display: block;
                                         }
-                                        &:nth-child(2){
+                                        &:not(&:nth-child(1)){
                                             >.caption{
-                                                margin-bottom: 30px;
+                                                margin-bottom: 20px;
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.capacity,&.operating{
+                section{
+                    &.s02{
+                        article{
+                            .wrap{
+                                .chart-area{
+                                    .chart{
+                                        >.caption{
+                                            margin-bottom: 20px !important;
                                         }
                                     }
                                 }

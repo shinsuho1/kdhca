@@ -1,0 +1,534 @@
+<?php
+include_once "../include/header.html";
+$PAGE_CODE_1 = "04";
+$PAGE_CODE_2 = "0404";
+?>
+<main id="subPage" class="statistics operating">
+    <section class="sub_banner">
+        <div class="bg">
+            <img src="../images/statistics/statistics_banner.png" alt="통계/현황 베너">
+        </div>
+        <?php include_once "../include/tabmenu.html" ?>
+    </section>
+    <section class="s01">
+        <article>
+            <div class="wrap">
+                <div class="title">운영실적</div>
+            </div>
+        </article>
+    </section>
+    <section class="s02">
+        <article>
+            <div class="wrap">
+                <div class="chart-area">
+                    <div class="chart active">
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 사업자별 열에너지 운영실적</h3>
+                                <ul class="bar colorType02">
+                                    <li>자체생산량</li>
+                                    <li>외부수열량</li>
+                                    <li>판매량</li>
+                                    <li>자가소비 및 손실</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas></canvas>
+                        </div>
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 사업자별 전기 에너지 운영실적</h3>
+                                <ul class="bar colorType02">
+                                    <li>자체생산량</li>
+                                    <li>외부수열량</li>
+                                    <li>판매량</li>
+                                    <li>자가소비 및 손실</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas></canvas>
+                        </div>
+                        <ul class="info">
+                            <li>
+                                <div class="caption">
+                                    <h3>2018 집단에너지사업자 운영실적 종합표</h3>
+                                </div>
+                                <div class="table-box">
+                                    <table class="operating_table01">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">구분</th>
+                                                <th>지역냉난방</th>
+                                                <th>산업단지</th>
+                                                <th>병행</th>
+                                                <th>합계</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">연료사용량(toe)</td>
+                                                <td>6,804,004</td>
+                                                <td>8,442,325</td>
+                                                <td>1,340,741</td>
+                                                <td>16,587,070</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">구성비(%)</td>
+                                                <td>41.0</td>
+                                                <td>50.9</td>
+                                                <td>8.1</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="8" style="vertical-align: middle;">열<br>(Gcal)</td>
+                                                <td>자체생산량</td>
+                                                <td>17,297,991</td>
+                                                <td>79,014,210</td>
+                                                <td>7,607,203</td>
+                                                <td>103,919,404</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>16.6</td>
+                                                <td>76.0</td>
+                                                <td>7.3</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>외부수열량</td>
+                                                <td>9,175,416</td>
+                                                <td>3,685,987</td>
+                                                <td>644,023</td>
+                                                <td>13,505,426</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>67.9</td>
+                                                <td>27.3</td>
+                                                <td>4.8</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>판매량</td>
+                                                <td>26,821,098</td>
+                                                <td>34,690,853</td>
+                                                <td>1,960,483</td>
+                                                <td>63,472,434</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>42.3</td>
+                                                <td>54.7</td>
+                                                <td>3.1</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>자가소비 및 손실</td>
+                                                <td>-347,691</td>
+                                                <td>48,009,344</td>
+                                                <td>6,290,743</td>
+                                                <td>53,952,396</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>-0.6</td>
+                                                <td>11.7</td>
+                                                <td>11.7</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="8" style="vertical-align: middle;">전기<br>(MWh)</td>
+                                                <td>자체생산량</td>
+                                                <td>32,263,640</td>
+                                                <td>15,397,785</td>
+                                                <td>5,961,526</td>
+                                                <td>53,622,951</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>60.2</td>
+                                                <td>28.7</td>
+                                                <td>11.1</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한전수전량</td>
+                                                <td>800,734</td>
+                                                <td>7,001,431</td>
+                                                <td>0</td>
+                                                <td>7,802,165</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>10.3</td>
+                                                <td>89.7</td>
+                                                <td>0.0</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>판매량</td>
+                                                <td>32,170,334</td>
+                                                <td>17,563,768</td>
+                                                <td>5,529,007</td>
+                                                <td>55,263,109</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>58.2</td>
+                                                <td>31.8</td>
+                                                <td>10.0</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>자가소비 및 손실</td>
+                                                <td>894,040</td>
+                                                <td>4,835,448</td>
+                                                <td>432,519</td>
+                                                <td>6,162,007</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>14.5</td>
+                                                <td>7.0</td>
+                                                <td>7.0</td>
+                                                <td>100</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+<?php
+include_once "../include/footer.html"
+?>
+
+<script>
+    let ctx_canvas = document.querySelectorAll(".canvas-wrap canvas"),
+        data01_element = document.querySelectorAll(".operating_table01 tbody tr");
+
+    let data_area01 = {
+        data01: [],
+        data02: [],
+        data03: [],
+        data04: [],
+    }
+
+
+    data_area01.data01.push(data01_element[2].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data01.push(data01_element[2].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data01.push(data01_element[2].querySelectorAll("td")[4].textContent.replace(/,/g, "").trim() / 1000000);
+
+    data_area01.data02.push(data01_element[4].querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data02.push(data01_element[4].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data02.push(data01_element[4].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+
+    data_area01.data03.push(data01_element[6].querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data03.push(data01_element[6].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data03.push(data01_element[6].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+
+    data_area01.data04.push(data01_element[8].querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data04.push(data01_element[8].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area01.data04.push(data01_element[8].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+
+
+    let data_area02 = {
+        data01: [],
+        data02: [],
+        data03: [],
+        data04: [],
+    }
+
+    data_area02.data01.push(data01_element[10].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data01.push(data01_element[10].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data01.push(data01_element[10].querySelectorAll("td")[4].textContent.replace(/,/g, "").trim() / 1000000);
+
+    data_area02.data02.push(data01_element[12].querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data02.push(data01_element[12].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data02.push(data01_element[12].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+
+    data_area02.data03.push(data01_element[14].querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data03.push(data01_element[14].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data03.push(data01_element[14].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+
+    data_area02.data04.push(data01_element[16].querySelectorAll("td")[1].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data04.push(data01_element[16].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
+    data_area02.data04.push(data01_element[16].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
+
+
+
+    console.log(data_area01)
+
+    // chart.js 폰트 + 반응형
+    const beforeDrawFunction = {
+        beforeDraw: function(chart, args, options) {
+            const ctx = chart.ctx;
+            const canvas = chart.canvas;
+            const chartArea = chart.chartArea;
+
+            ctx.fillStyle = '#f8f8f8';
+            ctx.fillRect(chartArea.left, chartArea.bottom,
+                chartArea.right - chartArea.left, chartArea.top - chartArea.bottom);
+        },
+    };
+
+    function font_size(context) {
+        let size = 16;
+        if (window.innerWidth <= 1024) {
+            size = 14;
+            if (window.innerWidth <= 767) {
+                size = 12;
+                if (window.innerWidth <= 450) {
+                    size = 10;
+                }
+            }
+        }
+        return {
+            size: size,
+            family: 'ScoreDream',
+            weight: '400',
+        }
+    };
+
+    // cahrt.js 데이터 (수정)
+    function line01_dataset(label, data, borderColor, pointBackgroundColor, gradient) {
+        let pointRadius = 4,
+            pointImage = "";
+        if (window.innerWidth <= 1024) {
+            pointRadius = 3;
+            if (window.innerWidth <= 767) {
+                pointRadius = 2;
+                if (window.innerWidth <= 450) {
+                    pointRadius = 1;
+                }
+            }
+        }
+        if (gradient == gradient_red) {
+            pointImage = red_cricle;
+        } else if (gradient == gradient_blue) {
+            pointImage = blue_cricle;
+        }
+        return {
+            label: label,
+            data: data,
+            borderColor: borderColor,
+            pointBackgroundColor: pointBackgroundColor,
+            pointStyle: pointImage,
+            borderWidth: 1.5,
+            fill: true,
+            backgroundColor: gradient,
+            pointRadius: pointRadius,
+        }
+    }
+
+    // chart.js 툴팁
+    function tooltip(unit_value) {
+        return {
+            enabled: false,
+            backgroundColor: "#fff",
+            borderColor: "#707070",
+            borderWidth: "0.5",
+            displayColors: false,
+            padding: {
+                top: 15,
+                bottom: 15,
+                left: 10,
+                right: 10,
+            },
+            bodyColor: "#000",
+            bodyFont: {
+                size: 12,
+                weight: 400,
+                family: "ScoreDream",
+            },
+            callbacks: {
+                title: function() {
+                    return null;
+                },
+                label: function(context) {
+                    let t = Number(context.formattedValue);
+
+                    let return_value = ``;
+
+                    return `${context.label}/${context.dataset.label}/${t < 1 ? t * 1000 : t.toFixed(1)}${t < 1 ? "" : unit_value}`;
+                }
+            },
+            external: function(context) {
+                let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                if (!tooltipEl) {
+                    tooltipEl = document.createElement('div');
+                    tooltipEl.id = 'chartjs-tooltip';
+                    document.body.appendChild(tooltipEl);
+                }
+                const tooltipModel = context.tooltip;
+                if (tooltipModel.opacity === 0) {
+                    tooltipEl.style.opacity = 0;
+                    return;
+                }
+
+                tooltipEl.classList.remove('above', 'below', 'no-transform');
+                if (tooltipModel.yAlign) {
+                    tooltipEl.classList.add(tooltipModel.yAlign);
+                } else {
+                    tooltipEl.classList.add('no-transform');
+                }
+
+                function getBody(bodyItem) {
+                    return bodyItem.lines;
+                }
+
+                if (tooltipModel.body) {
+                    const bodyLines = tooltipModel.body.map(getBody);
+                    let borderColor = this.labelColors[0].borderColor,
+                        hoverBackgroundColor = this.dataPoints[0].dataset.hoverBackgroundColor,
+                        strongColor = borderColor == "rgba(0,0,0,0.1)" ? hoverBackgroundColor : borderColor;
+                    bodyLines.forEach(function(el, index) {
+                        let el_text = el[0].split("/");
+                        tooltipEl.innerHTML = `
+                            <div class="normal">
+                                <div>${el_text[0]}</div> 
+                                <div>${el_text[1]}</div>
+                            </div>
+                            <strong style="color:${strongColor}">${el_text[2]}</strong>
+                        `;
+                    });
+                }
+
+                const position = context.chart.canvas.getBoundingClientRect();
+                tooltipEl.style.opacity = 1;
+                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX - tooltipEl.getBoundingClientRect().width / 2 + 'px';
+                tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 10 + 'px';
+            },
+        }
+    }
+    // chart.js 축
+    function line01_scales(max, min, stepSize, unit, stacked) {
+        return {
+            x: {
+                stacked: stacked,
+                offset: true,
+                backgroundColor: "#fff",
+                grid: {
+                    color: 'transparent',
+                },
+                ticks: {
+                    color: '#707070',
+                    font: font_size,
+                    padding: 10,
+                },
+            },
+            y: {
+                stacked: stacked,
+                offset: false,
+                max: max,
+                min: min,
+                backgroundColor: "#fff",
+                grid: {
+                    color: '#e0e0e0',
+                },
+                ticks: {
+                    stepSize: stepSize,
+                    color: '#707070',
+                    font: font_size,
+                    callback: function(context) {
+                        return context + (unit == "" ? "" : unit) + ' ' + ' ' + ' ';
+                    },
+                },
+
+            },
+        }
+    }
+
+    // chart.js 옵션(tooltip, line01_scales 포함)
+    function options(unit_value, label, data, borderColor, pointBackgroundColor, stacked) {
+        return {
+            layout: {
+                autoPadding: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(unit_value),
+
+            },
+            scales: line01_scales(label, data, borderColor, pointBackgroundColor, stacked),
+        }
+    }
+
+    const chart00 = new Chart(ctx_canvas[0].getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                    label: '자체생산량',
+                    data: data_area01.data01,
+                    backgroundColor: "#9BC0DB",
+                    hoverBackgroundColor: "#0E6CAE",
+                },
+                {
+                    label: '외부수열량',
+                    data: data_area01.data02,
+                    backgroundColor: "#B4D7EF",
+                    hoverBackgroundColor: "#4EA5E2",
+                },
+                {
+                    label: '판매량',
+                    data: data_area01.data03,
+                    backgroundColor: "#C1EDEF",
+                    hoverBackgroundColor: "#6FDBE1",
+                },
+                {
+                    label: '자가소비 및 손실',
+                    data: data_area01.data04,
+                    backgroundColor: "#d7fcff",
+                    hoverBackgroundColor: "#a5f1f7",
+                },
+            ]
+        },
+        options: options("M", 100, -20, 20, "M", false),
+        plugins: [beforeDrawFunction],
+    });
+
+    const chart01 = new Chart(ctx_canvas[1].getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                    label: '자체생산량',
+                    data: data_area02.data01,
+                    backgroundColor: "#9BC0DB",
+                    hoverBackgroundColor: "#0E6CAE",
+                },
+                {
+                    label: '외부수열량',
+                    data: data_area02.data02,
+                    backgroundColor: "#B4D7EF",
+                    hoverBackgroundColor: "#4EA5E2",
+                },
+                {
+                    label: '판매량',
+                    data: data_area02.data03,
+                    backgroundColor: "#C1EDEF",
+                    hoverBackgroundColor: "#6FDBE1",
+                },
+                {
+                    label: '자가소비 및 손실',
+                    data: data_area02.data04,
+                    backgroundColor: "#d7fcff",
+                    hoverBackgroundColor: "#a5f1f7",
+                },
+            ]
+        },
+        options: options("M", 40, 0, 10, "M", false),
+        plugins: [beforeDrawFunction],
+    });
+</script>

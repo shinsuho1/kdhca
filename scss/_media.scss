@@ -630,7 +630,7 @@
                         }
                     }
                 }
-                &.supply{
+                &:not(&.year){
                     section{
                         &.s02{
                             article{
@@ -1254,7 +1254,7 @@
                         }
                     }
                 }
-                &.supply{
+                &:not(&.year){
                     section{
                         &.s02{
                             article{
@@ -1893,6 +1893,9 @@
                                 .canvas-wrap{
                                     gap: 30px 40px;
                                     margin-bottom: 60px;
+                                    .horizontal-chart{
+                                        max-height: 200px;
+                                    }
                                     .box{
                                         width: calc(100%/2 - (40px * 1 / 2));
                                         canvas{
@@ -1925,7 +1928,7 @@
                         }
                     }
                 }
-                &.supply{
+                &:not(&.year){
                     section{
                         &.s02{
                             article{
