@@ -544,9 +544,6 @@ main {
                             position: absolute;
                             z-index: 1;
                             background-color: transparent;
-                            // left: 50%;
-                            // top: 50%;
-                            // transform: translate(-50%,-50%) rotate(0);    
                             @include drag-off;
                             &:nth-child(1){
                                 left: 35%;
@@ -1660,7 +1657,6 @@ main {
                     &.s02{
                         padding-top: 100px;
                         article{
-                            // max-width: 1200px;
                             .wrap{
                                 @include flex-column-center;
                                 .title-box{

@@ -414,7 +414,6 @@ footer{
                 @include flex-space-center;
                 padding: 0 20px;
                 height: 60px;
-                // border-right: 1px solid #575757;
                 cursor: pointer;
                 img{
                     width: 21px;
@@ -426,7 +425,6 @@ footer{
                 width: 100%;
                 min-width: 330px;
                 display: none;
-                // border: 1px solid #575757;
                 border-right: 1px solid #575757;
                 border-left: 1px solid #575757;
                 li{

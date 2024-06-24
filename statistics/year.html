@@ -518,7 +518,6 @@ include_once "../include/footer.html"
                 backgroundColor: "#fff",
                 grid: {
                     color: 'transparent',
-                    backgroundColor: "#fff",
                 },
                 ticks: {
                     color: '#707070',
@@ -531,6 +530,7 @@ include_once "../include/footer.html"
                 offset: true,
                 max: max,
                 min: min,
+                backgroundColor: "#fff",
                 grid: {
                     color: '#e0e0e0',
                 },
@@ -539,7 +539,7 @@ include_once "../include/footer.html"
                     color: '#707070',
                     font: font_size,
                     callback: function(context) {
-                        return context + (unit == "" ? "" : unit) + ' ' + ' ' + ' '
+                        return context + (unit == "" ? "" : unit) + ' ' + ' ' + ' ';
                     },
                 },
 
@@ -548,7 +548,7 @@ include_once "../include/footer.html"
     }
 
     // chart.js 옵션(tooltip, line01_scales 포함)
-    function options(unit_value, label, data, borderColor, pointBackgroundColor, gradient) {
+    function options(unit_value, label, data, borderColor, pointBackgroundColor, stacked) {
         return {
             layout: {
                 autoPadding: false,
@@ -557,20 +557,10 @@ include_once "../include/footer.html"
                 legend: {
                     display: false,
                 },
-                annotation: {
-                    annotations: {
-                        box1: {
-                            drawTime: "afterDraw",
-                            display: (context, options) => {
-                                console.log(context)
-                            }
-                        }
-                    }
-                },
                 tooltip: tooltip(unit_value),
 
             },
-            scales: line01_scales(label, data, borderColor, pointBackgroundColor, gradient),
+            scales: line01_scales(label, data, borderColor, pointBackgroundColor, stacked),
         }
     }
 
@@ -583,7 +573,7 @@ include_once "../include/footer.html"
                 line01_dataset('사업자수', data01_area.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: options("", 110, 50, 10, ""),
+        options: options("", 110, 50, 10, "", false),
         plugins: [beforeDrawFunction],
     });
 
@@ -625,7 +615,7 @@ include_once "../include/footer.html"
                 line01_dataset('판매량(Gcal)', data03_area.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: options("M", 280, 40, 40, "M"),
+        options: options("M", 280, 40, 40, "M", false),
         plugins: [beforeDrawFunction],
     });
 
@@ -638,7 +628,7 @@ include_once "../include/footer.html"
                 line01_dataset('판매량(Gcal)', data04_area.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: options("M", 60, 20, 10, "M"),
+        options: options("M", 60, 20, 10, "M", false),
         plugins: [beforeDrawFunction],
     });
 </script>

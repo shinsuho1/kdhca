@@ -237,7 +237,8 @@
                             .content {
                                 ul {
                                     li {
-                                        height: calc(100% - $headerHeight);
+                                        // height: calc(100% - $headerHeight);
+                                        height: 100%;
                                         padding-left: 25px;
 
                                         &:last-child {
