@@ -2235,7 +2235,7 @@ include_once "../include/footer.html"
     };
 
     // chartjs 값(데이터)
-    function data(data_value, labels) {
+    function hover_data(data_value, labels) {
         let hoverOffset = 20;
         if (window.innerWidth <= 1024) {
             hoverOffset = 15;
@@ -2254,6 +2254,32 @@ include_once "../include/footer.html"
                 fill: true,
                 hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
                 backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
+                borderWidth: 1,
+                borderColor: '#fff',
+                hoverOffset: hoverOffset,
+            }]
+        }
+    }
+
+    function data(data_value, labels) {
+        let hoverOffset = 20;
+        if (window.innerWidth <= 1024) {
+            hoverOffset = 15;
+            if (window.innerWidth <= 767) {
+                hoverOffset = 10;
+                if (window.innerWidth <= 450) {
+                    hoverOffset = 5;
+                }
+            }
+        }
+        return {
+            labels: labels,
+            datasets: [{
+                data: data_value,
+                borderColor: 'transparent',
+                fill: true,
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
+                backgroundColor: ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF'],
                 borderWidth: 1,
                 borderColor: '#fff',
                 hoverOffset: hoverOffset,
@@ -2357,37 +2383,37 @@ include_once "../include/footer.html"
 
     const myChart01 = new Chart(ctx_canvas[0], {
         type: 'pie',
-        data: data(data_area.data01, data_area.label),
+        data: hover_data(data_area.data01, data_area.label),
         options: options,
         plugins: [ChartDataLabels]
     });
     const myChart02 = new Chart(ctx_canvas[1], {
         type: 'pie',
-        data: data(data_area.data02, data_area.label),
+        data: hover_data(data_area.data02, data_area.label),
         options: options,
         plugins: [ChartDataLabels]
     });
     const myChart03 = new Chart(ctx_canvas[2], {
         type: 'pie',
-        data: data(data_area.data03, data_area.label),
+        data: hover_data(data_area.data03, data_area.label),
         options: options,
         plugins: [ChartDataLabels]
     });
     const myChart04 = new Chart(ctx_canvas[3], {
         type: 'pie',
-        data: data(data_area.data04, data_area.label),
+        data: hover_data(data_area.data04, data_area.label),
         options: options,
         plugins: [ChartDataLabels]
     });
     const myChart05 = new Chart(ctx_canvas[4], {
         type: 'pie',
-        data: data(data_area.data05, data_area.label),
+        data: hover_data(data_area.data05, data_area.label),
         options: options,
         plugins: [ChartDataLabels]
     });
     const myChart06 = new Chart(ctx_canvas[5], {
         type: 'pie',
-        data: data(data_area.data06, data_area.label),
+        data: hover_data(data_area.data06, data_area.label),
         options: options,
         plugins: [ChartDataLabels]
     });
