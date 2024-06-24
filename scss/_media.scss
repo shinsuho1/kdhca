@@ -196,11 +196,11 @@
                             .swiper {
                                 .swiper-wrapper {
                                     .swiper-slide {
-                                        align-items: center;
+                                        // align-items: center;
 
                                         .title {
                                             padding: 0 3%;
-                                            text-align: center;
+                                            // text-align: center;
 
                                             h2 {
                                                 font-size: 54px;
@@ -215,8 +215,6 @@
                                 }
                                 .main_slide_btns{
                                     padding: 0 3%;
-                                    justify-content: center;
-                                    bottom: 15vh;
                                     .slide_btn{
                                         width: 8px;
                                     }
@@ -841,6 +839,10 @@
                                             }
                                         }
                                     }
+                                }
+                                .main_slide_btns{
+                                    padding: 0 5%;
+                                    bottom: 21vh;
                                 }
                             }
                         }
@@ -1513,11 +1515,13 @@
                             .swiper {
                                 .swiper-wrapper {
                                     .swiper-slide {
+                                        align-items: center;
                                         .title {
                                             margin-bottom: 0;
-
+                                            text-align: center;
                                             h2 {
                                                 font-size: 38px;
+                                                margin-bottom: 0;
                                             }
 
                                             p {
@@ -1529,6 +1533,7 @@
                                 .main_slide_btns{
                                     bottom: 16vh;
                                     font-size: 12px;
+                                    justify-content: center;
                                     .slide_btn{
                                         width: 6px;
                                     }
