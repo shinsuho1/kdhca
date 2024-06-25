@@ -1,7 +1,10 @@
 let year_chart = document.querySelectorAll(".year canvas"),
     supply_chart = document.querySelectorAll(".supply canvas"),
     capacity_chart = document.querySelectorAll(".capacity canvas"),
-    operating_chart = document.querySelectorAll(".operating canvas");
+    operating_chart = document.querySelectorAll(".operating canvas"),
+    heatProd_chart = document.querySelectorAll(".heat_prod canvas"),
+    heatSale_chart = document.querySelectorAll(".heat_sale canvas"),
+    elecProd_chart = document.querySelectorAll(".elec_prod canvas");
 
 let red_cricle = new Image(),
     blue_cricle = new Image();
@@ -218,9 +221,9 @@ function tooltip(tooltipType, unit_value) {
 
 
 
-
-if (document.querySelectorAll(".tabs a")) {
-    document.querySelectorAll(".tabs a").forEach((el, index) => {
+let tabs = document.querySelectorAll(".tabs a");
+if (tabs[0]) {
+    tabs.forEach((el, index) => {
         el.addEventListener("click", function (e) {
             e.preventDefault();
             if (el.classList.contains("active")) return false;
@@ -500,7 +503,6 @@ if (supply_chart[0]) {
                 hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
                 backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff'],
                 borderWidth: 1,
-                borderColor: '#fff',
                 hoverOffset: hoverOffset,
             }]
         }
@@ -883,5 +885,688 @@ if (operating_chart[0]) {
         options: options("01", "M", 40, 0, 10, "M", false),
         plugins: [beforeDrawFunction],
     });
+}
+
+if(heatProd_chart[0]){
+    let data01_element = document.querySelectorAll(".heat_prod_table01 tbody tr"),
+        data02_element = document.querySelectorAll(".heat_prod_table02 tbody tr"),
+        data03_element = document.querySelectorAll(".heat_prod_table03 tbody tr"),
+        data04_element = document.querySelectorAll(".heat_prod_table04 tbody tr");
+    let data_area01 = {
+        data01:[],
+        data02:[],
+        data03: [],
+        data04:[],
+    }
+    let data_area02 = {
+        data01: [],
+        label: ["CHP","열전용보일러","기타생산","외부수열"],
+    }
+
+    let data_area03 = {
+        data01: [],
+        label: ["CHP","열전용보일러","기타생산","외부수열"],
+    }
+
+    let data_area04 = {
+        data01: [],
+        label: ["CHP","열전용보일러","기타생산","외부수열"],
+    }
+    
+    let data_area05 = {
+        data01: [],
+        label: ["CHP","열전용보일러","외부수열"],
+    }
+    data01_element[3].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2 || index == 3 || index == 5){
+            data_area02.data01.push(el.textContent.replace(/,/g,"").trim() / 1000000);
+        }
+    });
+
+    data01_element.forEach((el,index)=>{
+        if(index == 4) return false;
+        data_area01.data01.push(data01_element[index].querySelectorAll("td")[1].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data02.push(data01_element[index].querySelectorAll("td")[2].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data03.push(data01_element[index].querySelectorAll("td")[3].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data04.push(data01_element[index].querySelectorAll("td")[5].textContent.replace(/,/g,"").trim() / 1000000);
+    });
+
+    data02_element[data02_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2 || index == 3 || index == 5){
+            data_area03.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+    data03_element[data03_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2 || index == 3 || index == 5){
+            data_area04.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+    data04_element[data04_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2 || index == 5){
+            data_area05.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+    console.log(data_area05.data01)
+    
+
+    function datalabels_font_size(context) {
+        const width = context.chart.width
+        const size = Math.round(width / 13)
+    
+        return {
+            size: size <= 14 ? 14 : size,
+            weight: 600,
+        }
+    };
+
+    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
+        return {
+            layout: {
+                autoPadding: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType, unit_value),
+
+            },
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
+        }
+    }
+
+    function options01(tooltipType) {
+        return {
+            responsive: false,
+            maintainAspectRatio: false,
+            layout: function () {
+                let layoutPadding = 20;
+                if (window.innerWidth <= 1024) {
+                    layoutPadding = 10;
+                }
+                return {
+                    padding: layoutPadding
+                }
+            },
+            events: ['mousemove', 'mouseout'],
+            onHover: (event, chartElement, myChart) => {
+                if (chartElement.length > 0) {
+                    let index = chartElement[0].index;
+                    myChart.data.datasets[0].backgroundColor = (ctx) => {
+                        if (ctx.dataIndex === index) {
+                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                        }
+                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
+                    };
+                } else {
+                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                }
+                myChart.update();
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType),
+                datalabels: {
+                    formatter: function (value, context) {
+                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                        if (t % 1 == 0) t = Math.floor(t);
+                        return (t <= 30 ? "" : t + "%");
+                    },
+                    color: '#fff',
+                    font: datalabels_font_size,
+                }
+            },
+
+        }
+    };
+
+    function data(data_value, labels) {
+        let hoverOffset = 20;
+        if (window.innerWidth <= 1024) {
+            hoverOffset = 15;
+            if (window.innerWidth <= 767) {
+                hoverOffset = 10;
+                if (window.innerWidth <= 450) {
+                    hoverOffset = 5;
+                }
+            }
+        }
+        return {
+            labels: labels,
+            datasets: [{
+                data: data_value,
+                fill: true,
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                borderWidth: 1,
+                borderColor: 'transparent',
+                hoverOffset: hoverOffset,
+            }]
+        }
+    }
+
+    const myChart00 = new Chart(heatProd_chart[0].getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                label: 'CHP',
+                data: data_area01.data01,
+                backgroundColor: "#9BC0DB",
+                hoverBackgroundColor: "#0E6CAE",
+            },
+            {
+                label: '열전용보일러',
+                data: data_area01.data02,
+                backgroundColor: "#B4D7EF",
+                hoverBackgroundColor: "#4EA5E2",
+            },
+            {
+                label: '기타생산',
+                data: data_area01.data03,
+                backgroundColor: "#C1EDEF",
+                hoverBackgroundColor: "#6FDBE1",
+            },
+            {
+                label: '외부수열',
+                data: data_area01.data04,
+                backgroundColor: "#d7fcff",
+                hoverBackgroundColor: "#a5f1f7",
+            },
+            ]
+        },
+        options: options("01", "M", 100, 0, 20, "M", false,false),
+        plugins: [beforeDrawFunction],
+    });
+
+    const myChart01 = new Chart(heatProd_chart[1].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area02.data01, data_area02.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart02 = new Chart(heatProd_chart[2].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area03.data01, data_area03.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart03 = new Chart(heatProd_chart[3].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area04.data01, data_area04.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart04 = new Chart(heatProd_chart[4].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area05.data01, data_area05.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+    
+}
+
+if(heatSale_chart[0]){
+    let data01_element = document.querySelectorAll(".heat_sale_table01 tbody tr"),
+        data02_element = document.querySelectorAll(".heat_sale_table02 tbody tr"),
+        data03_element = document.querySelectorAll(".heat_sale_table03 tbody tr"),
+        data04_element = document.querySelectorAll(".heat_sale_table04 tbody tr");
+        // ["공공용","상업업무용","주택용","산업용","타사업자송열"],
+    let data_area01 = {
+        data01:[],
+        data02:[],
+        data03: [],
+        data04:[],
+        data05: []
+    }
+    let data_area02 = {
+        data01: [],
+        label: ["공공용","상업업무용","주택용","산업용","타사업자송열"],
+    }
+
+    let data_area03 = {
+        data01: [],
+        label: ["공공용","상업업무용","주택용","타사업자송열"],
+    }
+
+    let data_area04 = {
+        data01: [],
+        label: ["산업용","타사업자송열"],
+    }
+    
+    let data_area05 = {
+        data01: [],
+        label: ["공공용","상업업무용","주택용","산업용","타사업자송열"],
+    }
+
+    data01_element.forEach((el,index)=>{
+        if(index == 6) return false;
+        data_area01.data01.push(data01_element[index].querySelectorAll("td")[1].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data02.push(data01_element[index].querySelectorAll("td")[2].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data03.push(data01_element[index].querySelectorAll("td")[3].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data04.push(data01_element[index].querySelectorAll("td")[4].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data05.push(data01_element[index].querySelectorAll("td")[5].textContent.replace(/,/g,"").trim() / 1000000);    
+    });
+
+
+    data01_element[data01_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 0 || index == 6) return false;
+        data_area02.data01.push(el.textContent.replace(/,/g,"").trim());
+    });
+
+    console.log(data_area02.data01)
+
+
+    data02_element[data02_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2 || index == 3 || index == 5){
+            data_area03.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+
+    data03_element[data03_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 4 || index == 5){
+            data_area04.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+    data04_element[data04_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 0 || index == 6) return false;
+            data_area05.data01.push(el.textContent.replace(/,/g,"").trim());
+        
+    });
+    
+
+    function datalabels_font_size(context) {
+        const width = context.chart.width
+        const size = Math.round(width / 13)
+    
+        return {
+            size: size <= 14 ? 14 : size,
+            weight: 600,
+        }
+    };
+
+    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
+        return {
+            layout: {
+                autoPadding: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType, unit_value),
+
+            },
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
+        }
+    }
+
+    function options01(tooltipType) {
+        return {
+            responsive: false,
+            maintainAspectRatio: false,
+            layout: function () {
+                let layoutPadding = 20;
+                if (window.innerWidth <= 1024) {
+                    layoutPadding = 10;
+                }
+                return {
+                    padding: layoutPadding
+                }
+            },
+            events: ['mousemove', 'mouseout'],
+            onHover: (event, chartElement, myChart) => {
+                if (chartElement.length > 0) {
+                    let index = chartElement[0].index;
+                    myChart.data.datasets[0].backgroundColor = (ctx) => {
+                        if (ctx.dataIndex === index) {
+                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                        }
+                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
+                    };
+                } else {
+                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                }
+                myChart.update();
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType),
+                datalabels: {
+                    formatter: function (value, context) {
+                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                        if (t % 1 == 0) t = Math.floor(t);
+                        return (t <= 30 ? "" : t + "%");
+                    },
+                    color: '#fff',
+                    font: datalabels_font_size,
+                }
+            },
+
+        }
+    };
+
+    function data(data_value, labels) {
+        let hoverOffset = 20;
+        if (window.innerWidth <= 1024) {
+            hoverOffset = 15;
+            if (window.innerWidth <= 767) {
+                hoverOffset = 10;
+                if (window.innerWidth <= 450) {
+                    hoverOffset = 5;
+                }
+            }
+        }
+        return {
+            labels: labels,
+            datasets: [{
+                data: data_value,
+                fill: true,
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                borderWidth: 1,
+                borderColor: 'transparent',
+                hoverOffset: hoverOffset,
+            }]
+        }
+    }
+
+    const myChart00 = new Chart(heatSale_chart[0].getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                label: '공공용',
+                data: data_area01.data01,
+                backgroundColor: "#9BC0DB",
+                hoverBackgroundColor: "#0E6CAE",
+            },
+            {
+                label: '상업업무용',
+                data: data_area01.data02,
+                backgroundColor: "#B4D7EF",
+                hoverBackgroundColor: "#4EA5E2",
+            },
+            {
+                label: '주택용',
+                data: data_area01.data03,
+                backgroundColor: "#C1EDEF",
+                hoverBackgroundColor: "#6FDBE1",
+            },
+            {
+                label: '산업용',
+                data: data_area01.data04,
+                backgroundColor: "#d7fcff",
+                hoverBackgroundColor: "#a5f1f7",
+            },
+            {
+                label: '타사업자송열',
+                data: data_area01.data05,
+                backgroundColor: "#d7fcff",
+                hoverBackgroundColor: "#a5f1f7",
+            },
+            ]
+        },
+        options: options("01", "M", 40, 0, 10, "M", false,false),
+        plugins: [beforeDrawFunction],
+    });
+
+    const myChart01 = new Chart(heatSale_chart[1].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area02.data01, data_area02.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart02 = new Chart(heatSale_chart[2].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area03.data01, data_area03.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart03 = new Chart(heatSale_chart[3].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area04.data01, data_area04.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart04 = new Chart(heatSale_chart[4].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area05.data01, data_area05.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+    
+}
+
+if(elecProd_chart[0]){
+    let data01_element = document.querySelectorAll(".elec_prod_table01 tbody tr"),
+        data02_element = document.querySelectorAll(".elec_prod_table02 tbody tr"),
+        data03_element = document.querySelectorAll(".elec_prod_table03 tbody tr"),
+        data04_element = document.querySelectorAll(".elec_prod_table04 tbody tr");
+    let data_area01 = {
+        data01:[],
+        data02:[],
+        data03: [],
+        data04:[],
+        data05: []
+    }
+    let data_area02 = {
+        data01: [],
+        label: ["자체생산","한전수전"]
+    }
+
+    let data_area03 = {
+        data01: [],
+        label: ["자체생산","한전수전"]    
+    }
+
+    let data_area04 = {
+        data01: [],
+        label: ["자체생산","한전수전"]   
+     }
+    
+    let data_area05 = {
+        data01: [],
+        label: ["자체생산"]
+        }
+
+    data01_element.forEach((el,index)=>{
+        if(index == 3) return false;
+        data_area01.data01.push(data01_element[index].querySelectorAll("td")[1].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data02.push(data01_element[index].querySelectorAll("td")[2].textContent.replace(/,/g,"").trim() / 1000000);
+    });
+
+
+    data01_element[data01_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 0 || index == 6) return false;
+        data_area02.data01.push(el.textContent.replace(/,/g,"").trim());
+    });
+
+    console.log(data_area02.data01)
+
+
+    data02_element[data02_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2 || index == 3 || index == 5){
+            data_area03.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+
+    data03_element[data03_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 4 || index == 5){
+            data_area04.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+    data04_element[data04_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 0 || index == 6) return false;
+            data_area05.data01.push(el.textContent.replace(/,/g,"").trim());
+        
+    });
+    
+
+    function datalabels_font_size(context) {
+        const width = context.chart.width
+        const size = Math.round(width / 13)
+    
+        return {
+            size: size <= 14 ? 14 : size,
+            weight: 600,
+        }
+    };
+
+    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
+        return {
+            layout: {
+                autoPadding: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType, unit_value),
+
+            },
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
+        }
+    }
+
+    function options01(tooltipType) {
+        return {
+            responsive: false,
+            maintainAspectRatio: false,
+            layout: function () {
+                let layoutPadding = 20;
+                if (window.innerWidth <= 1024) {
+                    layoutPadding = 10;
+                }
+                return {
+                    padding: layoutPadding
+                }
+            },
+            events: ['mousemove', 'mouseout'],
+            onHover: (event, chartElement, myChart) => {
+                if (chartElement.length > 0) {
+                    let index = chartElement[0].index;
+                    myChart.data.datasets[0].backgroundColor = (ctx) => {
+                        if (ctx.dataIndex === index) {
+                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                        }
+                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
+                    };
+                } else {
+                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                }
+                myChart.update();
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType),
+                datalabels: {
+                    formatter: function (value, context) {
+                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                        if (t % 1 == 0) t = Math.floor(t);
+                        return (t <= 30 ? "" : t + "%");
+                    },
+                    color: '#fff',
+                    font: datalabels_font_size,
+                }
+            },
+
+        }
+    };
+
+    function data(data_value, labels) {
+        let hoverOffset = 20;
+        if (window.innerWidth <= 1024) {
+            hoverOffset = 15;
+            if (window.innerWidth <= 767) {
+                hoverOffset = 10;
+                if (window.innerWidth <= 450) {
+                    hoverOffset = 5;
+                }
+            }
+        }
+        return {
+            labels: labels,
+            datasets: [{
+                data: data_value,
+                fill: true,
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                borderWidth: 1,
+                borderColor: 'transparent',
+                hoverOffset: hoverOffset,
+            }]
+        }
+    }
+
+    const myChart00 = new Chart(elecProd_chart[0].getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                label: '자체생산',
+                data: data_area01.data01,
+                backgroundColor: "#9BC0DB",
+                hoverBackgroundColor: "#0E6CAE",
+            },
+            {
+                label: '한전수전',
+                data: data_area01.data02,
+                backgroundColor: "#B4D7EF",
+                hoverBackgroundColor: "#4EA5E2",
+            },
+            ]
+        },
+        options: options("01", "M", 40, 0, 10, "M", false,false),
+        plugins: [beforeDrawFunction],
+    });
+
+    const myChart01 = new Chart(elecProd_chart[1].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area02.data01, data_area02.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart02 = new Chart(elecProd_chart[2].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area03.data01, data_area03.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart03 = new Chart(elecProd_chart[3].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area04.data01, data_area04.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart04 = new Chart(elecProd_chart[4].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area05.data01, data_area05.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+    
 }
 

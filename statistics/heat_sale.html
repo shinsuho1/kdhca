@@ -1,0 +1,1160 @@
+<?php
+include_once "../include/header.html";
+$PAGE_CODE_1 = "04";
+$PAGE_CODE_2 = "0404";
+?>
+<main id="subPage" class="statistics heat_sale">
+    <section class="sub_banner">
+        <div class="bg">
+            <img src="../images/statistics/statistics_banner.png" alt="통계/현황 베너">
+        </div>
+        <?php include_once "../include/tabmenu.html" ?>
+    </section>
+    <section class="s01">
+        <article>
+            <div class="wrap">
+                <div class="title">운영실적 - 열판매량</div>
+            </div>
+        </article>
+    </section>
+    <section class="s02">
+        <article>
+            <div class="wrap">
+                <div class="tabs">
+                    <a href="" class="active">총괄</a>
+                    <a href="">지역난방</a>
+                    <a href="">산업단지</a>
+                    <a href="">병행사업자</a>
+                </div>
+                <div class="chart-area">
+                    <div class="chart active">
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 설비형태별 열 판매량</h3>
+                                <ul class="bar colorType02">
+                                    <li>공공용</li>
+                                    <li>상업업무용</li>
+                                    <li>주택용</li>
+                                    <li>산업용</li>
+                                    <li>타사업자송열</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <span>실적년도</span>
+                                <select>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas></canvas>
+                        </div>
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 설비형태별 열 판매량 합계</h3>
+                                <ul class="pie colorType03">
+                                    <li>공공용</li>
+                                    <li>상업업무용</li>
+                                    <li>주택용</li>
+                                    <li>산업용</li>
+                                    <li>타사업자송열</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas></canvas>
+                        </div>
+                        <ul class="info">
+                            <li>
+                                <div class="caption">
+                                    <h3>2018 설비형태별 열 판매량</h3>
+                                </div>
+                                <div class="table-box">
+                                    <table class="heat_sale_table01">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">사업자</th>
+                                                <th colspan="7">열판매량(Gcal)</th>
+                                            </tr>
+                                            <tr>
+                                                <th>공공용</th>
+                                                <th>상업업무용</th>
+                                                <th>주택용</th>
+                                                <th>산업용</th>
+                                                <th>타사업자송열</th>
+                                                <th>합계</th>
+                                                <th>점유율(%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>지역냉난방</td>
+                                                <td>678,945</td>
+                                                <td>3,420,801</td>
+                                                <td>21,247,813</td>
+                                                <td>0</td>
+                                                <td>1,473,539</td>
+                                                <td>26,821,098</td>
+                                                <td>42.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>산업단지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>32,188,529</td>
+                                                <td>2,502,324</td>
+                                                <td>34,690,853</td>
+                                                <td>54.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>병행</td>
+                                                <td>12,493</td>
+                                                <td>26,589</td>
+                                                <td>571,990</td>
+                                                <td>1,251,011</td>
+                                                <td>98,400</td>
+                                                <td>1,960,483</td>
+                                                <td>3.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>합계</td>
+                                                <td>691,438</td>
+                                                <td>3,447,390</td>
+                                                <td>21,819,803</td>
+                                                <td>33,439,540</td>
+                                                <td>4,074,263</td>
+                                                <td>63,472,434</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>1.1</td>
+                                                <td>5.4</td>
+                                                <td>34.4</td>
+                                                <td>52.7</td>
+                                                <td>6.4</td>
+                                                <td>100</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="chart">
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 지역난방부문 설비형태별 열 판매량</h3>
+                                <ul class="pie colorType02">
+                                    <li>공공용</li>
+                                    <li>상업업무용</li>
+                                    <li>주택용</li>
+                                    <li>산업용</li>
+                                    <li>타사업자송열</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <span>실적년도</span>
+                                <select>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas></canvas>
+                        </div>
+                        <ul class="info">
+                            <li>
+                                <div class="caption">
+                                    <h3>2018 지역난방부문 설비형태별 열 판매량</h3>
+                                </div>
+                                <div class="table-box">
+                                    <table class="heat_sale_table02">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">사업자</th>
+                                                <th colspan="7">열판매량(Gcal)</th>
+                                            </tr>
+                                            <tr>
+                                                <th>공공용</th>
+                                                <th>상업업무용</th>
+                                                <th>주택용</th>
+                                                <th>산업용</th>
+                                                <th>타사업자송열</th>
+                                                <th>합계</th>
+                                                <th>점유율(%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>서울에너지공사</td>
+                                                <td>55,305</td>
+                                                <td>307,192</td>
+                                                <td>1,678,415</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2,040,912</td>
+                                                <td>7.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>부산광역시</td>
+                                                <td>9,073</td>
+                                                <td>6,018</td>
+                                                <td>265,576</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>280,667</td>
+                                                <td>1.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한국지역난방공사</td>
+                                                <td>333,302</td>
+                                                <td>1,882,293</td>
+                                                <td>12,014,732</td>
+                                                <td>0</td>
+                                                <td>1,525</td>
+                                                <td>14,231,852</td>
+                                                <td>53.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한국토지주택공사</td>
+                                                <td>3,923</td>
+                                                <td>54,950</td>
+                                                <td>295,577</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>354,450</td>
+                                                <td>1.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GS파워</td>
+                                                <td>73,088</td>
+                                                <td>251,648</td>
+                                                <td>2,392,375</td>
+                                                <td>0</td>
+                                                <td>905,414</td>
+                                                <td>3,622,525</td>
+                                                <td>13.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>안산도시개발</td>
+                                                <td>13,864</td>
+                                                <td>57,718</td>
+                                                <td>560,524</td>
+                                                <td>0</td>
+                                                <td>293,988</td>
+                                                <td>926,094</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>인천공항에너지</td>
+                                                <td>3,050</td>
+                                                <td>272,501</td>
+                                                <td>131,742</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>407,293</td>
+                                                <td>1.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>미래엔인천에너지</td>
+                                                <td>2,287</td>
+                                                <td>47,938</td>
+                                                <td>432,606</td>
+                                                <td>0</td>
+                                                <td>19,522</td>
+                                                <td>502,353</td>
+                                                <td>1.9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>인천종합에너지</td>
+                                                <td>66,289</td>
+                                                <td>169,183</td>
+                                                <td>392,611</td>
+                                                <td>0</td>
+                                                <td>87,729</td>
+                                                <td>715,812</td>
+                                                <td>2.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>나래에너지서비스</td>
+                                                <td>862</td>
+                                                <td>28,300</td>
+                                                <td>304,037</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>333,199</td>
+                                                <td>1.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>수완에너지</td>
+                                                <td>3,313</td>
+                                                <td>19,617</td>
+                                                <td>253,023</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>275,953</td>
+                                                <td>1.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대륜발전</td>
+                                                <td>0</td>
+                                                <td>6,950</td>
+                                                <td>143,988</td>
+                                                <td>0</td>
+                                                <td>70,282</td>
+                                                <td>221,220</td>
+                                                <td>0.8</td>
+                                            </tr>
+                                            <tr>
+                                                <td>별내에너지</td>
+                                                <td>3,868</td>
+                                                <td>7,712</td>
+                                                <td>229,581</td>
+                                                <td>0</td>
+                                                <td>9,718</td>
+                                                <td>250,879</td>
+                                                <td>0.9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대구그린파워</td>
+                                                <td>17,560</td>
+                                                <td>17,205</td>
+                                                <td>33,288</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>68,053</td>
+                                                <td>0.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>위례에너지서비스</td>
+                                                <td>8,063</td>
+                                                <td>45,187</td>
+                                                <td>176,569</td>
+                                                <td>0</td>
+                                                <td>81,476</td>
+                                                <td>311,295</td>
+                                                <td>1.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>내포그린에너지</td>
+                                                <td>8,391</td>
+                                                <td>5,737</td>
+                                                <td>66,161</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>80,289</td>
+                                                <td>0.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>춘천에너지</td>
+                                                <td>239</td>
+                                                <td>1,560</td>
+                                                <td>1,474</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>3,273</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한국씨이에스</td>
+                                                <td>10,643</td>
+                                                <td>9,097</td>
+                                                <td>5,674</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>25,414</td>
+                                                <td>0.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>포스메이트</td>
+                                                <td>44,710</td>
+                                                <td>9,200</td>
+                                                <td>56,946</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>110,856</td>
+                                                <td>0.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>청라에너지</td>
+                                                <td>5,629</td>
+                                                <td>63,460</td>
+                                                <td>717,678</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>786,767</td>
+                                                <td>2.9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>평택에너지서비스</td>
+                                                <td>109</td>
+                                                <td>81,733</td>
+                                                <td>131,494</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>213,336</td>
+                                                <td>0.8</td>
+                                            </tr>
+                                            <tr>
+                                                <td>휴세스</td>
+                                                <td>4,144</td>
+                                                <td>13,550</td>
+                                                <td>292,536</td>
+                                                <td>0</td>
+                                                <td>3,885</td>
+                                                <td>314,115</td>
+                                                <td>1.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>부산도시가스</td>
+                                                <td>3,143</td>
+                                                <td>822</td>
+                                                <td>57,172</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>61,137</td>
+                                                <td>0.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>부산정관에너지</td>
+                                                <td>832</td>
+                                                <td>8,171</td>
+                                                <td>139,853</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>148,856</td>
+                                                <td>0.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>짐코</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대성에너지</td>
+                                                <td>174</td>
+                                                <td>0</td>
+                                                <td>71,479</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>71,653</td>
+                                                <td>0.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>티피피</td>
+                                                <td>1,559</td>
+                                                <td>0</td>
+                                                <td>53,559</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>55,118</td>
+                                                <td>0.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>제이비(구. 중부도시가스)</td>
+                                                <td>3,106</td>
+                                                <td>5,456</td>
+                                                <td>36,591</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>45,153</td>
+                                                <td>0.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>삼천리</td>
+                                                <td>711</td>
+                                                <td>37,570</td>
+                                                <td>112,138</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>150,419</td>
+                                                <td>0.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>삼성물산</td>
+                                                <td>196</td>
+                                                <td>0</td>
+                                                <td>32,560</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>32,756</td>
+                                                <td>0.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>씨엔씨티에너지</td>
+                                                <td>1,512</td>
+                                                <td>753</td>
+                                                <td>162,916</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>165,181</td>
+                                                <td>0.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대성산업</td>
+                                                <td>0</td>
+                                                <td>9,280</td>
+                                                <td>4,938</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>14,218</td>
+                                                <td>0.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>합계</td>
+                                                <td>678,945</td>
+                                                <td>3,420,801</td>
+                                                <td>21,247,813</td>
+                                                <td>0</td>
+                                                <td>1,473,539</td>
+                                                <td>26,821,098</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>2.5</td>
+                                                <td>12.8</td>
+                                                <td>79.2</td>
+                                                <td>0.0</td>
+                                                <td>5.5</td>
+                                                <td>100</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="chart">
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 산업단지부문 설비형태별 열 판매량</h3>
+                                <ul class="pie colorType02">
+                                    <li>공공용</li>
+                                    <li>상업업무용</li>
+                                    <li>주택용</li>
+                                    <li>산업용</li>
+                                    <li>타사업자송열</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <span>실적년도</span>
+                                <select>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas class="circlae"></canvas>
+                        </div>
+                        <ul class="info">
+                            <li>
+                                <div class="caption">
+                                    <h3>2018 산업단지부문 설비형태별 열 판매량</h3>
+                                </div>
+                                <div class="table-box">
+                                    <table class="heat_sale_table03">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">사업자</th>
+                                                <th colspan="7">열판매량(Gcal)</th>
+                                            </tr>
+                                            <tr>
+                                                <th>공공용</th>
+                                                <th>상업업무용</th>
+                                                <th>주택용</th>
+                                                <th>산업용</th>
+                                                <th>타사업자송열</th>
+                                                <th>합계</th>
+                                                <th>점유율(%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>지에스이앤알</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>3,760,376</td>
+                                                <td>33,060</td>
+                                                <td>3,793,436</td>
+                                                <td>10.9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>부산패션칼라산업협동조합</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>237,210</td>
+                                                <td>0</td>
+                                                <td>237,210</td>
+                                                <td>0.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>케이지이티에스</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>496,852</td>
+                                                <td>0</td>
+                                                <td>496,852</td>
+                                                <td>1.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SK에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>292,074</td>
+                                                <td>0</td>
+                                                <td>292,074</td>
+                                                <td>0.8</td>
+                                            </tr>
+                                            <tr>
+                                                <td>롯데케미칼</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>362,669</td>
+                                                <td>0</td>
+                                                <td>362,669</td>
+                                                <td>1.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>군장에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2,562,307</td>
+                                                <td>0</td>
+                                                <td>2,562,307</td>
+                                                <td>7.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>에너원</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>193,737</td>
+                                                <td>0</td>
+                                                <td>193,737</td>
+                                                <td>0.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>오리온엔지니어드카본즈</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>788,567</td>
+                                                <td>0</td>
+                                                <td>788,567</td>
+                                                <td>2.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>서대구에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>92,532</td>
+                                                <td>60,343</td>
+                                                <td>152,875</td>
+                                                <td>0.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>상공에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>153,337</td>
+                                                <td>0</td>
+                                                <td>153,337</td>
+                                                <td>0.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>김천에너지서비스</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1,120,451</td>
+                                                <td>0</td>
+                                                <td>1,120,451</td>
+                                                <td>3.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>현대에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1,938,446</td>
+                                                <td>0</td>
+                                                <td>1,938,446</td>
+                                                <td>5.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>이건에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>486,618</td>
+                                                <td>0</td>
+                                                <td>486,618</td>
+                                                <td>1.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>현대오일뱅크</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1,753,473</td>
+                                                <td>745,117</td>
+                                                <td>2,498,590</td>
+                                                <td>7.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>고려아연</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>913,292</td>
+                                                <td>320,149</td>
+                                                <td>1,233,441</td>
+                                                <td>3.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대재에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>187,760</td>
+                                                <td>0</td>
+                                                <td>187,760</td>
+                                                <td>0.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>LS-Nikko동제련</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>209,880</td>
+                                                <td>178,041</td>
+                                                <td>387,921</td>
+                                                <td>1.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>천일에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>161,287</td>
+                                                <td>0</td>
+                                                <td>161,287</td>
+                                                <td>0.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>보광에너지(구. 포스코ICT)</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>75,229</td>
+                                                <td>0</td>
+                                                <td>75,229</td>
+                                                <td>0.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>충청에너지서비스 컨소시엄</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>480,028</td>
+                                                <td>0</td>
+                                                <td>480,028</td>
+                                                <td>1.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>팜한농</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>301,531</td>
+                                                <td>0</td>
+                                                <td>301,531</td>
+                                                <td>0.9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>태광산업</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>277,776</td>
+                                                <td>108,849</td>
+                                                <td>386,625</td>
+                                                <td>1.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S-OIL</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>665,578</td>
+                                                <td>0</td>
+                                                <td>665,578</td>
+                                                <td>1.9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>롯데정밀화학</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2,860</td>
+                                                <td>0</td>
+                                                <td>2,860</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>울산이앤피</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>388,670</td>
+                                                <td>0</td>
+                                                <td>388,670</td>
+                                                <td>1.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>코엔텍</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>240,975</td>
+                                                <td>276,704</td>
+                                                <td>517,679</td>
+                                                <td>1.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>국인산업&amp;영남에너지서비스</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>160,580</td>
+                                                <td>0</td>
+                                                <td>160,580</td>
+                                                <td>0.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대구염색산업단지관리공단</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1,329,491</td>
+                                                <td>0</td>
+                                                <td>1,329,491</td>
+                                                <td>3.8</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한화토탈</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>197,755</td>
+                                                <td>0</td>
+                                                <td>197,755</td>
+                                                <td>0.6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한주</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2,816,306</td>
+                                                <td>431,738</td>
+                                                <td>3,248,044</td>
+                                                <td>9.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>금호석유화학</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2,938,447</td>
+                                                <td>0</td>
+                                                <td>2,938,447</td>
+                                                <td>8.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>여천NCC</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1,058,808</td>
+                                                <td>0</td>
+                                                <td>1,058,808</td>
+                                                <td>3.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>LG화학</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>81,658</td>
+                                                <td>0</td>
+                                                <td>81,658</td>
+                                                <td>0.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한화에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>3,387,098</td>
+                                                <td>0</td>
+                                                <td>3,387,098</td>
+                                                <td>9.8</td>
+                                            </tr>
+                                            <tr>
+                                                <td>씨텍</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1,626,185</td>
+                                                <td>0</td>
+                                                <td>1,626,185</td>
+                                                <td>4.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SK케미칼</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>156,254</td>
+                                                <td>348,323</td>
+                                                <td>504,577</td>
+                                                <td>1.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>성림에너지</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>251,112</td>
+                                                <td>0</td>
+                                                <td>251,112</td>
+                                                <td>0.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>울산광역시</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>36,954</td>
+                                                <td>0</td>
+                                                <td>36,954</td>
+                                                <td>0.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>포승그린파워</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>4,366</td>
+                                                <td>0</td>
+                                                <td>4,366</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>합계</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>32,188,529</td>
+                                                <td>2,502,324</td>
+                                                <td>34,690,853</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>92.8</td>
+                                                <td>7.2</td>
+                                                <td>100</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="chart">
+                        <div class="caption">
+                            <div class="left">
+                                <h3>2018 병행부문 설비형태별 열 판매량</h3>
+                                <ul class="pie colorType02">
+                                    <li>공공용</li>
+                                    <li>상업업무용</li>
+                                    <li>주택용</li>
+                                    <li>산업용</li>
+                                    <li>타사업자송열</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <span>실적년도</span>
+                                <select>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas class="circlae"></canvas>
+                        </div>
+                        <ul class="info">
+                            <li>
+                                <div class="caption">
+                                    <h3>2018 병행부문 설비형태별 열 판매량</h3>
+                                </div>
+                                <div class="table-box">
+                                    <table class="heat_sale_table04">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">사업자</th>
+                                                <th colspan="7">열판매량(Gcal)</th>
+                                            </tr>
+                                            <tr>
+                                                <th>공공용</th>
+                                                <th>상업업무용</th>
+                                                <th>주택용</th>
+                                                <th>산업용</th>
+                                                <th>타사업자송열</th>
+                                                <th>합계</th>
+                                                <th>점유율(%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>전북집단에너지</td>
+                                                <td>312</td>
+                                                <td>0</td>
+                                                <td>45,085</td>
+                                                <td>169,635</td>
+                                                <td>0</td>
+                                                <td>215,032</td>
+                                                <td>11.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>디에스파워</td>
+                                                <td>3,604</td>
+                                                <td>2,931</td>
+                                                <td>228,004</td>
+                                                <td>43,539</td>
+                                                <td>0</td>
+                                                <td>278,078</td>
+                                                <td>14.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>대전열병합발전</td>
+                                                <td>7,445</td>
+                                                <td>3,865</td>
+                                                <td>252,582</td>
+                                                <td>416,560</td>
+                                                <td>98,400</td>
+                                                <td>778,852</td>
+                                                <td>39.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>무림파워텍</td>
+                                                <td>184</td>
+                                                <td>19,602</td>
+                                                <td>41,179</td>
+                                                <td>510,475</td>
+                                                <td>0</td>
+                                                <td>571,440</td>
+                                                <td>29.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>석문에너지</td>
+                                                <td>948</td>
+                                                <td>191</td>
+                                                <td>5,140</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>6,279</td>
+                                                <td>0.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>OCI SE</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>110,802</td>
+                                                <td>0</td>
+                                                <td>110,802</td>
+                                                <td>5.7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>합계</td>
+                                                <td>12,493</td>
+                                                <td>26,589</td>
+                                                <td>571,990</td>
+                                                <td>1,251,011</td>
+                                                <td>98,400</td>
+                                                <td>1,960,483</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>구성비(%)</td>
+                                                <td>0.6</td>
+                                                <td>1.4</td>
+                                                <td>29.2</td>
+                                                <td>63.8</td>
+                                                <td>5.0</td>
+                                                <td>100</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+<?php
+include_once "../include/footer.html"
+?>

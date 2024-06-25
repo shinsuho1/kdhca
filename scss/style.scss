@@ -1277,6 +1277,11 @@ main {
                                         }
                                     }
                                 }
+                                .circle{
+                                    max-width: 500px;
+                                    width: 100% !important;
+                                    height: initial !important;
+                                }
                             }
 
                             .info {
@@ -1373,6 +1378,19 @@ main {
                                                     }
                                                 }
                                             }
+                                        }
+                                        .heat_prod_table{
+                                            thead{
+                                                tr{
+                                                    &:last-child{
+                                                        th{
+                                                            &:last-child{
+                                                                border-right: 1px solid #e0e0e0;                                                                
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }    
                                         }
 
                                     }
