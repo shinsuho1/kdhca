@@ -802,7 +802,7 @@ if (operating_chart[0]) {
     data_area02.data04.push(data01_element[16].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
 
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked) {
+    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
         return {
             layout: {
                 autoPadding: false,
@@ -814,7 +814,7 @@ if (operating_chart[0]) {
                 tooltip: tooltip(tooltipType, unit_value),
 
             },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked),
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
         }
     }
 
@@ -848,7 +848,7 @@ if (operating_chart[0]) {
             },
             ]
         },
-        options: options("01", "M", 100, -20, 20, "M", false),
+        options: options("01", "M", 100, -20, 20, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 
@@ -882,7 +882,7 @@ if (operating_chart[0]) {
             },
             ]
         },
-        options: options("01", "M", 40, 0, 10, "M", false),
+        options: options("01", "M", 40, 0, 10, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 }
