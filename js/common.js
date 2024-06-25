@@ -8,6 +8,12 @@ let html = document.querySelector("html"),
     header_gnb = document.querySelector("header .header-wrap #gnb"),
     header_blur = document.querySelector(".header_blur");
 
+window.addEventListener("load", function () {
+    setTimeout(() => {
+        window.scrollTo({ top: 0 })
+    }, 50);
+});
+
 window.addEventListener("DOMContentLoaded", function () {
     $(".menuicon").on("click", function (e) {
         $(".header-wrap .gnb-wrap").addClass("active");
@@ -45,7 +51,7 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    if (window.scrollY > 0){
+    if (window.scrollY > 0) {
         header.classList.add("bg");
     }
 
@@ -180,9 +186,9 @@ window.addEventListener("DOMContentLoaded", function () {
         });
         // document.querySelector(".pop .close").addEventListener("click",function(e){
         //     pop_element.classList.remove("active");
-            // body.classList.remove("stop_scroll");
+        // body.classList.remove("stop_scroll");
         // });    
-    } ;
+    };
 
     if (url != "main" && url != "account") {
         let lastScroll = 0;

@@ -56,7 +56,7 @@ function dataset01(label, data, borderColor, pointBackgroundColor, gradient) {
         pointRadius: pointRadius,
     }
 }
-function scales01(max, min, stepSize, unit, stacked) {
+function scales01(max, min, stepSize, unit, stacked,offsetY=true) {
     return {
         x: {
             stacked: stacked,
@@ -73,7 +73,7 @@ function scales01(max, min, stepSize, unit, stacked) {
         },
         y: {
             stacked: stacked,
-            offset: false,
+            offset: offsetY,
             max: max,
             min: min,
             backgroundColor: "#fff",
@@ -695,7 +695,7 @@ if (capacity_chart[0]) {
                 tooltip: tooltip(tooltipType, unit_value),
 
             },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked),
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,false),
         }
     }
     const chart00 = new Chart(capacity_chart[0].getContext('2d'), {
