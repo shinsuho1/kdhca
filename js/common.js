@@ -41,6 +41,7 @@ window.addEventListener("DOMContentLoaded", function () {
     $("#gnb>li>a").off("click").click(function (e) {
         if (window.innerWidth <= 1024 && ($(this).siblings(".sub-menu").length > 0)) {
             e.preventDefault();
+            $(this).toggleClass("active");
             $(".sub-menu").stop().slideUp();
             $(this).siblings(".sub-menu").stop().slideToggle();
         }
