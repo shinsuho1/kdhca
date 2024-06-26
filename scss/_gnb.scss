@@ -202,6 +202,7 @@ header{
             z-index: 1;
             .user{
                 @include flex-center;
+                gap: 5px;
                 a{
                     @include flex-center;
                     width: 100%;
