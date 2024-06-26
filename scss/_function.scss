@@ -468,6 +468,7 @@ body {
 .a_link{
     color: #ababab;
     @include transition(.3s);
+    cursor: pointer;
     &:hover{
         color: #fff;
     }

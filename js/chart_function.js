@@ -4,8 +4,9 @@ let year_chart = document.querySelectorAll(".year canvas"),
     operating_chart = document.querySelectorAll(".operating canvas"),
     heatProd_chart = document.querySelectorAll(".heat_prod canvas"),
     heatSale_chart = document.querySelectorAll(".heat_sale canvas"),
-    elecProd_chart = document.querySelectorAll(".elec_prod canvas");
-
+    elecProd_chart = document.querySelectorAll(".elec_prod canvas"),
+    elecSale_chart = document.querySelectorAll(".elec_sale canvas"),
+    fuel_chart = document.querySelectorAll(".fuel canvas");
 let red_cricle = new Image(),
     blue_cricle = new Image();
 red_cricle.src = "../images/common/red_chart_circle.png";
@@ -947,10 +948,7 @@ if(heatProd_chart[0]){
         if(index == 1 || index == 2 || index == 5){
             data_area05.data01.push(el.textContent.replace(/,/g,"").trim());
         }
-    });
-
-    console.log(data_area05.data01)
-    
+    }); 
 
     function datalabels_font_size(context) {
         const width = context.chart.width
@@ -1161,9 +1159,6 @@ if(heatSale_chart[0]){
         if(index == 0 || index == 6) return false;
         data_area02.data01.push(el.textContent.replace(/,/g,"").trim());
     });
-
-    console.log(data_area02.data01)
-
 
     data02_element[data02_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
         if(index == 1 || index == 2 || index == 3 || index == 5){
@@ -1382,7 +1377,7 @@ if(elecProd_chart[0]){
     
     let data_area05 = {
         data01: [],
-        label: ["자체생산"]
+        label: ["자체생산","한전수전"]   
         }
 
     data01_element.forEach((el,index)=>{
@@ -1397,27 +1392,25 @@ if(elecProd_chart[0]){
         data_area02.data01.push(el.textContent.replace(/,/g,"").trim());
     });
 
-    console.log(data_area02.data01)
-
-
     data02_element[data02_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
-        if(index == 1 || index == 2 || index == 3 || index == 5){
+        if(index == 1 || index == 2){
             data_area03.data01.push(el.textContent.replace(/,/g,"").trim());
         }
     });
 
 
     data03_element[data03_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
-        if(index == 4 || index == 5){
+        if(index == 1 || index == 2){
             data_area04.data01.push(el.textContent.replace(/,/g,"").trim());
         }
     });
 
     data04_element[data04_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
-        if(index == 0 || index == 6) return false;
-            data_area05.data01.push(el.textContent.replace(/,/g,"").trim());
-        
+        if(index == 1 || index == 2){
+            data_area05.data01.push(el.textContent.replace(/,/g, "").trim());
+        }
     });
+
     
 
     function datalabels_font_size(context) {
@@ -1567,4 +1560,342 @@ if(elecProd_chart[0]){
         options: options01("02"),
         plugins: [ChartDataLabels]
     });   
+}
+
+if(elecSale_chart[0]){
+    let data01_element = document.querySelectorAll(".elec_sale_table01 tbody tr"),
+        data02_element = document.querySelectorAll(".elec_sale_table02 tbody tr"),
+        data03_element = document.querySelectorAll(".elec_sale_table03 tbody tr"),
+        data04_element = document.querySelectorAll(".elec_sale_table04 tbody tr");
+
+    let data_area01 = {
+        data01:[],
+        data02:[],
+        data03: [],
+        data04:[],
+        data05: []
+    }
+    let data_area02 = {
+        data01: [],
+        label: ["역송","직판"]
+    }
+
+    let data_area03 = {
+        data01: [],
+        label: ["역송","직판"]    
+    }
+
+    let data_area04 = {
+        data01: [],
+        label: ["역송","직판"]   
+     }
+    
+    let data_area05 = {
+        data01: [],
+        label: ["역송","직판"]   
+        }
+
+    data01_element.forEach((el,index)=>{
+        if(index == 3) return false;
+        data_area01.data01.push(data01_element[index].querySelectorAll("td")[1].textContent.replace(/,/g,"").trim() / 1000000);
+        data_area01.data02.push(data01_element[index].querySelectorAll("td")[2].textContent.replace(/,/g,"").trim() / 1000000);
+    });
+
+
+    data01_element[data01_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2){
+            data_area02.data01.push(el.textContent.replace(/,/g, "").trim());
+        }
+    });
+
+    data02_element[data02_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2){
+            data_area03.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+
+    data03_element[data03_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2){
+            data_area04.data01.push(el.textContent.replace(/,/g,"").trim());
+        }
+    });
+
+    data04_element[data04_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2){
+            data_area05.data01.push(el.textContent.replace(/,/g, "").trim());
+        }
+    });
+
+    
+
+    function datalabels_font_size(context) {
+        const width = context.chart.width
+        const size = Math.round(width / 13)
+    
+        return {
+            size: size <= 14 ? 14 : size,
+            weight: 600,
+        }
+    };
+
+    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
+        return {
+            layout: {
+                autoPadding: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType, unit_value),
+
+            },
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
+        }
+    }
+
+    function options01(tooltipType) {
+        return {
+            responsive: false,
+            maintainAspectRatio: false,
+            layout: function () {
+                let layoutPadding = 20;
+                if (window.innerWidth <= 1024) {
+                    layoutPadding = 10;
+                }
+                return {
+                    padding: layoutPadding
+                }
+            },
+            events: ['mousemove', 'mouseout'],
+            onHover: (event, chartElement, myChart) => {
+                if (chartElement.length > 0) {
+                    let index = chartElement[0].index;
+                    myChart.data.datasets[0].backgroundColor = (ctx) => {
+                        if (ctx.dataIndex === index) {
+                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                        }
+                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
+                    };
+                } else {
+                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                }
+                myChart.update();
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType),
+                datalabels: {
+                    formatter: function (value, context) {
+                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                        if (t % 1 == 0) t = Math.floor(t);
+                        return (t <= 30 ? "" : t + "%");
+                    },
+                    color: '#fff',
+                    font: datalabels_font_size,
+                }
+            },
+
+        }
+    };
+
+    function data(data_value, labels) {
+        let hoverOffset = 20;
+        if (window.innerWidth <= 1024) {
+            hoverOffset = 15;
+            if (window.innerWidth <= 767) {
+                hoverOffset = 10;
+                if (window.innerWidth <= 450) {
+                    hoverOffset = 5;
+                }
+            }
+        }
+        return {
+            labels: labels,
+            datasets: [{
+                data: data_value,
+                fill: true,
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                borderWidth: 1,
+                borderColor: 'transparent',
+                hoverOffset: hoverOffset,
+            }]
+        }
+    }
+
+    const myChart00 = new Chart(elecSale_chart[0].getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['지역냉난방', '산업단지', '병행'],
+            datasets: [{
+                label: '자체생산',
+                data: data_area01.data01,
+                backgroundColor: "#9BC0DB",
+                hoverBackgroundColor: "#0E6CAE",
+            },
+            {
+                label: '한전수전',
+                data: data_area01.data02,
+                backgroundColor: "#B4D7EF",
+                hoverBackgroundColor: "#4EA5E2",
+            },
+            ]
+        },
+        options: options("01", "M", 40, 0, 10, "M", false,false),
+        plugins: [beforeDrawFunction],
+    });
+
+    const myChart01 = new Chart(elecSale_chart[1].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area02.data01, data_area02.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart02 = new Chart(elecSale_chart[2].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area03.data01, data_area03.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart03 = new Chart(elecSale_chart[3].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area04.data01, data_area04.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
+
+    const myChart04 = new Chart(elecSale_chart[4].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area05.data01, data_area05.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });   
+}
+
+if(fuel_chart[0]){
+    let data01_element = document.querySelectorAll(".fuel_table01 tbody tr"),
+        data02_element = document.querySelectorAll(".fuel_table02 tbody tr"),
+        data03_element = document.querySelectorAll(".fuel_table03 tbody tr");
+
+    let data_area01 = {
+        data01: [],
+        label: ["지역냉난방","산업단지","병행"],
+    }
+
+    data01_element[data01_element.length - 2].querySelectorAll("td").forEach((el,index)=>{
+        if(index == 1 || index == 2){
+            data_area01.data01.push(el.textContent.replace(/,/g, "").trim());
+        }
+    });
+
+    
+    function datalabels_font_size(context) {
+        const width = context.chart.width
+        const size = Math.round(width / 13)
+    
+        return {
+            size: size <= 14 ? 14 : size,
+            weight: 600,
+        }
+    };
+
+    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
+        return {
+            layout: {
+                autoPadding: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType, unit_value),
+
+            },
+            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
+        }
+    }
+
+    function options01(tooltipType) {
+        return {
+            responsive: false,
+            maintainAspectRatio: false,
+            layout: function () {
+                let layoutPadding = 20;
+                if (window.innerWidth <= 1024) {
+                    layoutPadding = 10;
+                }
+                return {
+                    padding: layoutPadding
+                }
+            },
+            events: ['mousemove', 'mouseout'],
+            onHover: (event, chartElement, myChart) => {
+                if (chartElement.length > 0) {
+                    let index = chartElement[0].index;
+                    myChart.data.datasets[0].backgroundColor = (ctx) => {
+                        if (ctx.dataIndex === index) {
+                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                        }
+                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
+                    };
+                } else {
+                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                }
+                myChart.update();
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: tooltip(tooltipType),
+                datalabels: {
+                    formatter: function (value, context) {
+                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                        if (t % 1 == 0) t = Math.floor(t);
+                        return (t <= 30 ? "" : t + "%");
+                    },
+                    color: '#fff',
+                    font: datalabels_font_size,
+                }
+            },
+
+        }
+    };
+
+    function data(data_value, labels) {
+        let hoverOffset = 20;
+        if (window.innerWidth <= 1024) {
+            hoverOffset = 15;
+            if (window.innerWidth <= 767) {
+                hoverOffset = 10;
+                if (window.innerWidth <= 450) {
+                    hoverOffset = 5;
+                }
+            }
+        }
+        return {
+            labels: labels,
+            datasets: [{
+                data: data_value,
+                fill: true,
+                hoverBackgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                backgroundColor: ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'],
+                borderWidth: 1,
+                borderColor: 'transparent',
+                hoverOffset: hoverOffset,
+            }]
+        }
+    }
+    const myChart01 = new Chart(fuel_chart[0].getContext('2d'), {
+        type: 'pie',
+        data: data(data_area01.data01, data_area01.label),
+        options: options01("02"),
+        plugins: [ChartDataLabels]
+    });
 }

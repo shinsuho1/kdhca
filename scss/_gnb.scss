@@ -451,6 +451,9 @@ footer{
                     transform: rotate(180deg);
                 }
             }
+            &.none{
+                display: none;
+            }
         }
 
     }

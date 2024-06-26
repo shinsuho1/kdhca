@@ -169,7 +169,7 @@
                                 } ?>"><a href="../cs_center/notice.html">공지사항</a></li>
                     <li class="<?php if ($PAGE_CODE_2 == "0502") {
                                     echo 'none';
-                                } ?>"><a href="../cs_center/list02.html">업계통향</a></li>
+                                } ?>"><a href="../cs_center/list02.html">업계동향</a></li>
                     <li class="<?php if ($PAGE_CODE_2 == "0503") {
                                     echo 'none';
                                 } ?>"><a href="../cs_center/list03.html">회원사 동정</a></li>
@@ -180,6 +180,54 @@
                                     echo 'none';
                                 } ?>"><a href="../cs_center/list05.html">자료실</a></li>
                 <?php } ?>
+            </ul>
+        </div>
+        <div class="menu dp3 
+            <?php if ($PAGE_CODE_3 == "0401" || $PAGE_CODE_3 == "0402" || $PAGE_CODE_3 == "0403" || $PAGE_CODE_3 == "0404" || $PAGE_CODE_3 == "0405") {
+                echo "view";
+            } else {
+                echo "none";
+            } ?>">
+            <span>
+                <?php if ($PAGE_CODE_3 == "0401") {
+                    echo "열생산량";
+                } ?>
+                <?php if ($PAGE_CODE_3 == "0402") {
+                    echo "열판매량";
+                } ?>
+                <?php if ($PAGE_CODE_3 == "0403") {
+                    echo "전기생산량";
+                } ?>
+                <?php if ($PAGE_CODE_3 == "0404") {
+                    echo "전기판매량";
+                } ?>
+                <?php if ($PAGE_CODE_3 == "0405") {
+                    echo "연료사용량";
+                } ?>
+                <img src="../images/common/tab-menu-arrow.svg" alt="화살표">
+            </span>
+            <ul>
+                <?php
+                if ($PAGE_CODE_1 == "04") {
+                ?>
+                    <li class="<?php if ($PAGE_CODE_3 == "0401") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/heat_prod.html">열생산량</a></li>
+                    <li class="<?php if ($PAGE_CODE_3 == "0402") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/heat_sale.html">열판매량</a></li>
+                    <li class="<?php if ($PAGE_CODE_3 == "0403") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/elec_prod.html">전기생산량</a></li>
+                    <li class="<?php if ($PAGE_CODE_3 == "0404") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/elec_sale.html">전기판매량</a></li>
+                    <li class="<?php if ($PAGE_CODE_3 == "0405") {
+                                    echo 'none';
+                                } ?>"><a href="../statistics/fuel.html">연료사용량</a></li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
     </div>

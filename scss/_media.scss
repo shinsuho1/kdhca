@@ -546,7 +546,7 @@
                     &.s02 {
                         article {
                             .wrap {
-                                .tabs{
+                                .tabs,.tab_link{
                                     height: 60px;
                                     margin-bottom: 60px;
                                     a{
@@ -1191,7 +1191,7 @@
                     &.s02 {
                         article {
                             .wrap {
-                                .tabs{
+                                .tabs,.tab_link{
                                     height: 50px;
                                     margin-bottom: 50px;
                                     a{
@@ -1488,6 +1488,9 @@
                 ul{
                     min-width: initial;
                     max-width: 240px;
+                }
+                &.dp3{
+                    display: none;
                 }
             }
     
@@ -1880,8 +1883,8 @@
                     &.s02 {
                         article {
                             .wrap {
-                                .tabs{
-                                    height: 40px;
+                                .tabs,.tab_link{
+                                    height: 45px;
                                     margin-bottom: 40px;
                                     a{
                                         font-size: 14px;
@@ -2627,11 +2630,10 @@
                     &.s02 {
                         article {
                             .wrap {
-                                .tabs{
-                                    height: initial;
+                                .tabs,.tab_link{
+                                    height: 40px;
                                     margin-bottom: 35px;
                                     a{
-                                        height: 35px;
                                         font-size: 12px;
                                     }
                                 }
