@@ -188,7 +188,6 @@ window.addEventListener("DOMContentLoaded", function () {
         // body.classList.remove("stop_scroll");
         // });    
     };
-
     if (url != "main" && url != "account") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
@@ -203,7 +202,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         });
     }
-
 
     if (window.innerWidth <= 1024) {
         if (header_gnb.classList.contains("pc")) header_gnb.classList.remove("pc");

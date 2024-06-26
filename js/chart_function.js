@@ -12,7 +12,7 @@ red_cricle.src = "../images/common/red_chart_circle.png";
 blue_cricle.src = "../images/common/blue_chart_circle.png";
 
 
-// ==================== Plugins ====================
+/* ==================== Plugins ==================== */
 const beforeDrawFunction = {
     beforeDraw: function (chart, args, options) {
         const ctx = chart.ctx;
@@ -24,12 +24,12 @@ const beforeDrawFunction = {
             chartArea.right - chartArea.left, chartArea.top - chartArea.bottom);
     },
 };
-// ==================== Plugins ====================
+/* ==================== Plugins ==================== */
 
 
 
 
-// ==================== CHART01 ====================
+/* ==================== CHART01 ==================== */
 function dataset01(label, data, borderColor, pointBackgroundColor, gradient) {
     let pointRadius = 4,
         pointImage = "";
@@ -95,12 +95,12 @@ function scales01(max, min, stepSize, unit, stacked,offsetY=true) {
         },
     }
 }
-// ==================== CHART01 ====================
+/* ==================== CHART01 ==================== */
 
 
 
 
-// ==================== 공통 ====================
+/* ==================== 공통 ==================== */
 function font_size() {
     let size = 16;
     if (window.innerWidth <= 1024) {
@@ -217,13 +217,13 @@ function tooltip(tooltipType, unit_value) {
         },
     }
 }
-// ==================== 공통 ====================
+/* ==================== 공통 ==================== */
 
 
 
-let tabs = document.querySelectorAll(".tabs a");
-if (tabs[0]) {
-    tabs.forEach((el, index) => {
+let stat_tabs = document.querySelectorAll(".tabs a");
+if (stat_tabs[0]) {
+    stat_tabs.forEach((el, index) => {
         el.addEventListener("click", function (e) {
             e.preventDefault();
             if (el.classList.contains("active")) return false;
@@ -1566,7 +1566,5 @@ if(elecProd_chart[0]){
         data: data(data_area05.data01, data_area05.label),
         options: options01("02"),
         plugins: [ChartDataLabels]
-    });
-    
+    });   
 }
-
