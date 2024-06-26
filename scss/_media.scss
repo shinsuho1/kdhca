@@ -2456,6 +2456,16 @@
                                     .content {
                                         .address {
                                             gap: 8px 15px;
+                                            li{
+                                                a{
+                                                    white-space: wrap;
+                                                    align-items: flex-start;
+                                                    text-align: center;
+                                                    .mo02{
+                                                        display: block;
+                                                    }
+                                                }
+                                            }
                                         }
 
                                         iframe,.map {

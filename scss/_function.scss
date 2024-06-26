@@ -465,6 +465,14 @@ body {
     }
 }
 
+.a_link{
+    color: #ababab;
+    @include transition(.3s);
+    &:hover{
+        color: #fff;
+    }
+}
+
 .aos_span{
     display: inline-block;
 }

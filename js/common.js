@@ -64,7 +64,6 @@ window.addEventListener("DOMContentLoaded", function () {
             fadingEffect: true,
             slideSelector: '.slide',
             keyboardScrolling: false,
-            // responsiveWidth: 1340,
             'onLeave': function (index, nextIndex, direction) {
                 if (index == 1 && direction == "down") {
                     header.classList.add("bg");
