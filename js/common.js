@@ -8,7 +8,7 @@ let html = document.querySelector("html"),
     header_gnb = document.querySelector("header .header-wrap #gnb"),
     header_blur = document.querySelector(".header_blur");
 
-footer.querySelector(".fax_copy").addEventListener("click", function(e) {
+document.querySelector(".fax_copy").addEventListener("click", function(e) {
     e.preventDefault();
     let text = document.querySelector(".fax_copy").textContent.trim().replace(/[^0-9]/g,"");
     window.navigator.clipboard.writeText(text).then(() => {
