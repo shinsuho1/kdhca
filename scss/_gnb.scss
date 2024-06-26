@@ -185,6 +185,11 @@ header{
                 font-size: 14px;
                 font-weight: 400;
                 margin-top: 250px;
+                .a_link{
+                    &:hover{
+                        color: #000;
+                    }
+                }
             }
             &.active{
                 right: 0%;
