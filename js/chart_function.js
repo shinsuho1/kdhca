@@ -188,7 +188,7 @@ function tooltip(tooltipType, unit_value) {
                         `;
                     });
                 } else if (tooltipType == "02") {
-                    let hoverBackgroundColor = this.dataPoints[0].dataset.hoverBackgroundColor; //
+                    let hoverBackgroundColor = this.dataPoints[0].dataset.hoverBackgroundColor;
                     let bg_color = hoverBackgroundColor[this.dataPoints[0].dataset.data.indexOf(bodyLines[0][0].split("/")[1].replace(/,/g, ""))];
                     bodyLines.forEach(function (el, index) {
                         let el_text = el[0].split("/");
@@ -405,7 +405,7 @@ if (supply_chart[0]) {
         data04: [],
     }
     data01_element.forEach((el, index) => {
-        if (index == 3) return false; // 합계 제외
+        if (index == 3) return false; 
         data_area.label.push(el.querySelectorAll("td")[0].textContent.replace(/,/g, "").trim());
         data_area.data01.push(el.querySelectorAll("td")[1].textContent.replace(/,/g, "").trim());
         data_area.data02.push(el.querySelectorAll("td")[2].textContent.replace(/,/g, "").trim());
@@ -564,7 +564,6 @@ if (supply_chart[0]) {
     });
 
 
-    // horizontal Chart
     const myChart07 = new Chart(supply_chart[6], {
         type: 'bar',
         data: data(data_area02.data01, ["허가세대수", "공급세대수"]),
@@ -685,7 +684,6 @@ if (capacity_chart[0]) {
     data_area02.data02.push(data01_element[3].querySelectorAll("td")[5].textContent.replace(/,/g, "").trim() / 1000);
     data_area02.data02.push(data01_element[6].querySelectorAll("td")[5].textContent.replace(/,/g, "").trim() / 1000);
 
-    // chart.js 옵션(tooltip, scales01 포함)
     function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked) {
         return {
             layout: {
@@ -1117,7 +1115,7 @@ if(heatSale_chart[0]){
         data02_element = document.querySelectorAll(".heat_sale_table02 tbody tr"),
         data03_element = document.querySelectorAll(".heat_sale_table03 tbody tr"),
         data04_element = document.querySelectorAll(".heat_sale_table04 tbody tr");
-        // ["공공용","상업업무용","주택용","산업용","타사업자송열"],
+
     let data_area01 = {
         data01:[],
         data02:[],
