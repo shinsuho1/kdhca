@@ -16,7 +16,6 @@ document.querySelector(".fax_copy").addEventListener("click", function(e) {
     });
 });
 
-
 window.addEventListener("load", function () {
     setTimeout(() => {
         window.scrollTo({ top: 0 })
