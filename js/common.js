@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", function () {
         if (window.innerWidth <= 1024 && ($(this).siblings(".sub-menu").length > 0)) {
             e.preventDefault();
             $(this).toggleClass("active");
-            $(".sub-menu").stop().slideUp();
+            $("#gnb>li>.sub-menu").stop().slideUp();
             $(this).siblings(".sub-menu").stop().slideToggle();
         }
     });
@@ -291,7 +291,7 @@ if (document.querySelector("#subPage.account.change_password")) {
         }
         if (newPass.value != newPassCheck.value) {
             newPassCheck.focus();
-            alert("비밀번호가 일치하지 않습니다.");
+            alert("새 비밀번호가 일치하지 않습니다.");
             return false;
         }
 

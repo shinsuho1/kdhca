@@ -228,7 +228,7 @@ main {
                     top: 0;
                     left: 0;
                     z-index: 1;
-                    @include transition(.5s);
+                    @include transition(.3s);
                     @include bg-cover("../images/main/business_bg01.png");
                     img {
                         @include fullsize;
@@ -273,7 +273,6 @@ main {
                                 align-items: flex-end;
                                 li {
                                     width: calc(100%/3);
-                                    // height: calc(100% - $headerHeight);
                                     height: 100%;
                                     border-right: 0.6px solid #fff;
                                     padding-left: 45px;
