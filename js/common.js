@@ -6,15 +6,9 @@ let html = document.querySelector("html"),
     footer = document.querySelector("footer"),
     menuicon = document.querySelector(".menuicon"),
     header_gnb = document.querySelector("header .header-wrap #gnb"),
-    header_blur = document.querySelector(".header_blur");
+    header_blur = document.querySelector(".header_blur"),
+    popup_bg = document.querySelector(".popup-bg");
 
-document.querySelector(".fax_copy").addEventListener("click", function(e) {
-    e.preventDefault();
-    let text = document.querySelector(".fax_copy").textContent.trim().replace(/[^0-9]/g,"");
-    window.navigator.clipboard.writeText(text).then(() => {
-        alert("복사되었습니다.");
-    });
-});
 
 window.addEventListener("load", function () {
     setTimeout(() => {
@@ -174,28 +168,21 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
     if (url == "information" && document.querySelector(".member")) {
-        let member_list = document.querySelectorAll(".member .s01 .content .box ul>li>a");
-        let pop_element = this.document.querySelector(".pop.information-member");
+        let member_list = document.querySelectorAll(".member .s01 .content .box ul>li>.img-wrap");
+        let member_popup = document.querySelectorAll(".member-popup");
+        console.log(member_list, member_popup)
         member_list.forEach((el, index) => {
             el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`;
-            el.addEventListener("click", function (e) {
+            el.querySelector(".member-name").addEventListener("click", function (e) {
                 e.preventDefault();
-                // let img = pop_element.querySelector(".img-wrap img"),
-                //     name = pop_element.querySelector(".text .name"),
-                //     link = pop_element.querySelector(".link a");
-                //     img.src = el.querySelector(".img-wrap img").getAttribute("src");
-                //     img.alt = el.querySelector(".img-wrap img").getAttribute("alt");
-                //     link.href = el.getAttribute("href");
-                //     name.textContent = el.querySelector(".img-wrap img").getAttribute("alt");
-
-                // pop_element.classList.add("active");
-                // body.classList.add("stop_scroll");
+                member_popup[index].classList.add("active");
+                popup_bg.classList.add("active");
+            });
+            member_popup[index].querySelector(".close").addEventListener("click", function (e) {
+                popup_bg.classList.remove("active");
+                member_popup[index].classList.remove("active");
             });
         });
-        // document.querySelector(".pop .close").addEventListener("click",function(e){
-        //     pop_element.classList.remove("active");
-        // body.classList.remove("stop_scroll");
-        // });    
     };
     if (url != "main" && url != "account") {
         let lastScroll = 0;

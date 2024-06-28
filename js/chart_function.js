@@ -30,7 +30,7 @@ const beforeDrawFunction = {
 
 
 
-/* ==================== CHART01 ==================== */
+/* ==================== CHART ==================== */
 function dataset01(label, data, borderColor, pointBackgroundColor, gradient) {
     let pointRadius = 4,
         pointImage = "";
@@ -96,9 +96,80 @@ function scales01(max, min, stepSize, unit, stacked,offsetY=true) {
         },
     }
 }
-/* ==================== CHART01 ==================== */
 
+function options_01(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
+    return {
+        layout: {
+            autoPadding: false,
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+            tooltip: tooltip(tooltipType, unit_value),
 
+        },
+        scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
+    }
+}
+
+function datalabels_font_size(context) {
+    const width = context.chart.width
+    const size = Math.round(width / 13)
+
+    return {
+        size: size <= 14 ? 14 : size,
+        weight: 600,
+    }
+};
+
+function options_02(tooltipType) {
+    return {
+        responsive: false,
+        maintainAspectRatio: false,
+        layout: function () {
+            let layoutPadding = 20;
+            if (window.innerWidth <= 1024) {
+                layoutPadding = 10;
+            }
+            return {
+                padding: layoutPadding
+            }
+        },
+        events: ['mousemove', 'mouseout'],
+        onHover: (event, chartElement, myChart) => {
+            if (chartElement.length > 0) {
+                let index = chartElement[0].index;
+                myChart.data.datasets[0].backgroundColor = (ctx) => {
+                    if (ctx.dataIndex === index) {
+                        return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+                    }
+                    return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
+                };
+            } else {
+                myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
+            }
+            myChart.update();
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+            tooltip: tooltip(tooltipType),
+            datalabels: {
+                formatter: function (value, context) {
+                    let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
+                    if (t % 1 == 0) t = Math.floor(t);
+                    return (t <= 30 ? "" : t + "%");
+                },
+                color: '#fff',
+                font: datalabels_font_size,
+            }
+        },
+
+    }
+};
+/* ==================== CHART ==================== */
 
 
 /* ==================== 공통 ==================== */
@@ -296,21 +367,6 @@ if (year_chart[0]) {
     gradient_blue.addColorStop(0, 'rgba(57, 146, 208, 0.5)');
     gradient_blue.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked),
-        }
-    }
 
     const year_chart0 = new Chart(year_chart[0].getContext('2d'), {
         type: 'line',
@@ -321,7 +377,7 @@ if (year_chart[0]) {
                 dataset01('사업자수', data_area01.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: options("01", "", 110, 50, 10, "", false),
+        options: options_01("01", "", 110, 50, 10, "", false),
         plugins: [beforeDrawFunction],
     });
 
@@ -350,7 +406,7 @@ if (year_chart[0]) {
             },
             ]
         },
-        options: options("01", "M", 15, 5, 5, "M", true),
+        options: options_01("01", "M", 15, 5, 5, "M", true),
         plugins: [beforeDrawFunction],
     });
 
@@ -363,7 +419,7 @@ if (year_chart[0]) {
                 dataset01('판매량(Gcal)', data_area03.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: options("01", "M", 280, 40, 40, "M", false),
+        options: options_01("01", "M", 280, 40, 40, "M", false),
         plugins: [beforeDrawFunction],
     });
 
@@ -376,14 +432,13 @@ if (year_chart[0]) {
                 dataset01('판매량(Gcal)', data_area04.data02.reverse(), '#0e6cae', '#0e6cae', gradient_blue),
             ],
         },
-        options: options("01", "M", 60, 20, 10, "M", false),
+        options: options_01("01", "M", 60, 20, 10, "M", false),
         plugins: [beforeDrawFunction],
     });
 
 }
 
 if (supply_chart[0]) {
-
     let data01_element = document.querySelectorAll(".supply_table01 tbody tr"),
         data02_element = document.querySelectorAll(".supply_table03 tbody tr"),
         data03_element = document.querySelectorAll(".supply_table04 tbody tr"),
@@ -427,62 +482,6 @@ if (supply_chart[0]) {
     data_area02.data04.push(data04_element[data04_element.length - 1].querySelectorAll("td")[4].textContent.replace(/,/g, "").trim());
     data_area02.data04.push(data04_element[data04_element.length - 1].querySelectorAll("td")[5].textContent.replace(/,/g, "").trim());
 
-    function datalabels_font_size(context) {
-        const width = context.chart.width
-        const size = Math.round(width / 13)
-    
-        return {
-            size: size <= 14 ? 14 : size,
-            weight: 600,
-        }
-    };
-
-    function options(tooltipType) {
-        return {
-            responsive: false,
-            maintainAspectRatio: false,
-            layout: function () {
-                let layoutPadding = 20;
-                if (window.innerWidth <= 1024) {
-                    layoutPadding = 10;
-                }
-                return {
-                    padding: layoutPadding
-                }
-            },
-            events: ['mousemove', 'mouseout'],
-            onHover: (event, chartElement, myChart) => {
-                if (chartElement.length > 0) {
-                    let index = chartElement[0].index;
-                    myChart.data.datasets[0].backgroundColor = (ctx) => {
-                        if (ctx.dataIndex === index) {
-                            return ['#3389ef', '#74d1fa', '#c7eeff'];
-                        }
-                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF'];
-                    };
-                } else {
-                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff'];
-                }
-                myChart.update();
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType),
-                datalabels: {
-                    formatter: function (value, context) {
-                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
-                        if (t % 1 == 0) t = Math.floor(t);
-                        return (t <= 10 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: datalabels_font_size,
-                }
-            },
-
-        }
-    };
 
     function data(data_value, labels) {
         let hoverOffset = 20;
@@ -512,37 +511,37 @@ if (supply_chart[0]) {
     const myChart01 = new Chart(supply_chart[0], {
         type: 'pie',
         data: data(data_area.data01, data_area.label),
-        options: options("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     const myChart02 = new Chart(supply_chart[1], {
         type: 'pie',
         data: data(data_area.data02, data_area.label),
-        options: options("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     const myChart03 = new Chart(supply_chart[2], {
         type: 'pie',
         data: data(data_area.data03, data_area.label),
-        options: options("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     const myChart04 = new Chart(supply_chart[3], {
         type: 'pie',
         data: data(data_area.data04, data_area.label),
-        options: options("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     const myChart05 = new Chart(supply_chart[4], {
         type: 'pie',
         data: data(data_area.data05, data_area.label),
-        options: options("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     const myChart06 = new Chart(supply_chart[5], {
         type: 'pie',
         data: data(data_area.data06, data_area.label),
-        options: options("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
@@ -684,21 +683,6 @@ if (capacity_chart[0]) {
     data_area02.data02.push(data01_element[3].querySelectorAll("td")[5].textContent.replace(/,/g, "").trim() / 1000);
     data_area02.data02.push(data01_element[6].querySelectorAll("td")[5].textContent.replace(/,/g, "").trim() / 1000);
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,false),
-        }
-    }
     const chart00 = new Chart(capacity_chart[0].getContext('2d'), {
         type: 'bar',
         data: {
@@ -723,7 +707,7 @@ if (capacity_chart[0]) {
             },
             ]
         },
-        options: options("01", "K", 30, 0, 5, "K", false),
+        options: options_01("01", "K", 30, 0, 5, "K", false),
         plugins: [beforeDrawFunction],
     });
     const chart01 = new Chart(capacity_chart[1].getContext('2d'), {
@@ -744,7 +728,7 @@ if (capacity_chart[0]) {
             },
             ]
         },
-        options: options("01", "K", 10, 0, 2, "K", false),
+        options: options_01("01", "K", 10, 0, 2, "K", false),
         plugins: [beforeDrawFunction],
     });
 }
@@ -758,7 +742,6 @@ if (operating_chart[0]) {
         data03: [],
         data04: [],
     }
-
 
     data_area01.data01.push(data01_element[2].querySelectorAll("td")[2].textContent.replace(/,/g, "").trim() / 1000000);
     data_area01.data01.push(data01_element[2].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
@@ -801,22 +784,6 @@ if (operating_chart[0]) {
     data_area02.data04.push(data01_element[16].querySelectorAll("td")[3].textContent.replace(/,/g, "").trim() / 1000000);
 
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
-        }
-    }
-
     const chart00 = new Chart(operating_chart[0].getContext('2d'), {
         type: 'bar',
         data: {
@@ -847,7 +814,7 @@ if (operating_chart[0]) {
             },
             ]
         },
-        options: options("01", "M", 100, -20, 20, "M", false,false),
+        options: options_01("01", "M", 100, -20, 20, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 
@@ -881,7 +848,7 @@ if (operating_chart[0]) {
             },
             ]
         },
-        options: options("01", "M", 40, 0, 10, "M", false,false),
+        options: options_01("01", "M", 40, 0, 10, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 }
@@ -948,79 +915,6 @@ if(heatProd_chart[0]){
         }
     }); 
 
-    function datalabels_font_size(context) {
-        const width = context.chart.width
-        const size = Math.round(width / 13)
-    
-        return {
-            size: size <= 14 ? 14 : size,
-            weight: 600,
-        }
-    };
-
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
-        }
-    }
-
-    function options01(tooltipType) {
-        return {
-            responsive: false,
-            maintainAspectRatio: false,
-            layout: function () {
-                let layoutPadding = 20;
-                if (window.innerWidth <= 1024) {
-                    layoutPadding = 10;
-                }
-                return {
-                    padding: layoutPadding
-                }
-            },
-            events: ['mousemove', 'mouseout'],
-            onHover: (event, chartElement, myChart) => {
-                if (chartElement.length > 0) {
-                    let index = chartElement[0].index;
-                    myChart.data.datasets[0].backgroundColor = (ctx) => {
-                        if (ctx.dataIndex === index) {
-                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                        }
-                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
-                    };
-                } else {
-                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                }
-                myChart.update();
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType),
-                datalabels: {
-                    formatter: function (value, context) {
-                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
-                        if (t % 1 == 0) t = Math.floor(t);
-                        return (t <= 30 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: datalabels_font_size,
-                }
-            },
-
-        }
-    };
-
     function data(data_value, labels) {
         let hoverOffset = 20;
         if (window.innerWidth <= 1024) {
@@ -1076,35 +970,35 @@ if(heatProd_chart[0]){
             },
             ]
         },
-        options: options("01", "M", 100, 0, 20, "M", false,false),
+        options: options_01("01", "M", 100, 0, 20, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 
     const myChart01 = new Chart(heatProd_chart[1].getContext('2d'), {
         type: 'pie',
         data: data(data_area02.data01, data_area02.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart02 = new Chart(heatProd_chart[2].getContext('2d'), {
         type: 'pie',
         data: data(data_area03.data01, data_area03.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart03 = new Chart(heatProd_chart[3].getContext('2d'), {
         type: 'pie',
         data: data(data_area04.data01, data_area04.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart04 = new Chart(heatProd_chart[4].getContext('2d'), {
         type: 'pie',
         data: data(data_area05.data01, data_area05.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     
@@ -1178,33 +1072,9 @@ if(heatSale_chart[0]){
     });
     
 
-    function datalabels_font_size(context) {
-        const width = context.chart.width
-        const size = Math.round(width / 13)
-    
-        return {
-            size: size <= 14 ? 14 : size,
-            weight: 600,
-        }
-    };
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
 
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
-        }
-    }
-
-    function options01(tooltipType) {
+    function options_02(tooltipType) {
         return {
             responsive: false,
             maintainAspectRatio: false,
@@ -1312,35 +1182,35 @@ if(heatSale_chart[0]){
             },
             ]
         },
-        options: options("01", "M", 40, 0, 10, "M", false,false),
+        options: options_01("01", "M", 40, 0, 10, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 
     const myChart01 = new Chart(heatSale_chart[1].getContext('2d'), {
         type: 'pie',
         data: data(data_area02.data01, data_area02.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart02 = new Chart(heatSale_chart[2].getContext('2d'), {
         type: 'pie',
         data: data(data_area03.data01, data_area03.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart03 = new Chart(heatSale_chart[3].getContext('2d'), {
         type: 'pie',
         data: data(data_area04.data01, data_area04.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart04 = new Chart(heatSale_chart[4].getContext('2d'), {
         type: 'pie',
         data: data(data_area05.data01, data_area05.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
     
@@ -1411,78 +1281,7 @@ if(elecProd_chart[0]){
 
     
 
-    function datalabels_font_size(context) {
-        const width = context.chart.width
-        const size = Math.round(width / 13)
-    
-        return {
-            size: size <= 14 ? 14 : size,
-            weight: 600,
-        }
-    };
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
-        }
-    }
-
-    function options01(tooltipType) {
-        return {
-            responsive: false,
-            maintainAspectRatio: false,
-            layout: function () {
-                let layoutPadding = 20;
-                if (window.innerWidth <= 1024) {
-                    layoutPadding = 10;
-                }
-                return {
-                    padding: layoutPadding
-                }
-            },
-            events: ['mousemove', 'mouseout'],
-            onHover: (event, chartElement, myChart) => {
-                if (chartElement.length > 0) {
-                    let index = chartElement[0].index;
-                    myChart.data.datasets[0].backgroundColor = (ctx) => {
-                        if (ctx.dataIndex === index) {
-                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                        }
-                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
-                    };
-                } else {
-                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                }
-                myChart.update();
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType),
-                datalabels: {
-                    formatter: function (value, context) {
-                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
-                        if (t % 1 == 0) t = Math.floor(t);
-                        return (t <= 30 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: datalabels_font_size,
-                }
-            },
-
-        }
-    };
 
     function data(data_value, labels) {
         let hoverOffset = 20;
@@ -1527,35 +1326,35 @@ if(elecProd_chart[0]){
             },
             ]
         },
-        options: options("01", "M", 40, 0, 10, "M", false,false),
+        options: options_01("01", "M", 40, 0, 10, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 
     const myChart01 = new Chart(elecProd_chart[1].getContext('2d'), {
         type: 'pie',
         data: data(data_area02.data01, data_area02.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart02 = new Chart(elecProd_chart[2].getContext('2d'), {
         type: 'pie',
         data: data(data_area03.data01, data_area03.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart03 = new Chart(elecProd_chart[3].getContext('2d'), {
         type: 'pie',
         data: data(data_area04.data01, data_area04.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart04 = new Chart(elecProd_chart[4].getContext('2d'), {
         type: 'pie',
         data: data(data_area05.data01, data_area05.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });   
 }
@@ -1627,78 +1426,7 @@ if(elecSale_chart[0]){
 
     
 
-    function datalabels_font_size(context) {
-        const width = context.chart.width
-        const size = Math.round(width / 13)
-    
-        return {
-            size: size <= 14 ? 14 : size,
-            weight: 600,
-        }
-    };
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
-        }
-    }
-
-    function options01(tooltipType) {
-        return {
-            responsive: false,
-            maintainAspectRatio: false,
-            layout: function () {
-                let layoutPadding = 20;
-                if (window.innerWidth <= 1024) {
-                    layoutPadding = 10;
-                }
-                return {
-                    padding: layoutPadding
-                }
-            },
-            events: ['mousemove', 'mouseout'],
-            onHover: (event, chartElement, myChart) => {
-                if (chartElement.length > 0) {
-                    let index = chartElement[0].index;
-                    myChart.data.datasets[0].backgroundColor = (ctx) => {
-                        if (ctx.dataIndex === index) {
-                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                        }
-                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
-                    };
-                } else {
-                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                }
-                myChart.update();
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType),
-                datalabels: {
-                    formatter: function (value, context) {
-                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
-                        if (t % 1 == 0) t = Math.floor(t);
-                        return (t <= 30 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: datalabels_font_size,
-                }
-            },
-
-        }
-    };
 
     function data(data_value, labels) {
         let hoverOffset = 20;
@@ -1743,35 +1471,35 @@ if(elecSale_chart[0]){
             },
             ]
         },
-        options: options("01", "M", 40, 0, 10, "M", false,false),
+        options: options_01("01", "M", 40, 0, 10, "M", false,false),
         plugins: [beforeDrawFunction],
     });
 
     const myChart01 = new Chart(elecSale_chart[1].getContext('2d'), {
         type: 'pie',
         data: data(data_area02.data01, data_area02.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart02 = new Chart(elecSale_chart[2].getContext('2d'), {
         type: 'pie',
         data: data(data_area03.data01, data_area03.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart03 = new Chart(elecSale_chart[3].getContext('2d'), {
         type: 'pie',
         data: data(data_area04.data01, data_area04.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 
     const myChart04 = new Chart(elecSale_chart[4].getContext('2d'), {
         type: 'pie',
         data: data(data_area05.data01, data_area05.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });   
 }
@@ -1793,78 +1521,7 @@ if(fuel_chart[0]){
     });
 
     
-    function datalabels_font_size(context) {
-        const width = context.chart.width
-        const size = Math.round(width / 13)
-    
-        return {
-            size: size <= 14 ? 14 : size,
-            weight: 600,
-        }
-    };
 
-    function options(tooltipType, unit_value, label, data, borderColor, pointBackgroundColor, stacked,offsetY) {
-        return {
-            layout: {
-                autoPadding: false,
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType, unit_value),
-
-            },
-            scales: scales01(label, data, borderColor, pointBackgroundColor, stacked,offsetY),
-        }
-    }
-
-    function options01(tooltipType) {
-        return {
-            responsive: false,
-            maintainAspectRatio: false,
-            layout: function () {
-                let layoutPadding = 20;
-                if (window.innerWidth <= 1024) {
-                    layoutPadding = 10;
-                }
-                return {
-                    padding: layoutPadding
-                }
-            },
-            events: ['mousemove', 'mouseout'],
-            onHover: (event, chartElement, myChart) => {
-                if (chartElement.length > 0) {
-                    let index = chartElement[0].index;
-                    myChart.data.datasets[0].backgroundColor = (ctx) => {
-                        if (ctx.dataIndex === index) {
-                            return ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                        }
-                        return ['rgba(51,137,239,.3)', '#D6F2FE', '#EFFAFF','#d7fcff'];
-                    };
-                } else {
-                    myChart.data.datasets[0].backgroundColor = ['#3389ef', '#74d1fa', '#c7eeff','#a5f1f7'];
-                }
-                myChart.update();
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                tooltip: tooltip(tooltipType),
-                datalabels: {
-                    formatter: function (value, context) {
-                        let t = (value / context.chart.getDatasetMeta(0).total * 100).toFixed(1);
-                        if (t % 1 == 0) t = Math.floor(t);
-                        return (t <= 30 ? "" : t + "%");
-                    },
-                    color: '#fff',
-                    font: datalabels_font_size,
-                }
-            },
-
-        }
-    };
 
     function data(data_value, labels) {
         let hoverOffset = 20;
@@ -1893,7 +1550,7 @@ if(fuel_chart[0]){
     const myChart01 = new Chart(fuel_chart[0].getContext('2d'), {
         type: 'pie',
         data: data(data_area01.data01, data_area01.label),
-        options: options01("02"),
+        options: options_02("02"),
         plugins: [ChartDataLabels]
     });
 }

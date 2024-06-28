@@ -464,3 +464,19 @@ footer{
 
     }
 }
+
+.popup-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include fullsize;
+    @include drag-off;
+    opacity: .45;
+    background-color: #000;
+    z-index: 10;
+    display: none;
+    &.active{
+        display: block;
+        @include drag-on;
+    }
+}
