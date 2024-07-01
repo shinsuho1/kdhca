@@ -1007,6 +1007,7 @@ main {
                                     .img-wrap{
                                         width: 500px;
                                         position: relative;
+                                        @include drag-off;
                                         img{
                                             display: inline-block;
                                         }
