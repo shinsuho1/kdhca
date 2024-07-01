@@ -414,6 +414,7 @@ footer{
             border: 1px solid #575757;
             border-top: none;
             border-bottom: none;
+            border-left: none;
             span,a{
                 width: 100%;
                 min-width: 330px;
@@ -437,9 +438,6 @@ footer{
                     border-bottom: 1px solid #575757;
                     background-color: #000;
                     @include transition(.3s);
-                    &:last-child{
-                        border-bottom: none
-                    }
                     &:first-child{
                         border-top: 1px solid #575757;
                     }
@@ -451,7 +449,6 @@ footer{
                     }
                 }
             }
-            border-left: none;
             &.active{
                 img{
                     transform: rotate(180deg);
