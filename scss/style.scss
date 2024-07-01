@@ -313,13 +313,6 @@ main {
                                         transform: translateY(50px);
                                     }
 
-                                    a {
-                                        display: block;
-                                        font-weight: 500;
-                                        font-size: 12px;
-                                        opacity: 0;
-                                        transform: translate(1.5px,50px);
-                                    }
 
                                     &.active {
                                         -webkit-backdrop-filter: blur(10px);
@@ -333,16 +326,9 @@ main {
                                         .icon-svg {
                                             svg {
                                                 path {
-                                                    @include transition(0s);
                                                     stroke: #fff;
                                                 }
                                             }
-                                        }
-                                        p{
-                                            @include transition(0s);
-                                        }
-                                        a{
-                                            @include transition(0s);
                                         }
                                     }
                                 }
@@ -417,8 +403,9 @@ main {
                                         a {
                                             width: 100%;
                                             @include ellipsis(1);
+                                            @include transition(.3s);
                                             &:hover{
-                                                text-decoration: underline;
+                                                color: #006eb5;
                                             }
                                         }
                                     }
@@ -771,7 +758,7 @@ main {
                                                 @include transition(.3s);
                                                 color: #000;
                                                 &:hover{
-                                                    color: #555;
+                                                    color: #086cae;
                                                 }
                                                 .mo02{
                                                     display: none;
