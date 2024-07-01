@@ -911,7 +911,6 @@ main {
                                                         width: 20px;
                                                         aspect-ratio: 1/1;
                                                         cursor: pointer;
-                                                        // @include drag-on;
                                                         img{
                                                             @include img-cover;
                                                         }
@@ -957,7 +956,7 @@ main {
                                                                             border: none !important;
                                                                             display: inline-block !important;
                                                                             @include transition(.3s);
-                                                                            word-break:break-all;
+                                                                            word-break: break-all;
                                                                             &:hover{
                                                                                 color: #086cae;
                                                                             }

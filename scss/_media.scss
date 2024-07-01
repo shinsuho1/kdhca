@@ -1167,6 +1167,9 @@
                                                         padding: 60px 50px;
                                                         width: 90%;
                                                         max-width: initial;
+                                                        max-height: 600px;
+                                                        height: 90%;
+                                                        overflow-y: auto;
                                                         .close{
                                                             right: 20px;
                                                             top: 20px;
