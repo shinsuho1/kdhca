@@ -1014,6 +1014,8 @@ main {
                                         .map{
                                             width: 100%;
                                             object-fit: contain;
+                                            position: relative;
+                                            z-index: 2;
                                         }
                                         .icon{
                                             width: 600px;
@@ -1022,6 +1024,7 @@ main {
                                             position: absolute;
                                             left: -70px;
                                             top: 25px;
+                                            z-index: 1;
                                         }
                                     }
                                     table{
