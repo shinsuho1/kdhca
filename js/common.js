@@ -167,23 +167,6 @@ window.addEventListener("DOMContentLoaded", function () {
             $(this).parent().toggleClass("active");
         });
     }
-    if (url == "information" && document.querySelector(".member")) {
-        let member_list = document.querySelectorAll(".member .s01 .content .box ul>li>.img-wrap");
-        let member_popup = document.querySelectorAll(".member-popup");
-        console.log(member_list, member_popup)
-        member_list.forEach((el, index) => {
-            el.innerHTML += `<div class="member-name"><span>${el.querySelector("img").getAttribute("alt")}</span></div>`;
-            el.querySelector(".member-name").addEventListener("click", function (e) {
-                e.preventDefault();
-                member_popup[index].classList.add("active");
-                popup_bg.classList.add("active");
-            });
-            member_popup[index].querySelector(".close").addEventListener("click", function (e) {
-                popup_bg.classList.remove("active");
-                member_popup[index].classList.remove("active");
-            });
-        });
-    };
     if (url != "main" && url != "account") {
         let lastScroll = 0;
         window.addEventListener("scroll", () => {

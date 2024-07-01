@@ -473,7 +473,7 @@ footer{
     @include drag-off;
     opacity: .45;
     background-color: #000;
-    z-index: 10;
+    z-index: 110;
     display: none;
     &.active{
         display: block;

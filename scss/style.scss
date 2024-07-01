@@ -907,7 +907,7 @@ main {
 
                                                 .member-popup{
                                                     position: fixed;
-                                                    z-index: 20;
+                                                    z-index: 120;
                                                     @include pos-center;
                                                     @include flex-column-center;
                                                     pointer-events: none;
