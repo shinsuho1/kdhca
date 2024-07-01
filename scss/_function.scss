@@ -122,7 +122,7 @@
     min-height: $height;
 }
 
-@mixin transition($s) {
+@mixin transition($s: .3s) {
     transition: $s;
     -webkit-transition: $s;
     -moz-transition: $s;
@@ -131,10 +131,10 @@
 }
 
 
-@mixin clipText($num) {
+@mixin clipText($line: 1) {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: $num;
+    -webkit-line-clamp: $line;
     overflow: hidden;
 }
 

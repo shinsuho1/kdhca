@@ -146,6 +146,7 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
 
+
         let main_bis = document.querySelector("#mainPage .s02 ul"),
             min_bis_li = document.querySelectorAll("#mainPage .s02 li");
         min_bis_li.forEach((el, index) => {
