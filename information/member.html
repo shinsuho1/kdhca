@@ -1198,6 +1198,7 @@ include_once "../include/footer.html"
             popup_bg.classList.add("active");
         });
         member_popup[index].querySelector(".close").addEventListener("click", function(e) {
+            e.preventDefault();
             popup_bg.classList.remove("active");
             member_popup[index].classList.remove("active");
         });

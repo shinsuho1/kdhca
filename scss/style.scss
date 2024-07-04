@@ -790,12 +790,12 @@ main {
                                         min-height: 250px;
                                     }
 
-                                    .method {
+                                    .text {
                                         display: flex;
                                         justify-content: flex-start;
                                         align-items: center;
                                         gap: 80px;
-
+                                        margin-bottom: 80px;
                                         p {
                                             font-size: 18px;
                                             font-weight: 500;
@@ -805,6 +805,55 @@ main {
                                         span {
                                             font-size: 16px;
                                             font-weight: 400;
+                                        }
+                                    }
+                                    .method{
+                                        width: 100%;
+                                        h3{
+                                            width: 100%;
+                                            font-size: 18px;
+                                            font-weight: 500;
+                                            margin-bottom: 20px;
+                                        }
+                                        ul{
+                                            width: 100%;
+                                            // display: flex;
+                                            // justify-content: flex-start;
+                                            // align-items: center;
+                                            @include flex-space-center;
+                                            // flex-wrap: wrap;
+                                            gap: 50px;
+                                            li{
+                                                width: 100%;
+                                                @include flex-column-center;
+                                                gap: 20px;
+                                                font-size: 16px;
+                                                font-weight: 400;
+                                                color: #000;
+                                                text-align: center;
+                                                background-color: #ECF8FF;
+                                                border-radius: 10px;
+                                                padding: 15px 30px;
+                                                white-space: nowrap;
+                                                position: relative;
+                                                &.point{
+                                                    background-color: #006eb5;
+                                                    color: #fff;
+                                                }
+                                                &::after{
+                                                    content: "";
+                                                    position: absolute;
+                                                    width: 13px;
+                                                    aspect-ratio: 13/24;
+                                                    @include bg-cover("../images/common/location_arrow.svg");
+                                                    right: -31.5px;
+                                                }
+                                                &:last-child{
+                                                    &::after{
+                                                        display: none;
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
